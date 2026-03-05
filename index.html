@@ -3,1403 +3,1655 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Environmental Science 3/4 — Study Hub</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>The Final Straight</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --forest: #1a3a2a;
-    --moss: #2d5a3d;
-    --fern: #4a8c5c;
-    --sage: #7ab68a;
-    --mist: #c8dfc8;
-    --earth: #8b5e3c;
-    --amber: #d4823a;
-    --sand: #f2e8d5;
-    --cream: #faf6ee;
-    --dark: #0f2118;
-    --text: #1e3529;
-    --text-light: #4a6355;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--text);
-    overflow-x: hidden;
-  }
-
-  /* ── HERO ── */
-  .hero {
-    background: var(--forest);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    padding: 2rem;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: 
-      radial-gradient(ellipse 80% 60% at 20% 80%, rgba(74,140,92,0.18) 0%, transparent 70%),
-      radial-gradient(ellipse 60% 50% at 80% 20%, rgba(212,130,58,0.12) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 40% at 50% 50%, rgba(45,90,61,0.4) 0%, transparent 100%);
-  }
-
-  .leaf-bg {
-    position: absolute;
-    inset: 0;
-    opacity: 0.04;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cellipse cx='30' cy='30' rx='8' ry='20' fill='%23ffffff' transform='rotate(30 30 30)'/%3E%3C/svg%3E");
-    background-size: 60px 60px;
-  }
-
-  .hero-content { position: relative; z-index: 1; max-width: 700px; }
-
-  .hero-tag {
-    display: inline-block;
-    background: rgba(212,130,58,0.2);
-    border: 1px solid rgba(212,130,58,0.5);
-    color: var(--amber);
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 0.4rem 1rem;
-    border-radius: 100px;
-    margin-bottom: 1.5rem;
-    animation: fadeUp 0.6s ease both;
-  }
-
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.8rem, 7vw, 5.5rem);
-    font-weight: 900;
-    color: #fff;
-    line-height: 1.05;
-    margin-bottom: 1rem;
-    animation: fadeUp 0.6s 0.1s ease both;
-  }
-
-  .hero h1 span { color: var(--sage); }
-
-  .hero p {
-    color: rgba(200,223,200,0.8);
-    font-size: 1.1rem;
-    font-weight: 300;
-    line-height: 1.7;
-    margin-bottom: 2.5rem;
-    animation: fadeUp 0.6s 0.2s ease both;
-  }
-
-  .hero-nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    justify-content: center;
-    animation: fadeUp 0.6s 0.3s ease both;
-  }
-
-  .hero-btn {
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    border: none;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .hero-btn.primary {
-    background: var(--amber);
-    color: #fff;
-  }
-
-  .hero-btn.secondary {
-    background: rgba(255,255,255,0.1);
-    color: var(--mist);
-    border: 1px solid rgba(255,255,255,0.15);
-  }
-
-  .hero-btn:hover { transform: translateY(-2px); opacity: 0.9; }
-
-  /* ── NAV BAR ── */
-  .navbar {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--forest);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    display: flex;
-    gap: 0;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-
-  .navbar::-webkit-scrollbar { display: none; }
-
-  .nav-tab {
-    padding: 1rem 1.4rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--sage);
-    cursor: pointer;
-    border: none;
-    background: none;
-    white-space: nowrap;
-    transition: all 0.2s;
-    border-bottom: 2px solid transparent;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
-
-  .nav-tab:hover { color: #fff; }
-  .nav-tab.active { color: var(--amber); border-bottom-color: var(--amber); }
-
-  /* ── SECTIONS ── */
-  .section { display: none; padding: 3rem 1.5rem; max-width: 1100px; margin: 0 auto; }
-  .section.active { display: block; }
-
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--forest);
-    margin-bottom: 0.5rem;
-  }
-
-  .section-sub {
-    color: var(--text-light);
-    font-size: 0.95rem;
-    margin-bottom: 2rem;
-  }
-
-  /* ── TOPIC NOTES ── */
-  .topics-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.25rem;
-  }
-
-  .topic-card {
-    background: #fff;
-    border: 1px solid rgba(74,140,92,0.15);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: box-shadow 0.2s, transform 0.2s;
-    cursor: pointer;
-  }
-
-  .topic-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(26,58,42,0.12); }
-
-  .topic-card-header {
-    background: var(--moss);
-    padding: 1.25rem 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .topic-icon {
-    width: 36px; height: 36px;
-    background: rgba(255,255,255,0.15);
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.1rem;
-  }
-
-  .topic-card-header h3 { color: #fff; font-size: 0.95rem; font-weight: 600; }
-  .topic-card-header span { color: var(--mist); font-size: 0.75rem; opacity: 0.8; }
-
-  .topic-card-body { padding: 1.25rem 1.5rem; }
-
-  .topic-card-body ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .topic-card-body li {
-    font-size: 0.85rem;
-    color: var(--text-light);
-    padding-left: 1rem;
-    position: relative;
-    line-height: 1.5;
-  }
-
-  .topic-card-body li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--fern);
-    font-size: 0.75rem;
-    top: 0.1rem;
-  }
-
-  .topic-expand {
-    display: none;
-    padding: 1rem 1.5rem;
-    border-top: 1px solid rgba(74,140,92,0.1);
-    background: var(--cream);
-    font-size: 0.85rem;
-    color: var(--text);
-    line-height: 1.7;
-  }
-
-  .topic-expand.open { display: block; }
-
-  .topic-expand h4 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    color: var(--forest);
-    margin-bottom: 0.5rem;
-  }
-
-  .topic-expand p { margin-bottom: 0.75rem; }
-
-  /* ── FLASHCARDS ── */
-  .flashcard-controls {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  .topic-filter {
-    padding: 0.5rem 1rem;
-    border: 1px solid rgba(74,140,92,0.3);
-    border-radius: 8px;
-    background: #fff;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    color: var(--text);
-    cursor: pointer;
-  }
-
-  .fc-wrap {
-    perspective: 1000px;
-    max-width: 600px;
-    margin: 0 auto 2rem;
-  }
-
-  .fc {
-    width: 100%;
-    height: 280px;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.5s ease;
-    cursor: pointer;
-  }
-
-  .fc.flipped { transform: rotateY(180deg); }
-
-  .fc-face {
-    position: absolute;
-    inset: 0;
-    border-radius: 16px;
-    backface-visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    text-align: center;
-  }
-
-  .fc-front {
-    background: var(--forest);
-    border: 1px solid rgba(74,140,92,0.3);
-  }
-
-  .fc-back {
-    background: #fff;
-    border: 1px solid rgba(74,140,92,0.2);
-    transform: rotateY(180deg);
-  }
-
-  .fc-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    opacity: 0.6;
-  }
-
-  .fc-front .fc-label { color: var(--sage); }
-  .fc-back .fc-label { color: var(--fern); }
-
-  .fc-front .fc-text {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    color: #fff;
-    line-height: 1.4;
-  }
-
-  .fc-back .fc-text {
-    font-size: 0.95rem;
-    color: var(--text);
-    line-height: 1.6;
-  }
-
-  .fc-hint { font-size: 0.75rem; color: rgba(200,223,200,0.5); margin-top: 1rem; }
-
-  .fc-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-  }
-
-  .fc-btn {
-    background: var(--moss);
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 0.6rem 1.4rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-
-  .fc-btn:hover { background: var(--fern); }
-  .fc-btn:disabled { opacity: 0.3; cursor: not-allowed; }
-
-  .fc-counter {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.8rem;
-    color: var(--text-light);
-  }
-
-  .progress-bar {
-    width: 100%;
-    height: 4px;
-    background: rgba(74,140,92,0.15);
-    border-radius: 100px;
-    overflow: hidden;
-    margin-top: 1.5rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .progress-fill {
-    height: 100%;
-    background: var(--fern);
-    border-radius: 100px;
-    transition: width 0.3s ease;
-  }
-
-  /* ── QUIZ ── */
-  .quiz-start {
-    text-align: center;
-    padding: 3rem 0;
-  }
-
-  .quiz-start h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--forest); margin-bottom: 1rem; }
-  .quiz-start p { color: var(--text-light); margin-bottom: 2rem; }
-
-  .start-btn {
-    background: var(--forest);
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 1rem 2.5rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.15s;
-  }
-
-  .start-btn:hover { background: var(--moss); transform: scale(1.02); }
-
-  .quiz-question { display: none; }
-  .quiz-question.active { display: block; }
-
-  .q-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.5rem;
-  }
-
-  .q-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.8rem;
-    color: var(--text-light);
-  }
-
-  .q-score {
-    background: var(--moss);
-    color: #fff;
-    border-radius: 100px;
-    padding: 0.25rem 0.8rem;
-    font-size: 0.8rem;
-    font-weight: 600;
-  }
-
-  .q-text {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.35rem;
-    color: var(--forest);
-    margin-bottom: 2rem;
-    line-height: 1.5;
-  }
-
-  .q-options {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .q-opt {
-    padding: 1rem 1.25rem;
-    border: 1.5px solid rgba(74,140,92,0.2);
-    border-radius: 10px;
-    background: #fff;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    color: var(--text);
-    cursor: pointer;
-    transition: all 0.15s;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .q-opt:hover:not(:disabled) { border-color: var(--fern); background: rgba(74,140,92,0.05); }
-  .q-opt.correct { border-color: var(--fern); background: rgba(74,140,92,0.12); color: var(--moss); font-weight: 600; }
-  .q-opt.wrong { border-color: #e05050; background: rgba(224,80,80,0.08); color: #c03030; }
-  .q-opt:disabled { cursor: not-allowed; }
-
-  .opt-letter {
-    width: 26px; height: 26px;
-    border-radius: 50%;
-    background: rgba(74,140,92,0.1);
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--fern);
-    flex-shrink: 0;
-  }
-
-  .q-feedback {
-    display: none;
-    padding: 1rem 1.25rem;
-    border-radius: 10px;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin-bottom: 1.5rem;
-  }
-
-  .q-feedback.show { display: block; }
-  .q-feedback.correct-fb { background: rgba(74,140,92,0.1); color: var(--moss); border: 1px solid rgba(74,140,92,0.2); }
-  .q-feedback.wrong-fb { background: rgba(224,80,80,0.08); color: #b02020; border: 1px solid rgba(224,80,80,0.2); }
-
-  .next-btn {
-    background: var(--amber);
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 0.7rem 2rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    display: none;
-    transition: opacity 0.2s;
-  }
-
-  .next-btn.show { display: inline-block; }
-  .next-btn:hover { opacity: 0.85; }
-
-  .quiz-results {
-    display: none;
-    text-align: center;
-    padding: 3rem 1rem;
-  }
-
-  .quiz-results.show { display: block; }
-
-  .result-score {
-    font-family: 'Playfair Display', serif;
-    font-size: 5rem;
-    font-weight: 900;
-    color: var(--forest);
-    line-height: 1;
-    margin-bottom: 0.25rem;
-  }
-
-  .result-label { color: var(--text-light); margin-bottom: 0.5rem; }
-  .result-msg {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    color: var(--moss);
-    margin-bottom: 2rem;
-  }
-
-  /* ── GLOSSARY ── */
-  .glossary-search {
-    position: relative;
-    margin-bottom: 2rem;
-  }
-
-  .glossary-search input {
-    width: 100%;
-    padding: 0.9rem 1.25rem 0.9rem 3rem;
-    border: 1.5px solid rgba(74,140,92,0.25);
-    border-radius: 10px;
-    background: #fff;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    color: var(--text);
-    outline: none;
-    transition: border-color 0.2s;
-  }
-
-  .glossary-search input:focus { border-color: var(--fern); }
-
-  .glossary-search::before {
-    content: '🔍';
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 0.85rem;
-    pointer-events: none;
-  }
-
-  .glossary-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1rem;
-  }
-
-  .gloss-card {
-    background: #fff;
-    border: 1px solid rgba(74,140,92,0.15);
-    border-radius: 10px;
-    padding: 1.25rem;
-    transition: box-shadow 0.2s;
-  }
-
-  .gloss-card:hover { box-shadow: 0 4px 16px rgba(26,58,42,0.08); }
-
-  .gloss-term {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.05rem;
-    color: var(--forest);
-    margin-bottom: 0.4rem;
-  }
-
-  .gloss-category {
-    display: inline-block;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 0.15rem 0.5rem;
-    border-radius: 100px;
-    background: rgba(74,140,92,0.1);
-    color: var(--fern);
-    margin-bottom: 0.6rem;
-  }
-
-  .gloss-def {
-    font-size: 0.85rem;
-    color: var(--text-light);
-    line-height: 1.6;
-  }
-
-  .gloss-card.hidden { display: none; }
-
-  /* ── TIMELINES ── */
-  .timeline {
-    position: relative;
-    padding-left: 2.5rem;
-  }
-
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 0.75rem;
-    top: 0; bottom: 0;
-    width: 2px;
-    background: linear-gradient(to bottom, var(--fern), transparent);
-  }
-
-  .tl-item {
-    position: relative;
-    margin-bottom: 2rem;
-    background: #fff;
-    border: 1px solid rgba(74,140,92,0.15);
-    border-radius: 12px;
-    padding: 1.25rem 1.5rem;
-  }
-
-  .tl-item::before {
-    content: '';
-    position: absolute;
-    left: -2rem;
-    top: 1.25rem;
-    width: 10px; height: 10px;
-    background: var(--fern);
-    border-radius: 50%;
-    border: 2px solid var(--cream);
-    box-shadow: 0 0 0 2px var(--fern);
-  }
-
-  .tl-year {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--amber);
-    font-weight: 500;
-    margin-bottom: 0.25rem;
-  }
-
-  .tl-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    color: var(--forest);
-    margin-bottom: 0.5rem;
-  }
-
-  .tl-text {
-    font-size: 0.85rem;
-    color: var(--text-light);
-    line-height: 1.6;
-  }
-
-  /* ── SUMMARY CARDS ── */
-  .summary-tabs {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
-  }
-
-  .sum-tab {
-    padding: 0.45rem 1rem;
-    border-radius: 100px;
-    border: 1.5px solid rgba(74,140,92,0.2);
-    background: #fff;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--text-light);
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-
-  .sum-tab.active { background: var(--forest); color: #fff; border-color: var(--forest); }
-
-  .sum-content { display: none; }
-  .sum-content.active { display: block; }
-
-  .sum-block {
-    background: #fff;
-    border: 1px solid rgba(74,140,92,0.15);
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .sum-block h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    color: var(--forest);
-    margin-bottom: 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .sum-block p, .sum-block li {
-    font-size: 0.88rem;
-    color: var(--text-light);
-    line-height: 1.7;
-  }
-
-  .sum-block ul { padding-left: 1.25rem; }
-  .sum-block li { margin-bottom: 0.3rem; }
-
-  .key-eq {
-    background: var(--forest);
-    border-radius: 8px;
-    padding: 0.75rem 1rem;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.85rem;
-    color: var(--sage);
-    margin: 0.5rem 0;
-    display: block;
-  }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 600px) {
-    .hero h1 { font-size: 2.5rem; }
-    .topics-grid, .glossary-grid { grid-template-columns: 1fr; }
-  }
+:root{
+  --bg:#050b05;--bg2:#090f09;--panel:#0d160d;--panel2:#111b11;
+  --border:#1a2e1a;--border2:#243824;
+  --neon:#39ff85;--neon-d:#186634;--neon-g:rgba(57,255,133,0.15);
+  --gold:#f0b52a;--gold-d:#7a5c10;--gold-g:rgba(240,181,42,0.15);
+  --red:#ff4455;--red-d:#8a1a22;
+  --text:#b8d4b8;--text-d:#3d5c3d;--text-m:#253525;
+  --cream:#e0f0d8;
+  --sw:210px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;overflow:hidden;}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:'Rajdhani',sans-serif;
+  display:flex;flex-direction:column;
+  background-image:radial-gradient(ellipse at 10% 30%,rgba(57,255,133,0.03) 0%,transparent 55%),radial-gradient(ellipse at 90% 70%,rgba(240,181,42,0.02) 0%,transparent 50%);
+}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.025) 3px,rgba(0,0,0,0.025) 4px);}
+::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--neon-d);border-radius:2px;}
+
+/* LAYOUT */
+#app{display:flex;height:100vh;overflow:hidden;}
+
+/* SIDEBAR */
+#sidebar{
+  width:var(--sw);flex-shrink:0;background:var(--bg2);
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;overflow:hidden;position:relative;
+}
+#sidebar::after{content:'';position:absolute;top:0;right:0;width:1px;height:100%;background:linear-gradient(180deg,transparent,var(--neon-d) 40%,transparent);opacity:0.4;}
+#sb-logo{padding:1.25rem 1.1rem 0.85rem;border-bottom:1px solid var(--border);}
+#sb-logo h1{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--neon);letter-spacing:0.08em;text-shadow:0 0 18px var(--neon-g);line-height:1.1;}
+#sb-logo p{font-size:0.58rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-d);margin-top:0.15rem;}
+#sb-nav{flex:1;padding:0.5rem 0;overflow-y:auto;}
+.ni{display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.1rem;font-size:0.8rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-d);cursor:pointer;border-left:3px solid transparent;transition:all 0.12s;}
+.ni:hover{color:var(--text);background:rgba(57,255,133,0.025);}
+.ni.active{color:var(--neon);border-left-color:var(--neon);background:rgba(57,255,133,0.04);text-shadow:0 0 10px var(--neon-g);}
+.ni-icon{font-size:1rem;width:18px;text-align:center;}
+#sb-foot{padding:1rem 1.1rem;border-top:1px solid var(--border);}
+.sf{display:flex;justify-content:space-between;align-items:baseline;padding:0.3rem 0;}
+.sf-k{font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-d);}
+.sf-v{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;color:var(--gold);}
+
+/* RIGHT */
+#right{display:flex;flex-direction:column;flex:1;overflow:hidden;min-width:0;}
+#topbar{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 1.25rem;height:50px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.tb-title{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.1em;color:var(--cream);}
+.hud{display:flex;gap:0.2rem;}
+.hchip{background:var(--panel);border:1px solid var(--border);padding:0.25rem 0.75rem;display:flex;gap:0.4rem;align-items:baseline;}
+.hchip-l{font-size:0.52rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-d);}
+.hchip-v{font-family:'Bebas Neue',sans-serif;font-size:1rem;color:var(--neon);}
+#main{flex:1;overflow-y:auto;padding:1.25rem;}
+
+/* SECTIONS */
+.sec{display:none;}
+.sec.active{display:block;animation:fadeUp 0.18s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:translateY(0);}}
+
+/* TYPOGRAPHY */
+.pg-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.1em;color:var(--cream);line-height:1;display:flex;align-items:center;gap:0.6rem;margin-bottom:0.15rem;}
+.pg-title .ic{color:var(--neon);}
+.pg-sub{font-size:0.78rem;color:var(--text-d);font-style:italic;margin-bottom:1.25rem;}
+
+/* PANEL */
+.pan{background:var(--panel);border:1px solid var(--border);border-radius:2px;padding:1.1rem;}
+.pan-t{font-family:'Bebas Neue',sans-serif;font-size:0.9rem;letter-spacing:0.18em;color:var(--neon);margin-bottom:0.85rem;display:flex;align-items:center;gap:0.4rem;}
+.pan-t::before{content:'';display:inline-block;width:3px;height:12px;background:var(--neon);border-radius:1px;}
+
+/* BUTTONS */
+.btn{font-family:'Rajdhani',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.45rem 1rem;border-radius:1px;border:1px solid;cursor:pointer;transition:all 0.12s;}
+.btn-n{background:var(--neon);border-color:var(--neon);color:#020a02;}
+.btn-n:hover{box-shadow:0 0 14px var(--neon-g);}
+.btn-g{background:var(--gold);border-color:var(--gold);color:#060300;}
+.btn-g:hover{box-shadow:0 0 14px var(--gold-g);}
+.btn-o{background:transparent;border-color:var(--border2);color:var(--text-d);}
+.btn-o:hover{border-color:var(--neon-d);color:var(--text);}
+.btn-r{background:transparent;border-color:var(--red-d);color:var(--red);}
+.btn-r:hover{background:rgba(255,68,85,0.07);}
+.btn-sm{padding:0.28rem 0.6rem;font-size:0.68rem;}
+.btn-lg{padding:0.65rem 2rem;font-size:0.9rem;}
+.btn:disabled{opacity:0.3;cursor:not-allowed;}
+
+/* STATS */
+.sr{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.38rem;}
+.sl{font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-d);width:52px;flex-shrink:0;}
+.sb{flex:1;height:3px;background:rgba(255,255,255,0.04);border-radius:1px;overflow:hidden;}
+.sf2{height:100%;border-radius:1px;transition:width 0.5s ease;}
+.sv{font-size:0.8rem;font-weight:700;color:var(--text);width:24px;text-align:right;}
+
+/* HORSE CARDS */
+.hgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:0.85rem;}
+.hcard{background:var(--panel);border:1px solid var(--border);border-radius:2px;overflow:hidden;cursor:pointer;transition:all 0.12s;position:relative;}
+.hcard:hover{border-color:var(--neon-d);transform:translateY(-1px);}
+.hcard.sel{border-color:var(--neon);box-shadow:0 0 18px var(--neon-g);}
+.hcard-h{padding:0.85rem 0.85rem 0.5rem;display:flex;gap:0.75rem;align-items:flex-start;}
+.hava{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;border:2px solid;}
+.hname{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--cream);letter-spacing:0.04em;line-height:1;}
+.btag{display:inline-block;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--neon);background:rgba(57,255,133,0.07);border:1px solid rgba(57,255,133,0.18);padding:0.08rem 0.35rem;border-radius:1px;margin-top:0.2rem;}
+.hrec{font-size:0.7rem;color:var(--text-d);margin-top:0.15rem;}
+.hrec em{color:var(--gold);}
+.hstats{padding:0.4rem 0.85rem 0.65rem;}
+.hfoot{padding:0.5rem 0.85rem;border-top:1px solid var(--border);display:flex;gap:0.35rem;}
+.sbadge{position:absolute;top:5px;right:5px;font-size:0.55rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--neon);background:rgba(57,255,133,0.1);border:1px solid rgba(57,255,133,0.28);padding:1px 5px;border-radius:1px;}
+
+/* HUB */
+.hgr{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:0.85rem;margin-bottom:1rem;}
+.qs{display:flex;justify-content:space-between;align-items:baseline;padding:0.4rem 0;border-bottom:1px solid var(--border);}
+.qs:last-child{border-bottom:none;}
+.qs-k{font-size:0.75rem;color:var(--text-d);}
+.qs-v{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;color:var(--neon);}
+.ni2{padding:0.45rem 0;border-bottom:1px solid var(--border);font-size:0.8rem;}
+.ni2:last-child{border-bottom:none;}
+.ni2-t{color:var(--text);}
+.ni2-d{font-size:0.62rem;color:var(--text-m);margin-top:0.08rem;}
+
+/* JOCKEYS */
+.jgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:0.85rem;}
+.jcard{background:var(--panel);border:1px solid var(--border);border-radius:2px;padding:1rem;cursor:pointer;transition:all 0.12s;display:flex;gap:0.85rem;}
+.jcard:hover{border-color:var(--neon-d);}
+.jcard.sel{border-color:var(--neon);box-shadow:0 0 16px var(--neon-g);}
+.java{width:54px;height:54px;border-radius:50%;border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0;}
+.jname{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--cream);letter-spacing:0.04em;}
+.jstyle{font-size:0.6rem;letter-spacing:0.13em;text-transform:uppercase;color:var(--gold);margin-bottom:0.35rem;}
+.jdesc{font-size:0.78rem;color:var(--text-d);font-style:italic;line-height:1.4;}
+.jbns{margin-top:0.4rem;font-size:0.7rem;color:var(--neon);background:rgba(57,255,133,0.06);border:1px solid rgba(57,255,133,0.14);padding:0.2rem 0.45rem;border-radius:1px;display:inline-block;}
+.jrec{font-size:0.68rem;color:var(--text-d);margin-top:0.3rem;}
+
+/* MY JOCKEY CUSTOMIZER */
+.color-swatch{display:inline-block;width:28px;height:28px;border-radius:2px;border:2px solid transparent;cursor:pointer;transition:all 0.12s;vertical-align:middle;margin:2px;}
+.color-swatch:hover{transform:scale(1.15);}
+.color-swatch.picked{border-color:#fff;box-shadow:0 0 8px rgba(255,255,255,0.5);}
+.pattern-opt{display:inline-block;padding:0.3rem 0.7rem;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;border:1px solid var(--border2);border-radius:1px;cursor:pointer;margin:2px;color:var(--text-d);}
+.pattern-opt.picked{border-color:var(--neon);color:var(--neon);background:rgba(57,255,133,0.05);}
+
+/* RACES */
+.rlayout{display:grid;grid-template-columns:1fr 290px;gap:1.1rem;}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:0.75rem;margin-bottom:1rem;}
+.ropt{background:var(--panel);border:1px solid var(--border);border-radius:2px;padding:0.9rem;cursor:pointer;transition:all 0.12s;position:relative;overflow:hidden;}
+.ropt::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;}
+.ropt.d1::before{background:#2a7a18;}.ropt.d2::before{background:#8a7818;}.ropt.d3::before{background:#8a4018;}.ropt.d4::before{background:#8a1818;}.ropt.d5::before{background:#6a18a0;}
+.ropt:hover{border-color:var(--border2);transform:translateY(-1px);}
+.ropt.srace{border-color:var(--neon);box-shadow:0 0 14px var(--neon-g);}
+.ropt-name{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;color:var(--cream);letter-spacing:0.04em;margin-bottom:0.25rem;}
+.rtags{display:flex;gap:0.35rem;flex-wrap:wrap;margin-bottom:0.4rem;}
+.rtag{font-size:0.56rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.1rem 0.35rem;border-radius:1px;border:1px solid;}
+.rtag-d{color:#7abafa;border-color:rgba(122,186,250,0.3);background:rgba(122,186,250,0.04);}
+.rtag-p{color:var(--gold);border-color:rgba(240,181,42,0.28);background:rgba(240,181,42,0.04);}
+.rtag-f{color:#a8c8a0;border-color:rgba(168,200,160,0.22);background:rgba(168,200,160,0.04);}
+.rtag-t{color:#cc88ff;border-color:rgba(200,136,255,0.25);background:rgba(200,136,255,0.04);}
+.ropt-diff{font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;}
+.d1 .ropt-diff{color:#2a7a18;}.d2 .ropt-diff{color:#8a7818;}.d3 .ropt-diff{color:#8a4018;}.d4 .ropt-diff{color:#8a1818;}.d5 .ropt-diff{color:#8818c0;}
+.ropt-desc{font-size:0.72rem;color:var(--text-d);font-style:italic;margin-top:0.3rem;}
+
+/* ENTRY CARD */
+.epan{background:var(--panel);border:1px solid var(--border);border-radius:2px;padding:1.1rem;}
+.epan h3{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.12em;color:var(--neon);margin-bottom:0.85rem;}
+.eslot{background:var(--bg2);border:1px dashed var(--border2);border-radius:1px;padding:0.75rem;margin-bottom:0.5rem;display:flex;align-items:center;gap:0.55rem;min-height:60px;}
+.eslot.ok{border-style:solid;border-color:var(--neon-d);}
+.eslot-ic{font-size:1.4rem;flex-shrink:0;}
+.eslot-in{flex:1;}
+.eslot-in h4{font-family:'Bebas Neue',sans-serif;font-size:0.95rem;color:var(--cream);letter-spacing:0.04em;}
+.eslot-in p{font-size:0.68rem;color:var(--text-d);}
+.eslot-em{color:var(--text-m);font-style:italic;font-size:0.78rem;}
+
+/* RACE CARD TABLE */
+.rctbl{width:100%;border-collapse:collapse;font-size:0.82rem;}
+.rctbl thead th{font-size:0.58rem;letter-spacing:0.13em;text-transform:uppercase;color:var(--text-d);padding:0.45rem 0.65rem;text-align:left;border-bottom:1px solid var(--border);background:var(--bg2);}
+.rctbl tbody tr{border-bottom:1px solid var(--border);transition:background 0.1s;}
+.rctbl tbody tr:hover{background:rgba(57,255,133,0.02);}
+.rctbl tbody tr.myr{background:rgba(57,255,133,0.04);border-bottom:1px solid rgba(57,255,133,0.18);}
+.rctbl td{padding:0.6rem 0.65rem;vertical-align:middle;}
+.rnum{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.75rem;font-family:'Bebas Neue',sans-serif;}
+.rhn{font-family:'Bebas Neue',sans-serif;font-size:0.95rem;color:var(--cream);letter-spacing:0.03em;}
+.rbreed{font-size:0.6rem;color:var(--text-d);}
+.form-w{color:var(--neon);font-weight:700;}.form-p{color:var(--gold);}.form-l{color:var(--text-m);}
+.ochip{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.04em;padding:0.12rem 0.4rem;border-radius:1px;border:1px solid;min-width:46px;text-align:center;display:inline-block;}
+.o-f{color:var(--neon);border-color:rgba(57,255,133,0.4);background:rgba(57,255,133,0.07);}
+.o-m{color:var(--gold);border-color:rgba(240,181,42,0.3);background:rgba(240,181,42,0.05);}
+.o-l{color:#a8c8a0;border-color:rgba(168,200,160,0.2);background:rgba(168,200,160,0.03);}
+.mybadge{font-size:0.58rem;background:rgba(57,255,133,0.14);border:1px solid rgba(57,255,133,0.32);color:var(--neon);padding:0.08rem 0.35rem;border-radius:1px;margin-left:0.35rem;}
+
+/* BETTING */
+#bet-section{background:var(--panel2);border:1px solid var(--border);border-radius:2px;padding:1.1rem;margin-top:1rem;}
+.bet-tabs{display:flex;gap:0.25rem;flex-wrap:wrap;margin-bottom:1rem;}
+.bet-tab{font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0.35rem 0.65rem;border:1px solid var(--border);border-radius:1px;cursor:pointer;color:var(--text-d);transition:all 0.12s;}
+.bet-tab:hover{color:var(--text);}
+.bet-tab.active{border-color:var(--gold);color:var(--gold);background:rgba(240,181,42,0.06);}
+.bet-panel{display:none;}
+.bet-panel.active{display:block;}
+.bet-sel-row{margin-bottom:0.75rem;}
+.bet-label{font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-d);margin-bottom:0.35rem;}
+.horse-pick-btn{display:inline-block;padding:0.25rem 0.6rem;margin:0.2rem;font-size:0.7rem;font-weight:700;letter-spacing:0.05em;border:1px solid var(--border);border-radius:1px;cursor:pointer;color:var(--text-d);transition:all 0.12s;background:var(--panel);}
+.horse-pick-btn:hover{border-color:var(--border2);color:var(--text);}
+.horse-pick-btn.picked{border-color:var(--gold);color:var(--gold);background:rgba(240,181,42,0.07);}
+.horse-pick-btn.picked-1st{border-color:var(--neon);color:var(--neon);background:rgba(57,255,133,0.07);}
+.horse-pick-btn.picked-2nd{border-color:#7abafa;color:#7abafa;background:rgba(122,186,250,0.07);}
+.horse-pick-btn.picked-3rd{border-color:#cd7f32;color:#cd7f32;background:rgba(205,127,50,0.07);}
+.stake-row{display:flex;align-items:center;gap:0.75rem;margin-top:0.75rem;}
+.stake-row label{font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-d);}
+.stake-input{background:var(--bg2);border:1px solid var(--border2);color:var(--cream);font-family:'Bebas Neue',sans-serif;font-size:1.1rem;padding:0.3rem 0.5rem;width:90px;border-radius:1px;letter-spacing:0.05em;}
+.stake-input:focus{outline:none;border-color:var(--gold);}
+.payout-preview{font-size:0.78rem;color:var(--text-d);margin-top:0.5rem;font-style:italic;}
+.payout-preview em{color:var(--neon);font-style:normal;font-weight:700;}
+.bet-slip{background:var(--bg2);border:1px solid var(--border);border-radius:1px;padding:0.65rem 0.85rem;margin-top:0.75rem;}
+.bet-slip-h{font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-d);margin-bottom:0.4rem;}
+.bsr{display:flex;justify-content:space-between;align-items:center;padding:0.3rem 0;border-bottom:1px solid var(--border);font-size:0.78rem;}
+.bsr:last-child{border-bottom:none;}
+.bsr-type{color:var(--gold);font-weight:700;text-transform:uppercase;font-size:0.68rem;}
+.bsr-sel{color:var(--text);}
+.bsr-st{color:var(--text-d);}
+.bsr-del{cursor:pointer;color:var(--red);font-size:0.7rem;margin-left:0.5rem;}
+
+/* RACE TRACK */
+#race-track-area{}
+#rct-hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.85rem;}
+#rct-title{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.08em;color:var(--cream);}
+#rct-sub{font-size:0.75rem;color:var(--text-d);font-style:italic;}
+.rbadge{font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;padding:0.35rem 0.85rem;border:1px solid;border-radius:1px;}
+.rbadge.ready{color:var(--gold);border-color:var(--gold-d);}
+.rbadge.racing{color:var(--neon);border-color:var(--neon-d);animation:pulse 0.8s infinite;}
+.rbadge.fin{color:var(--text-d);border-color:var(--border);}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+#pbar-bg{height:5px;background:rgba(255,255,255,0.04);border-radius:1px;margin-bottom:0.75rem;overflow:hidden;}
+#pbar-fill{height:100%;background:linear-gradient(90deg,var(--neon-d),var(--neon));border-radius:1px;width:0%;transition:width 0.05s;}
+#track-wrap{position:relative;border-radius:3px;overflow:hidden;margin-bottom:0.75rem;}
+#track-canvas{display:block;width:100%;image-rendering:crisp-edges;}
+#com-box{background:var(--panel);border:1px solid var(--border);border-radius:2px;padding:0.85rem 1rem;margin-bottom:0.75rem;min-height:64px;}
+.com-lbl{font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-d);margin-bottom:0.35rem;}
+#com-txt{font-size:0.95rem;font-style:italic;color:var(--cream);line-height:1.4;}
+.pos-board{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.75rem;}
+.pos-chip{background:var(--panel);border:1px solid var(--border);border-radius:1px;padding:0.2rem 0.5rem;font-size:0.65rem;display:flex;align-items:center;gap:0.35rem;}
+.pos-chip .pos-n{font-family:'Bebas Neue',sans-serif;color:var(--text-d);}
+.pos-chip .pos-name{font-weight:700;}
+.pos-chip.myh{border-color:var(--neon-d);}.pos-chip.myh .pos-name{color:var(--neon);}
+
+/* RESULTS */
+#res-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:500;align-items:center;justify-content:center;}
+#res-ov.show{display:flex;}
+#res-box{background:var(--panel2);border:1px solid var(--neon);border-radius:3px;padding:2.25rem;max-width:520px;width:92%;text-align:center;box-shadow:0 0 50px var(--neon-g),0 0 100px rgba(0,0,0,0.6);animation:pop 0.35s cubic-bezier(0.34,1.56,0.64,1);}
+@keyframes pop{from{transform:scale(0.8);opacity:0;}to{transform:scale(1);opacity:1;}}
+#r-crown{font-size:2.5rem;margin-bottom:0.25rem;}
+#r-plbl{font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-d);margin-bottom:0.2rem;}
+#r-place{font-family:'Bebas Neue',sans-serif;font-size:4rem;line-height:1;margin-bottom:0.65rem;}
+.rp1{color:var(--neon);text-shadow:0 0 18px var(--neon-g);}
+.rp2{color:#c8c8c8;}.rp3{color:#cd7f32;}.rpx{color:var(--text-d);}
+#r-horse{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;color:var(--cream);letter-spacing:0.05em;}
+#r-jock{font-size:0.82rem;color:var(--text-d);font-style:italic;margin-bottom:0.85rem;}
+#r-prize{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--gold);margin-bottom:0.85rem;}
+.res-section{background:var(--bg2);border:1px solid var(--border);border-radius:1px;padding:0.75rem;margin-bottom:0.75rem;text-align:left;}
+.res-section-t{font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-d);margin-bottom:0.5rem;}
+.rrow{display:flex;gap:0.6rem;padding:0.3rem 0;border-bottom:1px solid var(--border);font-size:0.82rem;align-items:baseline;}
+.rrow:last-child{border-bottom:none;}
+.rrow-p{width:26px;font-weight:700;font-family:'Bebas Neue',sans-serif;font-size:0.95rem;}
+.rrow-n{flex:1;}
+.rrow-pr{color:var(--text-d);font-size:0.75rem;}
+.bet-result-row{display:flex;justify-content:space-between;align-items:baseline;padding:0.3rem 0;border-bottom:1px solid var(--border);font-size:0.82rem;}
+.bet-result-row:last-child{border-bottom:none;}
+.bet-res-type{color:var(--gold);font-size:0.68rem;font-weight:700;text-transform:uppercase;}
+.bet-res-out{font-family:'Bebas Neue',sans-serif;font-size:1rem;}
+.bet-res-win{color:var(--neon);}
+.bet-res-lose{color:var(--red);}
+
+/* MODAL */
+#mod-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.78);z-index:400;align-items:center;justify-content:center;}
+#mod-ov.show{display:flex;}
+#mod-box{background:var(--panel2);border:1px solid var(--border2);border-radius:2px;padding:1.6rem;max-width:420px;width:92%;animation:pop 0.22s ease;}
+#mod-box h2{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.07em;color:var(--cream);margin-bottom:0.25rem;}
+#mod-sub{font-size:0.75rem;color:var(--text-d);font-style:italic;margin-bottom:1.1rem;}
+.topt{background:var(--panel);border:1px solid var(--border);border-radius:1px;padding:0.75rem;margin-bottom:0.45rem;cursor:pointer;transition:all 0.12s;display:flex;justify-content:space-between;align-items:center;}
+.topt:hover{border-color:var(--neon-d);}
+.topt-name{font-size:0.9rem;color:var(--cream);font-weight:700;margin-bottom:0.12rem;}
+.topt-desc{font-size:0.72rem;color:var(--text-d);font-style:italic;}
+.tcost{color:var(--gold);font-weight:700;text-align:right;}
+.tgain{font-size:0.68rem;color:var(--neon);margin-top:0.08rem;text-align:right;}
+.input-row{margin-bottom:0.85rem;}
+.input-row label{display:block;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-d);margin-bottom:0.3rem;}
+.input-row input{width:100%;background:var(--bg2);border:1px solid var(--border2);color:var(--cream);font-family:'Bebas Neue',sans-serif;font-size:1.1rem;padding:0.45rem 0.65rem;border-radius:1px;letter-spacing:0.04em;}
+.input-row input:focus{outline:none;border-color:var(--neon);}
+
+/* FAME */
+.fentry{display:flex;align-items:center;gap:1.1rem;padding:0.85rem 1rem;background:var(--panel);border:1px solid var(--border);border-radius:2px;margin-bottom:0.4rem;}
+.fpos{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--neon);width:38px;text-align:center;}
+.fhorse{font-family:'Bebas Neue',sans-serif;font-size:1rem;color:var(--cream);letter-spacing:0.04em;}
+.finfo{font-size:0.7rem;color:var(--text-d);}
+.fprize{margin-left:auto;font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--gold);}
+
+/* EMPTY */
+.empty{text-align:center;padding:3rem 2rem;color:var(--text-d);}
+.empty-ic{font-size:2.5rem;margin-bottom:0.65rem;}
+.empty h3{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--text);letter-spacing:0.06em;margin-bottom:0.35rem;}
+.empty p{font-size:0.82rem;font-style:italic;}
+
+/* TOAST */
+#toast{position:fixed;bottom:1.25rem;left:50%;transform:translateX(-50%) translateY(70px);background:var(--panel2);border:1px solid var(--neon);color:var(--neon);padding:0.55rem 1.3rem;border-radius:1px;font-size:0.85rem;font-style:italic;z-index:600;transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1);pointer-events:none;white-space:nowrap;box-shadow:0 0 18px var(--neon-g);}
+#toast.show{transform:translateX(-50%) translateY(0);}
+
+@media(max-width:680px){
+  #sidebar{width:56px;}
+  .ni span:not(.ni-icon){display:none;}
+  .sb-foot .sf-k{display:none;}
+  .hgr{grid-template-columns:1fr;}
+  .rlayout{grid-template-columns:1fr;}
+  #sb-logo p{display:none;}
+}
 </style>
 </head>
 <body>
+<div id="app">
 
-<!-- ─── HERO ─── -->
-<section class="hero" id="hero">
-  <div class="leaf-bg"></div>
-  <div class="hero-content">
-    <span class="hero-tag">VCE · Units 3 & 4</span>
-    <h1>Environmental<br><span>Science</span> Hub</h1>
-    <p>Everything you need to ace your exam — flashcards, quizzes,<br>key terms, topic summaries and more.</p>
-    <div class="hero-nav">
-      <button class="hero-btn primary" onclick="showSection('topics')">📚 Start Studying</button>
-      <button class="hero-btn secondary" onclick="showSection('quiz')">⚡ Quick Quiz</button>
+<!-- SIDEBAR -->
+<div id="sidebar">
+  <div id="sb-logo"><h1>THE FINAL<br>STRAIGHT</h1><p>Horse Racing</p></div>
+  <div id="sb-nav">
+    <div class="ni active" onclick="go('hub')"><span class="ni-icon">🏟️</span><span>Hub</span></div>
+    <div class="ni" onclick="go('stables')"><span class="ni-icon">🐴</span><span>My Stables</span></div>
+    <div class="ni" onclick="go('shop')"><span class="ni-icon">🛒</span><span>Horse Market</span></div>
+    <div class="ni" onclick="go('jockeys')"><span class="ni-icon">🏇</span><span>Jockeys</span></div>
+    <div class="ni" onclick="go('myjockey')"><span class="ni-icon">🎨</span><span>My Jockey</span></div>
+    <div class="ni" onclick="go('race')"><span class="ni-icon">🏁</span><span>Race Day</span></div>
+    <div class="ni" onclick="go('fame')"><span class="ni-icon">🏆</span><span>Hall of Fame</span></div>
+  </div>
+  <div id="sb-foot">
+    <div class="sf"><span class="sf-k">Bank</span><span class="sf-v" id="sb-m">£5,000</span></div>
+    <div class="sf"><span class="sf-k">Wins</span><span class="sf-v" id="sb-w">0</span></div>
+    <div class="sf"><span class="sf-k">Day</span><span class="sf-v" id="sb-d">1</span></div>
+  </div>
+</div>
+
+<!-- RIGHT -->
+<div id="right">
+  <div id="topbar">
+    <div>
+      <div class="tb-title" id="tb-t">RACING HUB</div>
+    </div>
+    <div class="hud">
+      <div class="hchip"><span class="hchip-l">Bank</span><span class="hchip-v" id="hud-m">£5,000</span></div>
+      <div class="hchip"><span class="hchip-l">Wins</span><span class="hchip-v" id="hud-w">0</span></div>
+      <div class="hchip"><span class="hchip-l">Races</span><span class="hchip-v" id="hud-r">0</span></div>
     </div>
   </div>
-</section>
+  <div id="main">
 
-<!-- ─── NAVBAR ─── -->
-<nav class="navbar">
-  <button class="nav-tab" onclick="showSection('topics')">📗 Topic Notes</button>
-  <button class="nav-tab" onclick="showSection('flashcards')">🃏 Flashcards</button>
-  <button class="nav-tab" onclick="showSection('quiz')">⚡ Quiz</button>
-  <button class="nav-tab" onclick="showSection('glossary')">📖 Glossary</button>
-  <button class="nav-tab" onclick="showSection('summary')">🗂 Summaries</button>
-  <button class="nav-tab" onclick="showSection('timeline')">⏳ Key Events</button>
-</nav>
-
-<!-- ─── TOPIC NOTES ─── -->
-<section class="section" id="topics">
-  <h2 class="section-title">Topic Notes</h2>
-  <p class="section-sub">Click any card to expand detailed notes.</p>
-  <div class="topics-grid" id="topicsGrid"></div>
-</section>
-
-<!-- ─── FLASHCARDS ─── -->
-<section class="section" id="flashcards">
-  <h2 class="section-title">Flashcards</h2>
-  <p class="section-sub">Click the card to reveal the answer. Use the arrows to navigate.</p>
-  <div class="flashcard-controls">
-    <select class="topic-filter" id="fcFilter" onchange="filterFlashcards()">
-      <option value="all">All Topics</option>
-      <option value="ecosystems">Ecosystems</option>
-      <option value="climate">Climate Change</option>
-      <option value="biodiversity">Biodiversity</option>
-      <option value="pollution">Pollution</option>
-      <option value="conservation">Conservation</option>
-    </select>
-    <button class="fc-btn" onclick="shuffleCards()" style="background:var(--earth)">🔀 Shuffle</button>
-  </div>
-  <div class="fc-wrap">
-    <div class="fc" id="flashcard" onclick="flipCard()">
-      <div class="fc-face fc-front">
-        <div class="fc-label">Term / Concept</div>
-        <div class="fc-text" id="fc-front-text">Loading...</div>
-        <div class="fc-hint">click to flip</div>
+    <!-- HUB -->
+    <div id="hub" class="sec active">
+      <div class="pg-title"><span class="ic">🏟️</span>Racing Hub</div>
+      <p class="pg-sub">Manage horses, pick jockeys, place bets, chase glory.</p>
+      <div class="hgr">
+        <div class="pan"><div class="pan-t">Career Stats</div><div id="hub-career"></div></div>
+        <div class="pan"><div class="pan-t">Stable Status</div><div id="hub-stable"></div></div>
+        <div class="pan"><div class="pan-t">Racing News</div><div id="hub-news"></div></div>
       </div>
-      <div class="fc-face fc-back">
-        <div class="fc-label">Definition / Explanation</div>
-        <div class="fc-text" id="fc-back-text"></div>
+      <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+        <button class="btn btn-n btn-lg" onclick="go('race')">🏁 Enter a Race</button>
+        <button class="btn btn-g btn-lg" onclick="go('stables')">🐴 Manage Stables</button>
+        <button class="btn btn-o btn-lg" onclick="go('shop')">🛒 Horse Market</button>
       </div>
     </div>
-  </div>
-  <div class="progress-bar"><div class="progress-fill" id="fcProgress"></div></div>
-  <div class="fc-nav">
-    <button class="fc-btn" id="fcPrev" onclick="prevCard()">← Prev</button>
-    <span class="fc-counter" id="fcCounter">1 / 1</span>
-    <button class="fc-btn" id="fcNext" onclick="nextCard()">Next →</button>
-  </div>
-</section>
 
-<!-- ─── QUIZ ─── -->
-<section class="section" id="quiz">
-  <h2 class="section-title">Multiple Choice Quiz</h2>
-  <p class="section-sub">Test your knowledge with instant feedback.</p>
-
-  <div class="quiz-start" id="quizStart">
-    <h2>Ready to test yourself?</h2>
-    <p>10 questions covering all key topics from Units 3 & 4.</p>
-    <button class="start-btn" onclick="startQuiz()">Start Quiz →</button>
-  </div>
-
-  <div id="quizBody"></div>
-  <div class="quiz-results" id="quizResults">
-    <div class="result-score" id="resultScore"></div>
-    <div class="result-label">out of 10</div>
-    <div class="result-msg" id="resultMsg"></div>
-    <button class="start-btn" onclick="restartQuiz()">Try Again</button>
-  </div>
-</section>
-
-<!-- ─── GLOSSARY ─── -->
-<section class="section" id="glossary">
-  <h2 class="section-title">Key Terms Glossary</h2>
-  <p class="section-sub">Search for any term below.</p>
-  <div class="glossary-search">
-    <input type="text" id="glossSearch" placeholder="Search terms…" oninput="filterGlossary()">
-  </div>
-  <div class="glossary-grid" id="glossGrid"></div>
-</section>
-
-<!-- ─── SUMMARIES ─── -->
-<section class="section" id="summary">
-  <h2 class="section-title">Topic Summaries</h2>
-  <p class="section-sub">Concise notes organised by study area.</p>
-  <div class="summary-tabs" id="sumTabs"></div>
-  <div id="sumContents"></div>
-</section>
-
-<!-- ─── TIMELINE ─── -->
-<section class="section" id="timeline">
-  <h2 class="section-title">Key Environmental Events</h2>
-  <p class="section-sub">A timeline of significant moments in environmental history.</p>
-  <div class="timeline" id="timelineEl"></div>
-</section>
-
-<script>
-// ─────────────────────────── DATA ───────────────────────────
-
-const topicsData = [
-  {
-    title: "Ecosystems & Energy Flow",
-    icon: "🌿",
-    sub: "Unit 3 · Area of Study 1",
-    points: ["Biotic and abiotic factors", "Food webs and trophic levels", "Energy pyramids & 10% rule", "Nutrient cycling (N, C, P, water)"],
-    detail: `<h4>Ecosystems</h4><p>An ecosystem consists of all living organisms (<strong>biotic</strong> factors) and their physical environment (<strong>abiotic</strong> factors). Energy flows <em>one-way</em> from producers → primary consumers → secondary consumers → tertiary consumers.</p><p>Only about <strong>10%</strong> of energy is transferred between trophic levels; the rest is lost as heat. This is why food pyramids narrow towards the apex.</p><h4>Nutrient Cycling</h4><p>Unlike energy, nutrients are <strong>recycled</strong> within ecosystems. The carbon, nitrogen, phosphorus and water cycles all play critical roles in ecosystem health.</p>`
-  },
-  {
-    title: "Biodiversity",
-    icon: "🦋",
-    sub: "Unit 3 · Area of Study 2",
-    points: ["Species, genetic, ecosystem diversity", "Measurement: Simpson's Index", "Threats to biodiversity", "Keystone and indicator species"],
-    detail: `<h4>Types of Biodiversity</h4><p><strong>Species diversity</strong>: variety of species. <strong>Genetic diversity</strong>: variety of alleles within a species. <strong>Ecosystem diversity</strong>: variety of habitats and communities.</p><h4>Measuring Biodiversity</h4><p>Simpson's Diversity Index (D) = 1 − Σ(n/N)². A value closer to 1 = higher diversity. Sampling methods include quadrats, transects, mark-recapture and pitfall traps.</p><h4>Threats</h4><p>Habitat destruction, introduced species, overexploitation, pollution, and climate change are the main threats. Use the mnemonic <strong>HIPPCO</strong>.</p>`
-  },
-  {
-    title: "Climate Change",
-    icon: "🌡️",
-    sub: "Unit 3 · Area of Study 3",
-    points: ["Greenhouse effect & enhanced GHE", "CO₂, CH₄, N₂O, H₂O", "Evidence: ice cores, sea level rise", "IPCC projections"],
-    detail: `<h4>The Greenhouse Effect</h4><p>Solar radiation passes through the atmosphere and heats Earth's surface. The surface emits infrared radiation, which is absorbed by greenhouse gases (GHGs) and re-emitted, warming the lower atmosphere.</p><p>The <strong>enhanced</strong> greenhouse effect is caused by increased GHG concentrations due to human activities (burning fossil fuels, deforestation, agriculture).</p><h4>Key Gases</h4><p>CO₂ (most abundant), CH₄ (most potent, 25× CO₂ over 100 yrs), N₂O (agriculture), and water vapour (feedback). Global Warming Potential (GWP) compares impact relative to CO₂.</p>`
-  },
-  {
-    title: "Water & Catchment Management",
-    icon: "💧",
-    sub: "Unit 3 · Area of Study 4",
-    points: ["Hydrological cycle", "Catchment hydrology", "Water quality indicators", "Eutrophication & algal blooms"],
-    detail: `<h4>The Water Cycle</h4><p>Evaporation → condensation → precipitation → surface runoff / infiltration → groundwater → transpiration (collectively: evapotranspiration). Vegetation is crucial in regulating this cycle.</p><h4>Catchment Hydrology</h4><p>A <em>catchment</em> is an area of land draining to a single outlet. Land use change (logging, urbanisation) increases runoff, reduces infiltration and can cause flooding and erosion.</p><h4>Eutrophication</h4><p>Excess nutrients (N, P) → algal bloom → algae die → bacteria decompose → oxygen depleted → aquatic organisms die. Indicator species like macroinvertebrates show water quality.</p>`
-  },
-  {
-    title: "Environmental Change",
-    icon: "🔄",
-    sub: "Unit 4 · Area of Study 1",
-    points: ["Natural vs anthropogenic change", "Succession: primary & secondary", "Ecological disturbance", "Resilience and recovery"],
-    detail: `<h4>Types of Change</h4><p><strong>Natural change</strong>: fire, flood, volcanic eruption, drought. <strong>Anthropogenic change</strong>: land clearing, pollution, introduced species, climate change.</p><h4>Ecological Succession</h4><p><strong>Primary succession</strong>: bare rock → pioneer species → climax community (e.g. volcanic island). <strong>Secondary succession</strong>: disturbed area with soil still intact (e.g. post-fire regrowth). Key concept: <em>seral stages</em>.</p><h4>Resilience</h4><p>Resilience = ability to return to original state after disturbance. Related concepts: resistance (withstand) and redundancy (multiple species fulfilling same role).</p>`
-  },
-  {
-    title: "Conservation & Management",
-    icon: "🛡️",
-    sub: "Unit 4 · Area of Study 2",
-    points: ["In-situ vs ex-situ conservation", "National parks, biosphere reserves", "Recovery plans & threatened species", "Sustainable development goals"],
-    detail: `<h4>In-situ Conservation</h4><p>Protecting species <em>within</em> their natural habitat. Examples: national parks, marine protected areas (MPAs), wildlife corridors. Most preferred approach.</p><h4>Ex-situ Conservation</h4><p>Protecting species <em>outside</em> their natural habitat. Examples: zoos, seed banks, captive breeding programs. Used when in-situ fails.</p><h4>EPBC Act (Australia)</h4><p>Environmental Protection and Biodiversity Conservation Act 1999 — Australia's main environmental law. Lists threatened species under categories: extinct, critically endangered, endangered, vulnerable.</p>`
-  },
-  {
-    title: "Pollution & Waste",
-    icon: "♻️",
-    sub: "Unit 4 · Area of Study 3",
-    points: ["Point vs non-point sources", "Air, water and soil pollution", "Bioaccumulation & biomagnification", "Waste hierarchy: reduce, reuse, recycle"],
-    detail: `<h4>Pollution Sources</h4><p><strong>Point source</strong>: identifiable location (factory pipe). <strong>Non-point source</strong>: diffuse (agricultural runoff).</p><h4>Bioaccumulation vs Biomagnification</h4><p><strong>Bioaccumulation</strong>: toxins accumulate in a single organism over time. <strong>Biomagnification</strong>: toxin concentration <em>increases</em> up the food chain. Classic example: DDT in raptors.</p><h4>Waste Hierarchy</h4><p>In order of preference: <strong>Refuse → Reduce → Reuse → Recycle → Recover → Dispose</strong>. The goal is to minimise waste at the top of the hierarchy.</p>`
-  },
-  {
-    title: "Environmental Impact Assessment",
-    icon: "📋",
-    sub: "Unit 4 · Area of Study 4",
-    points: ["EIA process steps", "Stakeholders & community input", "Mitigation strategies", "Cost-benefit analysis"],
-    detail: `<h4>EIA Process</h4><p>1. Screening → 2. Scoping → 3. Impact prediction → 4. Mitigation → 5. Reporting → 6. Review → 7. Monitoring. EIAs ensure environmental consequences are considered before development.</p><h4>Stakeholders</h4><p>Include government agencies, developers, community groups, scientists and Indigenous communities. All have different values and interests.</p><h4>Mitigation Strategies</h4><p>Avoid, minimise, restore, offset. The <em>mitigation hierarchy</em> prioritises avoiding impact over creating offsets.</p>`
-  }
-];
-
-const flashcardsData = [
-  { q: "What is the 10% rule in ecology?", a: "Only approximately 10% of energy is transferred from one trophic level to the next; the remaining 90% is lost as heat through metabolic processes.", topic: "ecosystems" },
-  { q: "Define 'ecosystem services'", a: "Benefits that ecosystems provide to humans, including provisioning (food, water), regulating (climate, floods), cultural (recreation) and supporting services (nutrient cycling).", topic: "ecosystems" },
-  { q: "What is the difference between a food chain and a food web?", a: "A food chain shows a single linear sequence of feeding relationships. A food web shows all interconnected feeding relationships in an ecosystem — it is more realistic.", topic: "ecosystems" },
-  { q: "What does Simpson's Diversity Index measure?", a: "It measures both species richness (number of species) and species evenness (relative abundance). D = 1 − Σ(n/N)². Higher values indicate greater biodiversity.", topic: "biodiversity" },
-  { q: "What is a keystone species?", a: "A species that has a disproportionately large effect on its ecosystem relative to its abundance. Removing it causes major ecosystem change (e.g. sea otters, wolves).", topic: "biodiversity" },
-  { q: "Define HIPPCO", a: "A mnemonic for the main threats to biodiversity: Habitat destruction, Invasive species, Population growth (human), Pollution, Climate change, Overexploitation.", topic: "biodiversity" },
-  { q: "What is the enhanced greenhouse effect?", a: "The increase in the natural greenhouse effect due to human activities adding more GHGs (CO₂, CH₄, N₂O) to the atmosphere, causing additional warming beyond natural levels.", topic: "climate" },
-  { q: "What is Global Warming Potential (GWP)?", a: "A measure of how much heat a greenhouse gas traps in the atmosphere over 100 years, compared to CO₂ (which has GWP = 1). Methane ≈ 25, N₂O ≈ 298.", topic: "climate" },
-  { q: "Name three lines of evidence for climate change", a: "Rising atmospheric CO₂ (Keeling Curve), increasing global average temperatures, melting polar ice and glaciers, sea level rise, shifting species ranges, ocean acidification.", topic: "climate" },
-  { q: "What is eutrophication?", a: "The process where excess nutrients (N, P) enter a water body → algal bloom → algae die → decomposition consumes O₂ → hypoxia → aquatic life dies.", topic: "pollution" },
-  { q: "Difference between bioaccumulation and biomagnification?", a: "Bioaccumulation = buildup of toxins in ONE organism over time. Biomagnification = increasing concentration of toxins at HIGHER trophic levels in a food chain.", topic: "pollution" },
-  { q: "What is primary succession?", a: "Ecological succession that begins on bare, lifeless substrate (e.g. lava flow, exposed rock) with no pre-existing soil. Pioneer species (e.g. lichens) begin the process.", topic: "ecosystems" },
-  { q: "What is in-situ conservation?", a: "Protecting species within their natural habitat. Examples: national parks, marine protected areas, wildlife corridors. Preferred over ex-situ methods.", topic: "conservation" },
-  { q: "What is ex-situ conservation?", a: "Protecting species outside their natural habitat. Examples: zoos, seed banks, captive breeding programs. Used as a last resort when populations are critically low.", topic: "conservation" },
-  { q: "What does the EPBC Act 1999 do?", a: "Australia's main environmental law. It lists threatened species under categories (extinct, critically endangered, endangered, vulnerable) and requires approval for actions impacting them.", topic: "conservation" },
-  { q: "What is a carbon sink vs carbon source?", a: "A carbon SINK absorbs more CO₂ than it releases (e.g. forests, oceans). A carbon SOURCE releases more CO₂ than it absorbs (e.g. burning fossil fuels, deforestation).", topic: "climate" },
-  { q: "What is ecological resilience?", a: "The ability of an ecosystem to absorb disturbance and reorganise while undergoing change, so as to retain essentially the same function, structure, and identity.", topic: "ecosystems" },
-  { q: "Define 'indicator species'", a: "A species used to assess the health of an environment because of its sensitivity to environmental changes. E.g. macroinvertebrates indicate water quality.", topic: "biodiversity" },
-  { q: "What is the waste hierarchy?", a: "Order of preference for waste management: Refuse → Reduce → Reuse → Recycle → Recover energy → Dispose. Disposal in landfill is the least preferred option.", topic: "pollution" },
-  { q: "What is an Environmental Impact Assessment (EIA)?", a: "A process to predict and evaluate the environmental consequences of a proposed development before it proceeds, involving screening, scoping, impact prediction, mitigation and monitoring.", topic: "conservation" }
-];
-
-const quizData = [
-  {
-    q: "Which process explains why top predators have the highest concentrations of persistent pollutants?",
-    opts: ["Bioaccumulation", "Biomagnification", "Eutrophication", "Bioremediation"],
-    ans: 1,
-    exp: "Biomagnification is the increase in concentration of a toxin at successively higher trophic levels in a food chain. Bioaccumulation refers to build-up in a single organism."
-  },
-  {
-    q: "An ecosystem has 5 species with the following counts: 10, 10, 10, 10, 10. Which Simpson's Index value is correct?",
-    opts: ["D = 0.2", "D = 0.8", "D = 1.0", "D = 0.5"],
-    ans: 1,
-    exp: "With perfectly even distribution across 5 species, D = 1 − 5×(10/50)² = 1 − 5×0.04 = 1 − 0.2 = 0.8. Higher D = higher diversity."
-  },
-  {
-    q: "Which greenhouse gas has the highest Global Warming Potential over 100 years?",
-    opts: ["Carbon dioxide (CO₂)", "Methane (CH₄)", "Nitrous oxide (N₂O)", "Water vapour (H₂O)"],
-    ans: 2,
-    exp: "Nitrous oxide (N₂O) has a GWP of approximately 298 over 100 years, higher than methane (~25) and CO₂ (1)."
-  },
-  {
-    q: "What is the FIRST stage in ecological primary succession?",
-    opts: ["Climax community", "Shrub establishment", "Pioneer species colonisation", "Secondary succession"],
-    ans: 2,
-    exp: "Pioneer species such as lichens and mosses are the first to colonise bare substrate. They begin weathering rock and adding organic matter to create soil."
-  },
-  {
-    q: "Which conservation strategy is considered MOST preferred?",
-    opts: ["Captive breeding in zoos", "Seed banks", "In-situ habitat protection", "Translocation programs"],
-    ans: 2,
-    exp: "In-situ conservation (protecting species in their natural habitat) is always preferred because it preserves ecological processes, not just individual species."
-  },
-  {
-    q: "The process by which excess nutrients cause algal blooms leading to oxygen depletion is called:",
-    opts: ["Acidification", "Eutrophication", "Salinisation", "Turbidity increase"],
-    ans: 1,
-    exp: "Eutrophication: nutrients → algal bloom → algae die → bacterial decomposition → oxygen depletion → hypoxic conditions → aquatic death."
-  },
-  {
-    q: "Which mnemonic describes the main threats to biodiversity?",
-    opts: ["SOHCAHTOA", "HIPPCO", "SMARTER", "DRABC"],
-    ans: 1,
-    exp: "HIPPCO: Habitat destruction, Invasive species, Population growth, Pollution, Climate change, Overexploitation."
-  },
-  {
-    q: "Energy transfer efficiency between trophic levels is approximately:",
-    opts: ["50%", "25%", "10%", "1%"],
-    ans: 2,
-    exp: "The 10% rule: approximately 10% of energy at one trophic level is available to the next. The remaining ~90% is lost as heat through respiration."
-  },
-  {
-    q: "What does the EPBC Act 1999 primarily govern in Australia?",
-    opts: ["Carbon emissions trading", "Protection of threatened species & significant environments", "Water usage rights", "Mining royalties"],
-    ans: 1,
-    exp: "The Environmental Protection and Biodiversity Conservation Act 1999 is Australia's main federal environmental law — it lists threatened species and requires approval for significant impacts."
-  },
-  {
-    q: "Which type of pollution source is a factory discharging waste from a single outflow pipe?",
-    opts: ["Non-point source", "Diffuse source", "Point source", "Area source"],
-    ans: 2,
-    exp: "A point source pollution is one that can be traced to a single, identifiable location (e.g. a pipe, smokestack). Non-point sources are diffuse (e.g. agricultural runoff)."
-  }
-];
-
-const glossaryData = [
-  { term: "Abiotic factor", def: "A non-living physical or chemical component of an ecosystem (e.g. temperature, pH, light, water).", cat: "Ecosystems" },
-  { term: "Biotic factor", def: "A living component of an ecosystem including all organisms and their interactions.", cat: "Ecosystems" },
-  { term: "Trophic level", def: "A position in a food chain or web, defined by the organism's main energy source.", cat: "Ecosystems" },
-  { term: "Biomass", def: "The total mass of living organisms in a given area or trophic level, usually measured as dry mass.", cat: "Ecosystems" },
-  { term: "Carrying capacity (K)", def: "The maximum population size of a species an environment can sustain indefinitely given available resources.", cat: "Ecosystems" },
-  { term: "Species richness", def: "The total number of different species present in a given area.", cat: "Biodiversity" },
-  { term: "Species evenness", def: "The relative abundance of each species in a community; higher evenness = more balanced community.", cat: "Biodiversity" },
-  { term: "Genetic diversity", def: "The variety of alleles and genotypes within a species; crucial for resilience and adaptation.", cat: "Biodiversity" },
-  { term: "Keystone species", def: "A species whose impact on its ecosystem is disproportionately large relative to its biomass.", cat: "Biodiversity" },
-  { term: "Greenhouse gas (GHG)", def: "A gas that absorbs and re-emits infrared radiation, contributing to the greenhouse effect (e.g. CO₂, CH₄, N₂O, H₂O).", cat: "Climate" },
-  { term: "Carbon sequestration", def: "The process of capturing and storing atmospheric CO₂, naturally (forests, oceans) or artificially (CCS technology).", cat: "Climate" },
-  { term: "Albedo", def: "The reflectivity of a surface. Ice/snow has high albedo; oceans/forests have low albedo. Affects how much solar energy is absorbed.", cat: "Climate" },
-  { term: "Positive feedback", def: "A feedback loop that amplifies an initial change (e.g. ice melts → lower albedo → more warming → more ice melt).", cat: "Climate" },
-  { term: "Eutrophication", def: "The process where excess nutrients cause algal blooms, oxygen depletion and aquatic ecosystem disruption.", cat: "Pollution" },
-  { term: "Bioaccumulation", def: "The build-up of a toxic substance in the tissues of a single organism over its lifetime.", cat: "Pollution" },
-  { term: "Biomagnification", def: "The increasing concentration of toxins at successively higher trophic levels in a food chain.", cat: "Pollution" },
-  { term: "Point source pollution", def: "Pollution from a single, identifiable source location (e.g. industrial discharge pipe).", cat: "Pollution" },
-  { term: "In-situ conservation", def: "Protection of species within their natural habitat (e.g. national parks, marine reserves).", cat: "Conservation" },
-  { term: "Ex-situ conservation", def: "Protection of species outside their natural habitat (e.g. zoos, seed banks, botanic gardens).", cat: "Conservation" },
-  { term: "Ecological succession", def: "The gradual process by which ecosystems change and develop over time, culminating in a climax community.", cat: "Ecosystems" },
-  { term: "EPBC Act", def: "Environment Protection and Biodiversity Conservation Act 1999 — Australia's main environmental legislation for protecting threatened species and significant environments.", cat: "Conservation" },
-  { term: "Resilience", def: "The capacity of an ecosystem to absorb disturbance and reorganise while retaining essentially the same function and structure.", cat: "Ecosystems" },
-  { term: "Indicator species", def: "Species sensitive to environmental change, used to monitor ecosystem health (e.g. macroinvertebrates for water quality).", cat: "Biodiversity" },
-  { term: "Mitigation hierarchy", def: "A framework for managing environmental impact: Avoid → Minimise → Restore → Offset, in order of preference.", cat: "Conservation" },
-  { term: "Simpson's Diversity Index", def: "A diversity measure: D = 1 − Σ(n/N)², where n = number of organisms of a species, N = total organisms. Range 0–1.", cat: "Biodiversity" }
-];
-
-const summaryData = [
-  {
-    title: "Ecosystems",
-    content: `
-      <div class="sum-block">
-        <h3>🌿 Energy Flow</h3>
-        <p>Energy flows <strong>one-way</strong> through ecosystems from producers to consumers. The 10% rule means energy pyramids always narrow upwards. Pyramids can show numbers, biomass or energy.</p>
-        <code class="key-eq">Energy efficiency = (energy at trophic level n+1 / energy at trophic level n) × 100</code>
+    <!-- STABLES -->
+    <div id="stables" class="sec">
+      <div class="pg-title"><span class="ic">🐴</span>My Stables</div>
+      <p class="pg-sub">Train, select and race your horses.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+        <div style="font-size:0.78rem;color:var(--text-d);">Capacity: <em style="color:var(--neon)" id="scount">0</em>/8</div>
+        <button class="btn btn-n btn-sm" onclick="go('shop')">+ Buy Horse</button>
       </div>
-      <div class="sum-block">
-        <h3>🔄 Nutrient Cycling</h3>
-        <p>Unlike energy, nutrients are <strong>recycled</strong>. Key cycles:</p>
-        <ul>
-          <li><strong>Carbon cycle</strong>: photosynthesis (fix), respiration (release), combustion, decomposition</li>
-          <li><strong>Nitrogen cycle</strong>: fixation (Rhizobium) → nitrification → assimilation → denitrification</li>
-          <li><strong>Water cycle</strong>: evaporation, condensation, precipitation, runoff, infiltration, transpiration</li>
-        </ul>
-      </div>
-      <div class="sum-block">
-        <h3>🌱 Succession</h3>
-        <p><strong>Primary</strong>: bare rock → lichens → mosses → grasses → shrubs → climax community. Soil builds slowly.<br>
-        <strong>Secondary</strong>: disturbed area retaining soil (post-fire) — much faster recovery.</p>
-      </div>`
-  },
-  {
-    title: "Biodiversity",
-    content: `
-      <div class="sum-block">
-        <h3>🦋 Three Levels of Biodiversity</h3>
-        <ul>
-          <li><strong>Genetic</strong>: allele variety within a species — allows adaptation</li>
-          <li><strong>Species</strong>: variety of species in an area</li>
-          <li><strong>Ecosystem</strong>: variety of habitats and communities</li>
-        </ul>
-      </div>
-      <div class="sum-block">
-        <h3>📐 Simpson's Index</h3>
-        <code class="key-eq">D = 1 − Σ(n/N)²</code>
-        <p>Where n = number of individuals of species i, N = total individuals. D ranges from 0 (no diversity) to 1 (maximum diversity). Always calculate step-by-step in exams.</p>
-      </div>
-      <div class="sum-block">
-        <h3>⚠️ HIPPCO Threats</h3>
-        <ul>
-          <li><strong>H</strong>abitat destruction</li>
-          <li><strong>I</strong>nvasive/introduced species</li>
-          <li><strong>P</strong>opulation growth (human)</li>
-          <li><strong>P</strong>ollution</li>
-          <li><strong>C</strong>limate change</li>
-          <li><strong>O</strong>verexploitation</li>
-        </ul>
-      </div>`
-  },
-  {
-    title: "Climate Change",
-    content: `
-      <div class="sum-block">
-        <h3>🌡️ The Greenhouse Effect</h3>
-        <p>Solar radiation → absorbed by Earth → re-emitted as infrared → absorbed by GHGs → atmosphere warms. Human activities have <strong>enhanced</strong> this natural process by increasing GHG concentrations.</p>
-      </div>
-      <div class="sum-block">
-        <h3>📊 Key GHGs & GWP (100 yr)</h3>
-        <ul>
-          <li>CO₂ — GWP = 1 (reference)</li>
-          <li>CH₄ — GWP ≈ 25</li>
-          <li>N₂O — GWP ≈ 298</li>
-          <li>HFCs — GWP = 100s–1000s</li>
-        </ul>
-      </div>
-      <div class="sum-block">
-        <h3>🧊 Evidence for Climate Change</h3>
-        <ul>
-          <li>Keeling Curve — rising atmospheric CO₂ since 1958</li>
-          <li>Ice cores — CO₂ and temperature correlation over 800,000 years</li>
-          <li>Rising average global temperatures (+1.1°C since pre-industrial)</li>
-          <li>Declining Arctic sea ice extent</li>
-          <li>Sea level rise (~3.3mm/year)</li>
-          <li>Poleward species range shifts</li>
-        </ul>
-      </div>`
-  },
-  {
-    title: "Pollution",
-    content: `
-      <div class="sum-block">
-        <h3>🏭 Pollution Types</h3>
-        <ul>
-          <li><strong>Point source</strong>: single identifiable source (pipe, chimney)</li>
-          <li><strong>Non-point source</strong>: diffuse (agricultural runoff, urban stormwater)</li>
-          <li>Air, water, soil and noise pollution all assessed in EIAs</li>
-        </ul>
-      </div>
-      <div class="sum-block">
-        <h3>☣️ Bioaccumulation vs Biomagnification</h3>
-        <p><strong>Bioaccumulation</strong> = toxins build up in ONE organism over time (organism cannot break down/excrete the substance).<br>
-        <strong>Biomagnification</strong> = toxin concentration INCREASES at higher trophic levels. Classic example: DDT accumulation in birds of prey.</p>
-      </div>
-      <div class="sum-block">
-        <h3>♻️ Waste Hierarchy</h3>
-        <code class="key-eq">Refuse → Reduce → Reuse → Recycle → Recover → Dispose</code>
-        <p>Higher up the hierarchy = better environmental outcome. Landfill disposal is always the last resort.</p>
-      </div>`
-  },
-  {
-    title: "Conservation",
-    content: `
-      <div class="sum-block">
-        <h3>🛡️ In-situ vs Ex-situ</h3>
-        <p><strong>In-situ</strong> (preferred): National parks, MPAs, wildlife corridors, Indigenous Protected Areas, biosphere reserves.<br>
-        <strong>Ex-situ</strong> (last resort): Zoos, seed banks, captive breeding, tissue culture.</p>
-      </div>
-      <div class="sum-block">
-        <h3>⚖️ EPBC Act 1999 — Threat Categories</h3>
-        <ul>
-          <li>Extinct (EX)</li>
-          <li>Extinct in the Wild (EW)</li>
-          <li>Critically Endangered (CR)</li>
-          <li>Endangered (EN)</li>
-          <li>Vulnerable (VU)</li>
-          <li>Conservation Dependent</li>
-        </ul>
-      </div>
-      <div class="sum-block">
-        <h3>📋 EIA Process</h3>
-        <p>1. Screening → 2. Scoping → 3. Impact prediction → 4. Mitigation alternatives → 5. Environmental Impact Statement → 6. Public review → 7. Decision → 8. Monitoring & audit</p>
-      </div>`
-  }
-];
+      <div class="hgrid" id="stables-grid"></div>
+    </div>
 
-const timelineEvents = [
-  { year: "1962", title: "Silent Spring Published", text: "Rachel Carson's book documented the harmful effects of pesticides (DDT) on wildlife, sparking the modern environmental movement." },
-  { year: "1972", title: "UN Conference on the Human Environment", text: "First major international conference on environmental issues held in Stockholm. Led to the creation of UNEP (UN Environment Programme)." },
-  { year: "1987", title: "Brundtland Report & Sustainable Development", text: "Our Common Future defined sustainable development as 'meeting the needs of the present without compromising future generations'." },
-  { year: "1987", title: "Montreal Protocol", text: "International treaty phasing out ozone-depleting substances (CFCs). Considered the most successful environmental treaty; ozone layer is recovering." },
-  { year: "1992", title: "Earth Summit — Rio de Janeiro", text: "The Convention on Biological Diversity (CBD) and the UNFCCC were opened for signature. Established Agenda 21 for sustainable development." },
-  { year: "1997", title: "Kyoto Protocol", text: "First legally binding international agreement to reduce greenhouse gas emissions. Set targets for developed countries." },
-  { year: "1999", title: "EPBC Act (Australia)", text: "Australia's Environment Protection and Biodiversity Conservation Act 1999 became the main federal law for protecting threatened species and significant environments." },
-  { year: "2015", title: "Paris Agreement", text: "196 countries agreed to limit global warming to well below 2°C (ideally 1.5°C) above pre-industrial levels through nationally determined contributions (NDCs)." },
-  { year: "2022", title: "Kunming-Montreal GBF", text: "The Global Biodiversity Framework set the '30×30' target: protect 30% of land and oceans by 2030 to halt biodiversity loss." }
-];
+    <!-- SHOP -->
+    <div id="shop" class="sec">
+      <div class="pg-title"><span class="ic">🛒</span>Horse Market</div>
+      <p class="pg-sub">Every horse can be renamed when purchased.</p>
+      <div class="hgrid" id="shop-grid"></div>
+    </div>
 
-// ─────────────────────────── RENDER FUNCTIONS ───────────────────────────
+    <!-- JOCKEYS (hired roster) -->
+    <div id="jockeys" class="sec">
+      <div class="pg-title"><span class="ic">🏇</span>Hire a Jockey</div>
+      <p class="pg-sub">Hire a professional or use your custom jockey (see My Jockey).</p>
+      <div class="jgrid" id="jockeys-grid"></div>
+    </div>
 
-function renderTopics() {
-  const grid = document.getElementById('topicsGrid');
-  grid.innerHTML = topicsData.map((t, i) => `
-    <div class="topic-card" onclick="toggleTopic(${i})">
-      <div class="topic-card-header">
-        <div class="topic-icon">${t.icon}</div>
-        <div>
-          <h3>${t.title}</h3>
-          <span>${t.sub}</span>
+    <!-- MY JOCKEY -->
+    <div id="myjockey" class="sec">
+      <div class="pg-title"><span class="ic">🎨</span>My Jockey</div>
+      <p class="pg-sub">Customise your personal jockey's name, silks, and helmet.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="pan">
+          <div class="pan-t">Identity</div>
+          <div class="input-row"><label>Jockey Name</label><input id="mj-name" type="text" placeholder="Your Jockey's Name" maxlength="28"></div>
+          <div class="pan-t">Silk Colours</div>
+          <div style="margin-bottom:0.65rem;">
+            <div style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-d);margin-bottom:0.35rem;">Primary</div>
+            <div id="mj-pri-swatches"></div>
+          </div>
+          <div style="margin-bottom:0.65rem;">
+            <div style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-d);margin-bottom:0.35rem;">Secondary</div>
+            <div id="mj-sec-swatches"></div>
+          </div>
+          <div style="margin-bottom:0.65rem;">
+            <div style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-d);margin-bottom:0.35rem;">Helmet Colour</div>
+            <div id="mj-helm-swatches"></div>
+          </div>
+          <div>
+            <div style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-d);margin-bottom:0.35rem;">Silk Pattern</div>
+            <div id="mj-patterns"></div>
+          </div>
+          <button class="btn btn-n" style="margin-top:1rem;width:100%;" onclick="saveMyJockey()">Save Jockey</button>
+        </div>
+        <div class="pan">
+          <div class="pan-t">Preview</div>
+          <canvas id="jockey-preview" width="280" height="320" style="display:block;width:100%;border:1px solid var(--border);border-radius:1px;background:#0a140a;"></canvas>
+          <div style="margin-top:0.75rem;text-align:center;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--cream);" id="mj-preview-name">—</div>
+            <div style="font-size:0.7rem;color:var(--text-d);">Custom Jockey · Your Stables</div>
+          </div>
         </div>
       </div>
-      <div class="topic-card-body">
-        <ul>${t.points.map(p => `<li>${p}</li>`).join('')}</ul>
-      </div>
-      <div class="topic-expand" id="expand-${i}">${t.detail}</div>
     </div>
-  `).join('');
-}
 
-function toggleTopic(i) {
-  const el = document.getElementById(`expand-${i}`);
-  el.classList.toggle('open');
-}
-
-// ─── FLASHCARDS ───
-let filteredCards = [...flashcardsData];
-let fcIndex = 0;
-
-function filterFlashcards() {
-  const val = document.getElementById('fcFilter').value;
-  filteredCards = val === 'all' ? [...flashcardsData] : flashcardsData.filter(c => c.topic === val);
-  fcIndex = 0;
-  document.getElementById('flashcard').classList.remove('flipped');
-  renderCard();
-}
-
-function shuffleCards() {
-  for (let i = filteredCards.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [filteredCards[i], filteredCards[j]] = [filteredCards[j], filteredCards[i]];
-  }
-  fcIndex = 0;
-  document.getElementById('flashcard').classList.remove('flipped');
-  renderCard();
-}
-
-function renderCard() {
-  const card = filteredCards[fcIndex];
-  document.getElementById('fc-front-text').textContent = card.q;
-  document.getElementById('fc-back-text').textContent = card.a;
-  document.getElementById('fcCounter').textContent = `${fcIndex + 1} / ${filteredCards.length}`;
-  document.getElementById('fcProgress').style.width = `${((fcIndex + 1) / filteredCards.length) * 100}%`;
-  document.getElementById('fcPrev').disabled = fcIndex === 0;
-  document.getElementById('fcNext').disabled = fcIndex === filteredCards.length - 1;
-}
-
-function flipCard() { document.getElementById('flashcard').classList.toggle('flipped'); }
-function prevCard() { if (fcIndex > 0) { fcIndex--; document.getElementById('flashcard').classList.remove('flipped'); renderCard(); } }
-function nextCard() { if (fcIndex < filteredCards.length - 1) { fcIndex++; document.getElementById('flashcard').classList.remove('flipped'); renderCard(); } }
-
-// ─── QUIZ ───
-let quizQ = 0;
-let score = 0;
-let shuffled = [];
-
-function startQuiz() {
-  shuffled = [...quizData].sort(() => Math.random() - 0.5).slice(0, 10);
-  quizQ = 0; score = 0;
-  document.getElementById('quizStart').style.display = 'none';
-  document.getElementById('quizResults').classList.remove('show');
-  renderQuestion();
-}
-
-function renderQuestion() {
-  const body = document.getElementById('quizBody');
-  const q = shuffled[quizQ];
-  body.innerHTML = `
-    <div class="quiz-question active">
-      <div class="q-meta">
-        <span class="q-num">Question ${quizQ + 1} of ${shuffled.length}</span>
-        <span class="q-score">Score: ${score}</span>
+    <!-- RACE SETUP -->
+    <div id="race" class="sec">
+      <div class="pg-title"><span class="ic">🏁</span>Race Day</div>
+      <p class="pg-sub">Pick your race, confirm entry, then study the race card and place bets.</p>
+      <div class="rlayout">
+        <div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:0.8rem;letter-spacing:0.18em;color:var(--text-d);margin-bottom:0.65rem;">SELECT RACE</div>
+          <div class="rgrid" id="race-list"></div>
+        </div>
+        <div>
+          <div class="epan">
+            <h3>Entry Card</h3>
+            <div class="eslot" id="esl-h"><span class="eslot-ic">🐴</span><div class="eslot-in"><div class="eslot-em">No horse selected</div><div style="font-size:0.6rem;color:var(--text-m);margin-top:0.15rem;">Go to My Stables</div></div></div>
+            <div class="eslot" id="esl-j"><span class="eslot-ic">🏇</span><div class="eslot-in"><div class="eslot-em">No jockey</div><div style="font-size:0.6rem;color:var(--text-m);margin-top:0.15rem;">Hire or use My Jockey</div></div></div>
+            <div class="eslot" id="esl-r"><span class="eslot-ic">🏁</span><div class="eslot-in"><div class="eslot-em">No race selected</div></div></div>
+            <hr style="border-color:var(--border);margin:0.85rem 0;">
+            <button class="btn btn-n btn-lg" id="view-rc-btn" style="width:100%;" onclick="openRaceCard()" disabled>View Race Card & Bet →</button>
+            <p id="entry-err" style="font-size:0.68rem;color:var(--red);text-align:center;margin-top:0.35rem;font-style:italic;"></p>
+          </div>
+        </div>
       </div>
-      <div class="q-text">${q.q}</div>
-      <div class="q-options">
-        ${q.opts.map((o, i) => `
-          <button class="q-opt" onclick="answerQ(${i})" id="opt-${i}">
-            <span class="opt-letter">${'ABCD'[i]}</span>${o}
-          </button>`).join('')}
+    </div>
+
+    <!-- RACE CARD + BETTING -->
+    <div id="racecard" class="sec">
+      <div class="pg-title"><span class="ic">📋</span>Race Card</div>
+      <p class="pg-sub">Study the form, check the odds, place your bets.</p>
+      <div id="rc-head" style="background:var(--panel2);border:1px solid var(--border);border-radius:2px;padding:1rem 1.25rem;margin-bottom:1rem;"></div>
+      <div class="pan" style="padding:0;overflow:hidden;margin-bottom:0;">
+        <table class="rctbl"><thead><tr><th style="width:38px;">#</th><th>Horse</th><th>Jockey</th><th>Form</th><th>Rating</th><th>Odds</th></tr></thead>
+        <tbody id="rc-runners"></tbody></table>
       </div>
-      <div class="q-feedback" id="qFeedback"></div>
-      <button class="next-btn" id="nextBtn" onclick="nextQuestion()">${quizQ === shuffled.length - 1 ? 'See Results' : 'Next Question →'}</button>
+      <div id="bet-section">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:0.1em;color:var(--gold);margin-bottom:0.65rem;">Place Your Bets</div>
+        <div class="bet-tabs" id="bet-tabs"></div>
+        <div id="bet-panels"></div>
+        <div class="bet-slip" id="bet-slip" style="display:none;">
+          <div class="bet-slip-h">BET SLIP</div>
+          <div id="bet-slip-rows"></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-top:0.4rem;margin-top:0.2rem;">
+            <span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-d);">Total Staked</span>
+            <span style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--gold);" id="total-staked">£0</span>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:0.65rem;margin-top:1rem;align-items:center;">
+        <button class="btn btn-o" onclick="go('race')">← Back</button>
+        <button class="btn btn-n btn-lg" onclick="goToStartGates()">🏁 To Starting Gates →</button>
+      </div>
+    </div>
+
+    <!-- RACE TRACK -->
+    <div id="racetrack" class="sec">
+      <div id="rct-hdr">
+        <div><div id="rct-title">—</div><div id="rct-sub">—</div></div>
+        <div class="rbadge ready" id="r-badge">READY</div>
+      </div>
+      <div id="pbar-bg"><div id="pbar-fill"></div></div>
+      <div id="track-wrap"><canvas id="track-canvas"></canvas></div>
+      <div class="pos-board" id="pos-board"></div>
+      <div id="com-box"><div class="com-lbl">🎙 Race Commentary</div><div id="com-txt">Loading up into the stalls...</div></div>
+      <div style="text-align:center;">
+        <button class="btn btn-n btn-lg" id="go-btn" onclick="runRace()">🏁 OPEN GATES!</button>
+      </div>
+    </div>
+
+    <!-- FAME -->
+    <div id="fame" class="sec">
+      <div class="pg-title"><span class="ic">🏆</span>Hall of Fame</div>
+      <p class="pg-sub">The immortal record of your greatest victories.</p>
+      <div id="fame-list"></div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- RESULTS -->
+<div id="res-ov">
+  <div id="res-box">
+    <div id="r-crown">🏆</div>
+    <div id="r-plbl">FINISHING POSITION</div>
+    <div id="r-place" class="rp1">1ST</div>
+    <div id="r-horse">—</div>
+    <div id="r-jock">—</div>
+    <div id="r-prize">—</div>
+    <div id="r-finish-board" class="res-section" style="display:none;"><div class="res-section-t">Final Result</div><div id="r-rows"></div></div>
+    <div id="r-bet-board" class="res-section" style="display:none;"><div class="res-section-t">Bet Results</div><div id="r-bets"></div></div>
+    <button class="btn btn-n btn-lg" onclick="closeResults()">Continue →</button>
+  </div>
+</div>
+
+<!-- MODAL (training / naming) -->
+<div id="mod-ov">
+  <div id="mod-box">
+    <h2 id="mod-h">—</h2>
+    <p id="mod-sub"></p>
+    <div id="mod-body"></div>
+    <button class="btn btn-o" style="margin-top:0.65rem;" onclick="closeMod()">Cancel</button>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+'use strict';
+// ═══════════════════════════════════════
+//  DATA
+// ═══════════════════════════════════════
+const BREEDS={
+  thoroughbred:{name:'Thoroughbred',emoji:'🐎',sM:14,taM:-6,piM:5,col:'#8B4513',desc:'Born to sprint — explosive pace.'},
+  arabian:{name:'Arabian',emoji:'🐴',sM:6,taM:7,piM:10,col:'#D2691E',desc:'Elegant and balanced all-rounder.'},
+  quarter:{name:'Quarter Horse',emoji:'🦄',sM:20,taM:-12,piM:3,col:'#A0522D',desc:'Explosive burst speed — fades over distance.'},
+  irish:{name:'Irish Hunter',emoji:'🐎',sM:3,taM:16,piM:9,col:'#4a7a2a',desc:'Iron endurance over long distances.'},
+  mustang:{name:'Mustang',emoji:'🐴',sM:9,taM:4,piM:20,col:'#7a7a20',desc:'Wild and unpredictable — spirit can ignite.'},
+  stallion:{name:'Champion Stallion',emoji:'🐎',sM:16,taM:13,piM:13,col:'#222',desc:'Bred for greatness across every stat.'},
+};
+const COAT_COLS=['#8B4513','#6B3410','#1a1a1a','#9a9090','#C8A060','#5a2800','#9a6060','#704030'];
+const COAT_NAMES=['Chestnut','Dark Bay','Black','Grey','Palomino','Brown','Roan','Bay'];
+const SILK_COLS=['#e74c3c','#3498db','#f39c12','#2ecc71','#9b59b6','#1abc9c','#e67e22','#e91e63','#fff','#1a1a1a','#f0e030','#08a0e0'];
+const HELM_COLS=['#e74c3c','#3498db','#f0f0f0','#1a1a1a','#f39c12','#9b59b6','#2ecc71','#ff6688'];
+const PATTERNS=['plain','stripes','spots','cross','chevron'];
+
+const PRO_JOCKEYS=[
+  {id:'lou',name:'"Lightning" Lou McBride',style:'Speed Specialist',emoji:'⚡',bonus:{type:'spd',val:18},desc:'"Off like a bullet. Always goes to the front."',record:'142W/380R',pri:'#e74c3c',sec:'#f0f0f0',helm:'#e74c3c',pat:'stripes'},
+  {id:'vera',name:'Vera "Iron" Gallagher',style:'Stamina Specialist',emoji:'🦾',bonus:{type:'sta',val:18},desc:'"Nurses every horse through the hard miles."',record:'118W/310R',pri:'#1a1a1a',sec:'#f0f0f0',helm:'#1a1a1a',pat:'cross'},
+  {id:'jack',name:'"Lucky" Jack Hennessy',style:'High Risk/Reward',emoji:'🍀',bonus:{type:'lck',val:30},desc:'"On his day, untouchable. On a bad day..."',record:'98W/340R',pri:'#2ecc71',sec:'#f0e030',helm:'#2ecc71',pat:'spots'},
+  {id:'sofia',name:'Sofia Reinholt',style:'Technical Precision',emoji:'🎯',bonus:{type:'con',val:20},desc:'"Cool, precise. Removes variance from the equation."',record:'163W/390R',pri:'#3498db',sec:'#f0f0f0',helm:'#3498db',pat:'plain'},
+  {id:'tobias',name:'"Wild" Tobias Kane',style:'Spirit Specialist',emoji:'🔥',bonus:{type:'spi',val:22},desc:'"He finds fire in a horse that didn\'t know it was there."',record:'87W/270R',pri:'#e67e22',sec:'#1a1a1a',helm:'#e67e22',pat:'chevron'},
+  {id:'mei',name:'Mei-Lin "The Fox" Zhang',style:'Tactical Finisher',emoji:'🦊',bonus:{type:'tac',val:22},desc:'"Patient, patient, patient — then a final straight explosion."',record:'131W/360R',pri:'#9b59b6',sec:'#f0f0f0',helm:'#9b59b6',pat:'stripes'},
+];
+
+const RACES=[
+  {id:'ms',name:'Maiden Sprint Plate',dist:1000,prize:450,diff:1,field:5,label:'Maiden',type:'Sprint',going:'Good',desc:'First outing for young horses. Short, sharp sprint.'},
+  {id:'mm',name:'Maiden Mile',dist:1600,prize:650,diff:1,field:6,label:'Maiden',type:'Mile',going:'Good',desc:'Testing ground — which of these youngsters can stay a mile?'},
+  {id:'nh',name:'Nursery Handicap',dist:1200,prize:1400,diff:2,field:7,label:'Handicap',type:'Sprint',going:'Good to Firm',desc:'The weights are in — everyone has a chance.'},
+  {id:'sprint',name:'Royal Sprint Classic',dist:1000,prize:2800,diff:2,field:6,label:'Amateur',type:'Sprint',going:'Firm',desc:'Six furlongs of pure pace.'},
+  {id:'turf',name:'The Turf Challenge',dist:1400,prize:2200,diff:2,field:7,label:'Stakes',type:'Mile',going:'Good',desc:'A test of pace and stamina in equal measure.'},
+  {id:'dirt',name:'Dirt Mile',dist:1600,prize:3200,diff:2,field:7,label:'Conditions',type:'Dirt',going:'Fast',desc:'The dirt suits certain types — know your horse.'},
+  {id:'golden',name:'The Golden Cup',dist:2000,prize:5500,diff:3,field:8,label:'Professional',type:'Staying',going:'Good to Soft',desc:'Two kilometres of glory — fitness wins here.'},
+  {id:'hurdles',name:'National Hurdles',dist:2400,prize:4500,diff:3,field:6,label:'Jumps',type:'Hurdles',going:'Soft',desc:'Spirit horses love the obstacles. Stamina is king.'},
+  {id:'cm',name:'Championship Mile',dist:1600,prize:7000,diff:3,field:8,label:'Professional',type:'Mile',going:'Firm',desc:'The mile that makes or breaks reputations.'},
+  {id:'dirt2',name:'Dirt Supreme',dist:1200,prize:5000,diff:3,field:8,label:'Stakes',type:'Dirt',going:'Fast',desc:'Elite short-distance dirt racing.'},
+  {id:'derby',name:'The Derby',dist:2400,prize:15000,diff:4,field:8,label:'G1 Classic',type:'Classic',going:'Good',desc:'The one that defines careers. Two and a half kilometres.'},
+  {id:'stayers',name:"Stayers' Cup",dist:3200,prize:11000,diff:4,field:8,label:'G1 Elite',type:'Staying',going:'Good to Soft',desc:'Three miles. Only the truly fit survive this test.'},
+  {id:'oaks',name:'The Oaks',dist:2000,prize:13000,diff:4,field:8,label:'G1 Classic',type:'Classic',going:'Good',desc:'Two kilometres of top-class thoroughbred racing.'},
+  {id:'sprint_g1',name:'International Sprint G1',dist:1200,prize:18000,diff:4,field:8,label:'G1 Sprint',type:'Sprint',going:'Firm',desc:'The fastest horses in the world over six furlongs.'},
+  {id:'final',name:'The Final Straight Classic',dist:2400,prize:25000,diff:5,field:8,label:'G1 Championship',type:'Championship',going:'Good',desc:'The greatest race. Legend made or shattered right here.'},
+];
+
+const MARKET=[
+  {name:'Firestorm',breed:'thoroughbred',spd:68,sta:42,spi:55,price:1200,age:3,form:[1,3,2,4]},
+  {name:'Lady Ashford',breed:'arabian',spd:55,sta:62,spi:65,price:1500,age:4,form:[2,1,3,1]},
+  {name:'Iron Duke',breed:'irish',spd:45,sta:78,spi:58,price:1800,age:5,form:[1,1,2,3]},
+  {name:'Quicksilver',breed:'quarter',spd:80,sta:32,spi:48,price:2200,age:3,form:[1,2,4,2]},
+  {name:'Desert Wind',breed:'mustang',spd:58,sta:55,spi:82,price:2000,age:4,form:[3,1,1,2]},
+  {name:'Midnight Star',breed:'arabian',spd:60,sta:60,spi:60,price:1600,age:3,form:[4,2,1,3]},
+  {name:'Thunderclap',breed:'thoroughbred',spd:72,sta:45,spi:52,price:2400,age:4,form:[1,3,1,2]},
+  {name:'The Sovereign',breed:'stallion',spd:76,sta:68,spi:70,price:5500,age:5,form:[1,1,1,2]},
+];
+
+const AI_NAMES=['Stardust','Iron Fist','Bellamy Rose','Nightshade','Golden Arrow','Copper Wind','Blue Horizon','Silver Shadow','Lady Fortune','Storm King','Raging River','Crimson Dawn','Black Pearl','Wild Spirit','Noble King','Velvet Thunder','Pacific Gale','Thunder Road','Sea Hawk','Midnight Run'];
+
+const COMS={
+  start:["AND THEY'RE OFF — {h} explodes from the stalls!","The gates fly open! {h} away well under {j}!","They're racing! {h} makes a perfect break!","The crowd ERUPTS — {h} is on the move!"],
+  lead:["{h} opens up a clear lead — breathtaking!","{j} has {h} cruising — the field chasing hard!","No one can live with {h} right now!","{j} is motionless, {h} is absolutely flying!"],
+  mid:["{h} settled in third — {j} biding time.","{h} tracking the leaders. Plenty of race left.","{j} keeps {h} balanced. Watching and waiting.","{h} looks comfortable — can they quicken?"],
+  final:["INTO THE FINAL STRAIGHT — {h} lets fly!","{j} presses the button and {h} RESPONDS!","The ROAR is deafening — {h} driving hard!","{h} — heart of an absolute champion right now!"],
+  behind:["{h} switched wide — hunting for a gap!","{h} weaving through traffic — {j} has spotted a run!","{h} still in the hunt — closing down the leaders!"],
+  chasing:["{h} making late ground — don't write them off!","Watch out — {h} is flying home from the back!","{h} and {j} are eating up the ground!"],
+};
+
+// ═══════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════
+let G={
+  money:5000,day:1,wins:0,totalRaces:0,totalEarnings:0,
+  stable:[],selectedHorse:null,selectedJockey:'sofia',selectedRace:null,
+  fameBoard:[],
+  myJockey:{name:'Your Jockey',pri:'#e91e63',sec:'#f0f0f0',helm:'#e91e63',pat:'chevron'},
+  useMyJockey:false,
+  news:[
+    {text:'Welcome! Visit the Horse Market to buy your first horse.',date:'Day 1'},
+    {text:'Customise your jockey in the My Jockey section.',date:'Day 1'},
+  ],
+};
+try{const s=localStorage.getItem('TFS_v5');if(s)G=JSON.parse(s);}catch(e){}
+function save(){try{localStorage.setItem('TFS_v5',JSON.stringify(G));}catch(e){}}
+
+// Race state
+let RF=[],RP=[],raceActive=false,rafId=null,raceContext=null,placedBets=[],cameraX=0,comIdx=0;
+const RACE_LEN=5000; // canvas world units
+
+// ═══════════════════════════════════════
+//  NAV
+// ═══════════════════════════════════════
+const TITLES={hub:'RACING HUB',stables:'MY STABLES',shop:'HORSE MARKET',jockeys:'HIRE A JOCKEY',myjockey:'MY JOCKEY',race:'RACE DAY',racecard:'RACE CARD',racetrack:'RACE IN PROGRESS',fame:'HALL OF FAME'};
+function go(id){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.ni').forEach(b=>b.classList.remove('active'));
+  const sec=document.getElementById(id);if(sec)sec.classList.add('active');
+  const ni_map={hub:0,stables:1,shop:2,jockeys:3,myjockey:4,race:5,racecard:5,racetrack:5,fame:6};
+  const nis=document.querySelectorAll('.ni');
+  if(ni_map[id]!==undefined)nis[ni_map[id]]?.classList.add('active');
+  document.getElementById('tb-t').textContent=TITLES[id]||id.toUpperCase();
+  const renderFns={hub:renderHub,stables:renderStables,shop:renderShop,jockeys:renderJockeys,myjockey:renderMyJockey,race:renderRaceSetup,fame:renderFame};
+  if(renderFns[id])renderFns[id]();
+}
+
+// ═══════════════════════════════════════
+//  HEADER
+// ═══════════════════════════════════════
+function updateHeader(){
+  const f=v=>'£'+v.toLocaleString();
+  ['sb-m','hud-m'].forEach(id=>document.getElementById(id).textContent=f(G.money));
+  ['sb-w','hud-w'].forEach(id=>document.getElementById(id).textContent=G.wins);
+  ['sb-d'].forEach(id=>document.getElementById(id).textContent=G.day);
+  document.getElementById('hud-r').textContent=G.totalRaces;
+}
+
+// ═══════════════════════════════════════
+//  HUB
+// ═══════════════════════════════════════
+function renderHub(){
+  document.getElementById('hub-career').innerHTML=[['Wins',G.wins],['Races',G.totalRaces],['Win Rate',G.totalRaces>0?Math.round(G.wins/G.totalRaces*100)+'%':'0%'],['Earnings','£'+G.totalEarnings.toLocaleString()],['Bank','£'+G.money.toLocaleString()]].map(([k,v])=>`<div class="qs"><span class="qs-k">${k}</span><span class="qs-v">${v}</span></div>`).join('');
+  const sel=G.stable.find(h=>h.id===G.selectedHorse);
+  const jk=getActiveJockey();
+  const best=G.stable.length?G.stable.reduce((a,b)=>hscore(a)>hscore(b)?a:b):null;
+  document.getElementById('hub-stable').innerHTML=G.stable.length===0
+    ?`<p style="color:var(--text-d);font-style:italic;font-size:0.82rem;">Your stable is empty.</p><br><button class="btn btn-n btn-sm" onclick="go('shop')">Browse Market</button>`
+    :[['Horses',G.stable.length],['Selected',sel?.name||'—'],['Jockey',jk?.name||'—'],['Best Horse',best?.name||'—']].map(([k,v])=>`<div class="qs"><span class="qs-k">${k}</span><span class="qs-v" style="font-size:0.88rem;letter-spacing:0.01em;">${v}</span></div>`).join('');
+  document.getElementById('hub-news').innerHTML=G.news.slice(-5).reverse().map(n=>`<div class="ni2"><div class="ni2-t">${n.text}</div><div class="ni2-d">${n.date}</div></div>`).join('');
+}
+
+function getActiveJockey(){
+  if(G.useMyJockey)return{...G.myJockey,id:'mj',bonus:{type:'spi',val:5}};
+  return PRO_JOCKEYS.find(j=>j.id===G.selectedJockey)||null;
+}
+
+// ═══════════════════════════════════════
+//  STABLES
+// ═══════════════════════════════════════
+function hscore(h){return(h.spd+h.sta+h.spi)/3;}
+function scol(v){return v>=80?'#39ff85':v>=60?'#f0b52a':v>=40?'#c07020':'#c04040';}
+
+function renderStables(){
+  document.getElementById('scount').textContent=G.stable.length;
+  const el=document.getElementById('stables-grid');
+  if(!G.stable.length){el.innerHTML=`<div class="empty" style="grid-column:1/-1;"><div class="empty-ic">🐴</div><h3>Empty Stable</h3><p>Visit the market to find your champion.</p><br><button class="btn btn-n" onclick="go('shop')">Browse Market</button></div>`;return;}
+  el.innerHTML=G.stable.map(h=>{
+    const br=BREEDS[h.breed],sel=G.selectedHorse===h.id;
+    return `<div class="hcard ${sel?'sel':''}" onclick="selHorse('${h.id}')">
+      ${sel?'<div class="sbadge">SELECTED</div>':''}
+      <div class="hcard-h">
+        <div class="hava" style="background:${br.col}22;border-color:${br.col}55;color:${br.col};">${br.emoji}</div>
+        <div>
+          <div class="hname">${h.name}</div>
+          <div class="btag">${br.name}</div>
+          <div class="hrec">Age ${h.age} · <em>${h.wins}W</em>/${h.races}R</div>
+        </div>
+      </div>
+      <div class="hstats">
+        ${[['Speed',h.spd],['Stamina',h.sta],['Spirit',h.spi]].map(([l,v])=>`<div class="sr"><div class="sl">${l}</div><div class="sb"><div class="sf2" style="width:${v}%;background:${scol(v)};"></div></div><div class="sv">${v}</div></div>`).join('')}
+      </div>
+      <div class="hfoot">
+        <button class="btn btn-o btn-sm" onclick="event.stopPropagation();openTrain('${h.id}')">⚡ Train</button>
+        <button class="btn btn-n btn-sm" onclick="event.stopPropagation();selHorse('${h.id}');go('race')">🏁 Race</button>
+        <button class="btn btn-r btn-sm" onclick="event.stopPropagation();sellHorse('${h.id}')">Sell</button>
+      </div>
     </div>`;
+  }).join('');
 }
 
-function answerQ(i) {
-  const q = shuffled[quizQ];
-  const opts = document.querySelectorAll('.q-opt');
-  opts.forEach(o => o.disabled = true);
-  const fb = document.getElementById('qFeedback');
-  if (i === q.ans) {
-    score++;
-    opts[i].classList.add('correct');
-    fb.className = 'q-feedback show correct-fb';
-    fb.innerHTML = `✅ <strong>Correct!</strong> ${q.exp}`;
-  } else {
-    opts[i].classList.add('wrong');
-    opts[q.ans].classList.add('correct');
-    fb.className = 'q-feedback show wrong-fb';
-    fb.innerHTML = `❌ <strong>Incorrect.</strong> ${q.exp}`;
-  }
-  document.getElementById('nextBtn').classList.add('show');
+function selHorse(id){G.selectedHorse=id;save();renderStables();updateEntry();toast(G.stable.find(h=>h.id===id)?.name+' selected.');}
+function sellHorse(id){
+  const h=G.stable.find(h=>h.id===id);if(!h)return;
+  const val=Math.round(hscore(h)*14+h.wins*60);
+  if(!confirm(`Sell ${h.name} for £${val.toLocaleString()}?`))return;
+  G.stable=G.stable.filter(h=>h.id!==id);
+  if(G.selectedHorse===id)G.selectedHorse=null;
+  G.money+=val;save();updateHeader();renderStables();toast(`${h.name} sold for £${val.toLocaleString()}.`);
 }
 
-function nextQuestion() {
-  quizQ++;
-  if (quizQ >= shuffled.length) {
-    showResults();
-  } else {
-    renderQuestion();
-  }
+// ═══════════════════════════════════════
+//  TRAINING (escalating costs)
+// ═══════════════════════════════════════
+const TRAIN_BASE=[
+  {name:'Sprint Drills',stat:'spd',g:[3,7],baseCost:120,icon:'⚡',desc:'Short bursts — improves top speed.',all:false},
+  {name:'Long Gallop',stat:'sta',g:[3,7],baseCost:120,icon:'🫁',desc:'Extended runs — builds endurance.',all:false},
+  {name:'Spirit Work',stat:'spi',g:[3,7],baseCost:120,icon:'🔥',desc:'Groundwork — ignites competitive drive.',all:false},
+  {name:'Intensive Camp',stat:'spd',g:[6,13],baseCost:340,icon:'💪',desc:'Full week of elite coaching.',all:false},
+  {name:'Elite Programme',stat:null,g:[4,9],baseCost:580,icon:'🏅',desc:'All-round conditioning — every stat grows.',all:true},
+];
+
+function trainCost(h,t){
+  const lvls=h.trainLevels||{spd:0,sta:0,spi:0,all:0};
+  const lvl=t.all?(lvls.all||0):(lvls[t.stat]||0);
+  return Math.round(t.baseCost*(1+lvl*0.55));
 }
 
-function showResults() {
-  document.getElementById('quizBody').innerHTML = '';
-  const pct = (score / shuffled.length) * 100;
-  const msgs = { 90: "Outstanding! 🌟 Exam ready.", 70: "Great work! 💪 Almost there.", 50: "Good effort. 📚 Keep reviewing.", 0: "Keep studying! You've got this. 🌱" };
-  let msg = msgs[0];
-  for (const [k, v] of Object.entries(msgs)) { if (pct >= k) msg = v; }
-  document.getElementById('resultScore').textContent = score;
-  document.getElementById('resultMsg').textContent = msg;
-  document.getElementById('quizResults').classList.add('show');
+function openTrain(id){
+  const h=G.stable.find(h=>h.id===id);if(!h)return;
+  document.getElementById('mod-h').textContent=`Train ${h.name}`;
+  document.getElementById('mod-sub').textContent=`Bank: £${G.money.toLocaleString()} · Costs rise with each upgrade`;
+  document.getElementById('mod-body').innerHTML=TRAIN_BASE.map((t,i)=>{
+    const cost=trainCost(h,t);
+    const lvls=h.trainLevels||{spd:0,sta:0,spi:0,all:0};
+    const lvl=t.all?(lvls.all||0):(lvls[t.stat]||0);
+    return `<div class="topt" onclick="doTrain('${id}',${i})">
+      <div><div class="topt-name">${t.icon} ${t.name} <span style="font-size:0.65rem;color:var(--text-d);">Lv.${lvl}</span></div><div class="topt-desc">${t.desc}</div></div>
+      <div><div class="tcost">£${cost.toLocaleString()}</div><div class="tgain">${t.all?'+4–9 all':'+'+t.g[0]+'–'+t.g[1]+' '+(t.stat==='spd'?'speed':t.stat==='sta'?'stamina':'spirit')}</div></div>
+    </div>`;
+  }).join('');
+  document.getElementById('mod-ov').classList.add('show');
+}
+function doTrain(id,idx){
+  const t=TRAIN_BASE[idx];const h=G.stable.find(h=>h.id===id);
+  const cost=trainCost(h,t);
+  if(G.money<cost){toast('Insufficient funds!');return;}
+  G.money-=cost;
+  if(!h.trainLevels)h.trainLevels={spd:0,sta:0,spi:0,all:0};
+  const g=rand(t.g[0],t.g[1]);
+  if(t.all){h.spd=clamp(h.spd+g,0,99);h.sta=clamp(h.sta+g,0,99);h.spi=clamp(h.spi+g,0,99);h.trainLevels.all=(h.trainLevels.all||0)+1;}
+  else{h[t.stat]=clamp(h[t.stat]+g,0,99);h.trainLevels[t.stat]=(h.trainLevels[t.stat]||0)+1;}
+  G.news.push({text:`${h.name}: ${t.name} complete (+${g}).`,date:`Day ${G.day}`});
+  save();updateHeader();closeMod();renderStables();
+  toast(`${h.name} +${g} ${t.all?'all stats':t.stat}!`);
+}
+function closeMod(){document.getElementById('mod-ov').classList.remove('show');}
+
+// ═══════════════════════════════════════
+//  SHOP
+// ═══════════════════════════════════════
+function renderShop(){
+  document.getElementById('shop-grid').innerHTML=MARKET.map((h,i)=>{
+    const br=BREEDS[h.breed],owned=G.stable.some(s=>s.name===h._origName||s._origName===h.name);
+    return `<div class="hcard">
+      <div class="hcard-h">
+        <div class="hava" style="background:${br.col}22;border-color:${br.col}55;color:${br.col};width:42px;height:42px;font-size:1.3rem;">${br.emoji}</div>
+        <div>
+          <div class="hname">${h.name}</div>
+          <div class="btag">${br.name} · Age ${h.age}</div>
+        </div>
+      </div>
+      <p style="font-size:0.7rem;color:var(--text-d);font-style:italic;padding:0 0.85rem;margin-bottom:0.5rem;">${br.desc}</p>
+      <div class="hstats">
+        ${[['Speed',h.spd],['Stamina',h.sta],['Spirit',h.spi]].map(([l,v])=>`<div class="sr"><div class="sl">${l}</div><div class="sb"><div class="sf2" style="width:${v}%;background:${scol(v)};"></div></div><div class="sv">${v}</div></div>`).join('')}
+      </div>
+      <div class="hfoot">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--gold);">£${h.price.toLocaleString()}</span>
+        <button class="btn btn-n btn-sm" style="margin-left:auto;" ${owned||G.stable.length>=8?'disabled':''} onclick="promptBuyHorse(${i})">${owned?'Owned':G.stable.length>=8?'Full':'Buy'}</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+function promptBuyHorse(idx){
+  const h=MARKET[idx];
+  document.getElementById('mod-h').textContent=`Name Your Horse`;
+  document.getElementById('mod-sub').textContent=`You're buying ${h.name}. Give them a name:`;
+  document.getElementById('mod-body').innerHTML=`
+    <div class="input-row"><label>Horse Name (leave blank to keep "${h.name}")</label><input id="buy-name-inp" type="text" placeholder="${h.name}" maxlength="24"></div>
+    <div style="margin-bottom:0.75rem;">
+      <div style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-d);margin-bottom:0.35rem;">Coat Colour</div>
+      <div id="coat-swatches">${COAT_COLS.map((c,ci)=>`<span class="color-swatch ${ci===0?'picked':''}" style="background:${c};" onclick="pickCoat(${ci},this)" title="${COAT_NAMES[ci]}"></span>`).join('')}</div>
+    </div>
+    <button class="btn btn-n" style="width:100%;margin-bottom:0.5rem;" onclick="confirmBuyHorse(${idx})">Purchase — £${h.price.toLocaleString()}</button>`;
+  window._buyCoatIdx=0;
+  document.getElementById('mod-ov').classList.add('show');
+}
+function pickCoat(ci,el){
+  window._buyCoatIdx=ci;
+  document.querySelectorAll('#coat-swatches .color-swatch').forEach(s=>s.classList.remove('picked'));
+  el.classList.add('picked');
+}
+function confirmBuyHorse(idx){
+  const h=MARKET[idx];
+  if(G.money<h.price){toast('Insufficient funds!');return;}
+  if(G.stable.length>=8){toast('Stable full!');return;}
+  const nameInp=document.getElementById('buy-name-inp');
+  const nm=(nameInp?.value.trim())||h.name;
+  const coatCol=COAT_COLS[window._buyCoatIdx||0];
+  G.money-=h.price;
+  const nh={id:'h'+Date.now(),name:nm,_origName:h.name,breed:h.breed,spd:h.spd,sta:h.sta,spi:h.spi,age:h.age,wins:0,races:0,form:h.form.slice(),coatCol,trainLevels:{spd:0,sta:0,spi:0,all:0}};
+  G.stable.push(nh);
+  if(!G.selectedHorse)G.selectedHorse=nh.id;
+  G.news.push({text:`${nm} stabled. (${BREEDS[h.breed].name})`,date:`Day ${G.day}`});
+  save();updateHeader();closeMod();toast(`${nm} joins your stable!`);go('stables');
 }
 
-function restartQuiz() {
-  document.getElementById('quizResults').classList.remove('show');
-  document.getElementById('quizStart').style.display = 'block';
-}
-
-// ─── GLOSSARY ───
-function renderGlossary() {
-  const grid = document.getElementById('glossGrid');
-  grid.innerHTML = glossaryData.map(g => `
-    <div class="gloss-card" data-term="${g.term.toLowerCase()} ${g.def.toLowerCase()}">
-      <div class="gloss-term">${g.term}</div>
-      <span class="gloss-category">${g.cat}</span>
-      <div class="gloss-def">${g.def}</div>
+// ═══════════════════════════════════════
+//  JOCKEYS
+// ═══════════════════════════════════════
+function bnsLabel(b){return{spd:`+${b.val}% Speed`,sta:`+${b.val}% Stamina`,lck:`±${b.val}% Luck`,con:`Variance −${b.val}%`,spi:`+${b.val}% Spirit`,tac:`+${b.val}% Final Burst`}[b.type]||'—';}
+function renderJockeys(){
+  const myJKey='mj_own';
+  document.getElementById('jockeys-grid').innerHTML=`
+    <div class="jcard ${G.useMyJockey?'sel':''}" onclick="pickJockey('${myJKey}')">
+      <div class="java" style="background:#1a3a1a;">${G.myJockey.pri?`<svg width='40' height='40'><ellipse cx='20' cy='22' rx='12' ry='16' fill='${G.myJockey.pri}'/><circle cx='20' cy='8' r='8' fill='${G.myJockey.helm}'/></svg>`:''}</div>
+      <div>
+        <div class="jname">${G.myJockey.name||'My Jockey'}</div>
+        <div class="jstyle">Your Custom Jockey</div>
+        <div class="jdesc">Your own silks, your own style. Minor spirit bonus.</div>
+        <div class="jbns">▶ +5% Spirit</div>
+        <div class="jrec">Custom · Personalised silks ${G.useMyJockey?'<span style="color:var(--neon)">✓ SELECTED</span>':''}</div>
+      </div>
+    </div>
+  `+PRO_JOCKEYS.map(j=>`
+    <div class="jcard ${!G.useMyJockey&&G.selectedJockey===j.id?'sel':''}" onclick="pickJockey('${j.id}')">
+      <div class="java" style="background:${j.pri}22;">${j.emoji}</div>
+      <div>
+        <div class="jname">${j.name}</div>
+        <div class="jstyle">${j.style}</div>
+        <div class="jdesc">${j.desc}</div>
+        <div class="jbns">▶ ${bnsLabel(j.bonus)}</div>
+        <div class="jrec">📊 ${j.record} ${!G.useMyJockey&&G.selectedJockey===j.id?'· <span style="color:var(--neon)">✓ SELECTED</span>':''}</div>
+      </div>
     </div>`).join('');
 }
+function pickJockey(id){
+  if(id==='mj_own'){G.useMyJockey=true;toast(`${G.myJockey.name||'My Jockey'} selected.`);}
+  else{G.useMyJockey=false;G.selectedJockey=id;toast(PRO_JOCKEYS.find(j=>j.id===id)?.name+' selected.');}
+  save();renderJockeys();updateEntry();
+}
 
-function filterGlossary() {
-  const val = document.getElementById('glossSearch').value.toLowerCase();
-  document.querySelectorAll('.gloss-card').forEach(c => {
-    c.classList.toggle('hidden', !c.dataset.term.includes(val));
+// ═══════════════════════════════════════
+//  MY JOCKEY
+// ═══════════════════════════════════════
+function renderMyJockey(){
+  document.getElementById('mj-name').value=G.myJockey.name||'';
+  const mkSwatches=(id,cols,picked,onclick)=>`${cols.map((c,i)=>`<span class="color-swatch ${c===picked?'picked':''}" style="background:${c};" onclick="${onclick}(${i},this)"></span>`).join('')}`;
+  document.getElementById('mj-pri-swatches').innerHTML=mkSwatches('pri',SILK_COLS,G.myJockey.pri,'pickMjPri');
+  document.getElementById('mj-sec-swatches').innerHTML=mkSwatches('sec',SILK_COLS,G.myJockey.sec,'pickMjSec');
+  document.getElementById('mj-helm-swatches').innerHTML=mkSwatches('helm',HELM_COLS,G.myJockey.helm,'pickMjHelm');
+  document.getElementById('mj-patterns').innerHTML=PATTERNS.map(p=>`<span class="pattern-opt ${G.myJockey.pat===p?'picked':''}" onclick="pickMjPat('${p}',this)">${p}</span>`).join('');
+  updateJockeyPreview();
+  document.getElementById('mj-preview-name').textContent=G.myJockey.name||'Your Jockey';
+}
+function pickMjPri(i,el){G.myJockey.pri=SILK_COLS[i];document.querySelectorAll('#mj-pri-swatches .color-swatch').forEach(s=>s.classList.remove('picked'));el.classList.add('picked');updateJockeyPreview();}
+function pickMjSec(i,el){G.myJockey.sec=SILK_COLS[i];document.querySelectorAll('#mj-sec-swatches .color-swatch').forEach(s=>s.classList.remove('picked'));el.classList.add('picked');updateJockeyPreview();}
+function pickMjHelm(i,el){G.myJockey.helm=HELM_COLS[i];document.querySelectorAll('#mj-helm-swatches .color-swatch').forEach(s=>s.classList.remove('picked'));el.classList.add('picked');updateJockeyPreview();}
+function pickMjPat(p,el){G.myJockey.pat=p;document.querySelectorAll('.pattern-opt').forEach(s=>s.classList.remove('picked'));el.classList.add('picked');updateJockeyPreview();}
+function saveMyJockey(){
+  const nm=document.getElementById('mj-name').value.trim();
+  if(nm)G.myJockey.name=nm;
+  document.getElementById('mj-preview-name').textContent=G.myJockey.name||'Your Jockey';
+  save();toast('Jockey saved!');
+}
+
+function updateJockeyPreview(){
+  const canvas=document.getElementById('jockey-preview');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  ctx.clearRect(0,0,280,320);
+  ctx.fillStyle='#0a140a';ctx.fillRect(0,0,280,320);
+  const jc={primary:G.myJockey.pri,secondary:G.myJockey.sec,helmetColor:G.myJockey.helm,pattern:G.myJockey.pat};
+  // Draw horse underneath
+  drawHorse(ctx,140,260,0.35,G.myJockey.coatPreview||'#8B4513',jc,1.8);
+}
+
+// ═══════════════════════════════════════
+//  RACE SETUP
+// ═══════════════════════════════════════
+function renderRaceSetup(){
+  document.getElementById('race-list').innerHTML=RACES.map(r=>`
+    <div class="ropt d${r.diff} ${G.selectedRace===r.id?'srace':''}" onclick="pickRace('${r.id}')">
+      <div class="ropt-name">${r.name}</div>
+      <div class="rtags">
+        <span class="rtag rtag-d">📏 ${r.dist}m</span>
+        <span class="rtag rtag-p">💰 £${r.prize.toLocaleString()}</span>
+        <span class="rtag rtag-f">🐎 ${r.field}</span>
+        <span class="rtag rtag-t">⛅ ${r.going}</span>
+      </div>
+      <div class="ropt-diff">${r.label}</div>
+      <div class="ropt-desc">${r.desc}</div>
+    </div>`).join('');
+  updateEntry();
+}
+function pickRace(id){G.selectedRace=id;save();renderRaceSetup();}
+
+function updateEntry(){
+  const horse=G.stable.find(h=>h.id===G.selectedHorse);
+  const jockey=getActiveJockey();
+  const race=RACES.find(r=>r.id===G.selectedRace);
+  const slH=document.getElementById('esl-h'),slJ=document.getElementById('esl-j'),slR=document.getElementById('esl-r');
+  if(!slH)return;
+  if(horse){const br=BREEDS[horse.breed];slH.className='eslot ok';slH.innerHTML=`<span class="eslot-ic">${br.emoji}</span><div class="eslot-in"><h4>${horse.name}</h4><p>${br.name} · ${horse.wins}W/${horse.races}R</p></div><button class="btn btn-o btn-sm" onclick="go('stables')">Change</button>`;}
+  else{slH.className='eslot';slH.innerHTML=`<span class="eslot-ic">🐴</span><div class="eslot-in"><div class="eslot-em">No horse selected</div></div>`;}
+  if(jockey){slJ.className='eslot ok';slJ.innerHTML=`<span class="eslot-ic">${G.useMyJockey?'🎨':'🏇'}</span><div class="eslot-in"><h4>${jockey.name}</h4><p>${bnsLabel(jockey.bonus)}</p></div><button class="btn btn-o btn-sm" onclick="go('jockeys')">Change</button>`;}
+  else{slJ.className='eslot';slJ.innerHTML=`<span class="eslot-ic">🏇</span><div class="eslot-in"><div class="eslot-em">No jockey selected</div></div>`;}
+  if(race){slR.className='eslot ok';slR.innerHTML=`<span class="eslot-ic">🏁</span><div class="eslot-in"><h4>${race.name}</h4><p>${race.dist}m · £${race.prize.toLocaleString()}</p></div>`;}
+  else{slR.className='eslot';slR.innerHTML=`<span class="eslot-ic">🏁</span><div class="eslot-in"><div class="eslot-em">No race selected</div></div>`;}
+  const btn=document.getElementById('view-rc-btn');
+  const err=document.getElementById('entry-err');
+  if(btn)btn.disabled=!(horse&&jockey&&race);
+  if(err)err.textContent=!horse?'Select a horse.':!race?'Select a race.':'';
+}
+
+// ═══════════════════════════════════════
+//  ODDS CALCULATION
+// ═══════════════════════════════════════
+const FRACS=[[1,6],[1,5],[2,7],[1,4],[2,6],[1,3],[2,5],[4,9],[1,2],[8,13],[4,7],[8,11],[4,6],[5,7],[10,11],[1,1],[11,10],[6,5],[5,4],[13,10],[7,5],[6,4],[7,4],[2,1],[9,4],[5,2],[11,4],[3,1],[10,3],[7,2],[4,1],[9,2],[5,1],[6,1],[7,1],[8,1],[10,1],[12,1],[14,1],[16,1],[20,1],[25,1],[33,1],[50,1]];
+function toFrac(dec){const p=dec-1;let best=FRACS[0],bd=Infinity;FRACS.forEach(([n,d])=>{const diff=Math.abs(n/d-p);if(diff<bd){bd=diff;best=[n,d];}});return `${best[0]}/${best[1]}`;}
+function fracToDecimal(f){const[n,d]=f.split('/').map(Number);return(n/d)+1;}
+function oddsClass(odds){const[n,d]=odds.split('/').map(Number);const v=n/d;return v<=1?'o-f':v<=4?'o-m':'o-l';}
+function calcOdds(runners){
+  const rats=runners.map(r=>{const base=r.spd*0.42+r.sta*0.34+r.spi*0.24;return base*(0.80+Math.random()*0.40);});
+  const tot=rats.reduce((s,r)=>s+r,0);
+  return rats.map(r=>toFrac(1/((r/tot)*0.90)));
+}
+
+// ═══════════════════════════════════════
+//  RACE CARD
+// ═══════════════════════════════════════
+let rcField=[];
+
+function openRaceCard(){
+  const horse=G.stable.find(h=>h.id===G.selectedHorse);
+  const jockey=getActiveJockey();
+  const race=RACES.find(r=>r.id===G.selectedRace);
+  if(!horse||!jockey||!race)return;
+
+  // Build field
+  const breedArr=Object.keys(BREEDS);
+  const used=new Set([horse.name]);
+  rcField=[];
+  const aiJkeys=['R. Donovan','P. Walsh','C. Hughes','A. Murphy','S. Fogarty','M. Kinane','K. Manning','F. Dettori','J. Murtagh','O. Peslier','L. Dettori','C. Soumillon'];
+  const silkCols=['#e74c3c','#3498db','#f39c12','#2ecc71','#9b59b6','#1abc9c','#e67e22','#e91e63','#cccc10','#20c0e0'];
+
+  // My horse first
+  rcField.push({name:horse.name,breed:horse.breed,spd:horse.spd,sta:horse.sta,spi:horse.spi,jName:jockey.name,jBonus:jockey.bonus,isPlayer:true,form:horse.form||[1,2,3,4],age:horse.age,coatCol:horse.coatCol||BREEDS[horse.breed].col,jColors:{primary:G.useMyJockey?G.myJockey.pri:jockey.pri,secondary:G.useMyJockey?G.myJockey.sec:jockey.sec,helmetColor:G.useMyJockey?G.myJockey.helm:jockey.helm,pattern:G.useMyJockey?G.myJockey.pat:jockey.pat}});
+
+  for(let i=1;i<race.field;i++){
+    const base=38+race.diff*7+rand(0,22);
+    const brKey=breedArr[rand(0,breedArr.length-1)];
+    const br=BREEDS[brKey];
+    let nm;do{nm=AI_NAMES[rand(0,AI_NAMES.length-1)];}while(used.has(nm));used.add(nm);
+    const coatCi=rand(0,COAT_COLS.length-1);
+    rcField.push({name:nm,breed:brKey,spd:clamp(base+br.sM+rand(-5,8),28,95),sta:clamp(base+br.taM+rand(-5,8),22,95),spi:clamp(base+br.piM+rand(-5,8),22,95),jName:aiJkeys[i%aiJkeys.length],jBonus:null,isPlayer:false,form:[rand(1,6),rand(1,6),rand(1,5),rand(1,4)],age:rand(3,7),coatCol:COAT_COLS[coatCi],jColors:{primary:silkCols[i%silkCols.length],secondary:'#f0f0f0',helmetColor:silkCols[i%silkCols.length],pattern:PATTERNS[rand(0,PATTERNS.length-1)]}});
+  }
+  // Shuffle and assign draws
+  const others=rcField.slice(1);shuffle(others);rcField=[rcField[0],...others];
+  const draws=Array.from({length:race.field},(_,i)=>i+1);shuffle(draws);
+  rcField.forEach((r,i)=>{r.draw=draws[i];r.silkCol=silkCols[i%silkCols.length];});
+  rcField.sort((a,b)=>a.draw-b.draw);
+  const odds=calcOdds(rcField);
+  rcField.forEach((r,i)=>r.odds=odds[i]);
+
+  // RC header
+  document.getElementById('rc-head').innerHTML=`
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.75rem;">
+      <div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:0.07em;color:var(--cream);">${race.name}</div>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.3rem;">
+          <span class="rtag rtag-d">📏 ${race.dist}m</span>
+          <span class="rtag rtag-p">💰 £${race.prize.toLocaleString()}</span>
+          <span class="rtag rtag-t">⛅ ${race.going}</span>
+          <span class="rtag rtag-f">🏷 ${race.label}</span>
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-size:0.6rem;letter-spacing:0.13em;text-transform:uppercase;color:var(--text-d);">Your Entry</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--neon);">${horse.name}</div>
+        <div style="font-size:0.72rem;color:var(--text-d);">${jockey.name}</div>
+        <div style="font-size:0.72rem;color:var(--gold);margin-top:0.15rem;">Odds: ${rcField.find(r=>r.isPlayer)?.odds||'—'}</div>
+      </div>
+    </div>`;
+
+  // Runners table
+  document.getElementById('rc-runners').innerHTML=rcField.map(r=>`
+    <tr class="${r.isPlayer?'myr':''}">
+      <td><div class="rnum" style="background:${r.silkCol}22;border:2px solid ${r.silkCol};color:${r.silkCol};">${r.draw}</div></td>
+      <td>
+        <div class="rhn">${r.name}${r.isPlayer?'<span class="mybadge">YOU</span>':''}</div>
+        <div class="rbreed">${BREEDS[r.breed].name} · Age ${r.age}</div>
+      </td>
+      <td><div style="font-size:0.8rem;">${r.jName}</div></td>
+      <td><span style="font-family:'Rajdhani',sans-serif;letter-spacing:0.04em;">${r.form.map(p=>`<span class="${p===1?'form-w':p<=3?'form-p':'form-l'}">${p===1?'W':p<=3?p:p}</span>`).join('-')}</span></td>
+      <td><div style="display:flex;gap:0.2rem;">${[['S',r.spd],['T',r.sta],['P',r.spi]].map(([l,v])=>`<span style="font-size:0.6rem;color:${scol(v)};">${l}:${v}</span>`).join(' ')}</div></td>
+      <td><span class="ochip ${oddsClass(r.odds)}">${r.odds}</span></td>
+    </tr>`).join('');
+
+  buildBettingUI(race);
+  go('racecard');
+}
+
+// ═══════════════════════════════════════
+//  BETTING SYSTEM
+// ═══════════════════════════════════════
+placedBets=[];
+const BET_TYPES=[
+  {id:'win',label:'Win',desc:'Pick the winner.',minSel:1,maxSel:1,selLabels:['Winner']},
+  {id:'place',label:'Place',desc:'Finish top 3.',minSel:1,maxSel:1,selLabels:['Horse']},
+  {id:'eachway',label:'Each Way',desc:'Win + Place combined.',minSel:1,maxSel:1,selLabels:['Horse']},
+  {id:'exacta',label:'Exacta',desc:'1st and 2nd in exact order.',minSel:2,maxSel:2,selLabels:['1st','2nd']},
+  {id:'quinella',label:'Quinella',desc:'1st and 2nd, any order.',minSel:2,maxSel:2,selLabels:['Horse A','Horse B']},
+  {id:'trifecta',label:'Trifecta',desc:'1st, 2nd, 3rd in order.',minSel:3,maxSel:3,selLabels:['1st','2nd','3rd']},
+  {id:'trifbox',label:'Trifecta Box',desc:'Any 3 horses finish 1-2-3 (×6 stake).',minSel:3,maxSel:3,selLabels:['Horse A','Horse B','Horse C']},
+];
+
+let betSelections={};
+let betStake=10;
+let activeBetType='win';
+
+function buildBettingUI(race){
+  placedBets=[];
+  betSelections={};
+  betStake=10;
+  activeBetType='win';
+
+  document.getElementById('bet-tabs').innerHTML=BET_TYPES.map(b=>`<div class="bet-tab ${b.id===activeBetType?'active':''}" id="btab-${b.id}" onclick="switchBetType('${b.id}')">${b.label}</div>`).join('');
+  renderBetPanel();
+  renderBetSlip();
+}
+
+function switchBetType(id){
+  activeBetType=id;
+  betSelections={};
+  document.querySelectorAll('.bet-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(`btab-${id}`)?.classList.add('active');
+  renderBetPanel();
+}
+
+function renderBetPanel(){
+  const bt=BET_TYPES.find(b=>b.id===activeBetType);
+  if(!bt)return;
+  const isOrdered=(['exacta','trifecta'].includes(activeBetType));
+  const container=document.getElementById('bet-panels');
+  let html=`<div class="bet-panel active">
+    <div style="font-size:0.75rem;color:var(--text-d);font-style:italic;margin-bottom:0.75rem;">${bt.desc}</div>`;
+
+  if(isOrdered){
+    bt.selLabels.forEach((lbl,i)=>{
+      html+=`<div class="bet-sel-row">
+        <div class="bet-label">${lbl}</div>
+        <div>`;
+      rcField.forEach(r=>{
+        const picked=betSelections[i]===r.name;
+        html+=`<button class="horse-pick-btn picked-${['1st','2nd','3rd'][i]} ${picked?'picked-'+['1st','2nd','3rd'][i]:''}" onclick="selectBetHorse(${i},'${r.name}')" style="${picked?'':'opacity:0.55;'}">${r.draw}. ${r.name} <span style="font-size:0.6rem;color:var(--text-d);">${r.odds}</span></button>`;
+      });
+      html+='</div></div>';
+    });
+  } else {
+    html+=`<div class="bet-sel-row"><div class="bet-label">${bt.maxSel>1?`Select ${bt.minSel} horses`:'Select horse'}</div><div>`;
+    rcField.forEach(r=>{
+      const picked=Object.values(betSelections).includes(r.name);
+      html+=`<button class="horse-pick-btn ${picked?'picked':''}" onclick="toggleBetHorse('${r.name}')">${r.draw}. ${r.name} <span style="font-size:0.6rem;color:var(--text-d);">${r.odds}</span></button>`;
+    });
+    html+='</div></div>';
+  }
+
+  html+=`<div class="stake-row">
+    <label>Stake £</label>
+    <input type="number" class="stake-input" id="bet-stake" value="${betStake}" min="1" max="${G.money}" onchange="betStake=Math.max(1,parseInt(this.value)||1);renderPayoutPreview()">
+    <div style="display:flex;gap:0.3rem;">
+      ${[5,10,25,50].map(v=>`<button class="btn btn-o btn-sm" onclick="setBetStake(${v})">£${v}</button>`).join('')}
+    </div>
+  </div>
+  <div class="payout-preview" id="payout-preview">—</div>
+  <button class="btn btn-g" style="margin-top:0.65rem;" onclick="addBet()">+ Add to Bet Slip</button>
+  </div>`;
+  container.innerHTML=html;
+  renderPayoutPreview();
+}
+
+function selectBetHorse(pos,name){
+  betSelections[pos]=name;
+  renderBetPanel();
+}
+function toggleBetHorse(name){
+  const bt=BET_TYPES.find(b=>b.id===activeBetType);
+  const vals=Object.values(betSelections);
+  if(vals.includes(name)){
+    const k=Object.keys(betSelections).find(k=>betSelections[k]===name);
+    delete betSelections[k];
+  } else {
+    if(vals.length>=bt.maxSel){const firstKey=Object.keys(betSelections)[0];delete betSelections[firstKey];}
+    betSelections[Object.keys(betSelections).length]=name;
+  }
+  renderBetPanel();
+}
+function setBetStake(v){betStake=v;const inp=document.getElementById('bet-stake');if(inp)inp.value=v;renderPayoutPreview();}
+
+function getPayoutInfo(){
+  const bt=BET_TYPES.find(b=>b.id===activeBetType);
+  const sels=Object.values(betSelections);
+  if(sels.length<bt.minSel)return null;
+  const odds=sels.map(nm=>{const r=rcField.find(r=>r.name===nm);return r?fracToDecimal(r.odds):2;});
+  let est=0;
+  switch(activeBetType){
+    case 'win': est=betStake*odds[0];break;
+    case 'place': est=betStake*((odds[0]-1)/4+1);break;
+    case 'eachway': est=betStake*odds[0]+betStake*((odds[0]-1)/4+1);break;
+    case 'exacta': est=betStake*(odds[0]*odds[1]*0.65);break;
+    case 'quinella': est=betStake*(odds[0]*odds[1]*0.52);break;
+    case 'trifecta': est=betStake*(odds[0]*odds[1]*odds[2]*0.40);break;
+    case 'trifbox': est=betStake*6*(odds[0]*odds[1]*odds[2]*0.40)/6;break;
+  }
+  const totalStake=activeBetType==='eachway'?betStake*2:activeBetType==='trifbox'?betStake*6:betStake;
+  return{est:Math.round(est*100)/100,totalStake,sels};
+}
+
+function renderPayoutPreview(){
+  const el=document.getElementById('payout-preview');if(!el)return;
+  const info=getPayoutInfo();
+  if(!info){el.textContent='Select runner(s) to see estimated payout.';return;}
+  const bt=BET_TYPES.find(b=>b.id===activeBetType);
+  el.innerHTML=`Stake: <em>£${info.totalStake.toLocaleString()}</em> · Est. return if successful: <em>£${info.est.toLocaleString()}</em>`;
+}
+
+function addBet(){
+  const info=getPayoutInfo();
+  if(!info){toast('Make all selections first.');return;}
+  if(G.money<info.totalStake){toast('Insufficient funds!');return;}
+  const bt=BET_TYPES.find(b=>b.id===activeBetType);
+  placedBets.push({type:activeBetType,label:bt.label,sels:info.sels,stake:betStake,totalStake:info.totalStake,estReturn:info.est});
+  toast(`${bt.label} bet added to slip!`);
+  renderBetSlip();
+}
+
+function renderBetSlip(){
+  const slip=document.getElementById('bet-slip');
+  const rows=document.getElementById('bet-slip-rows');
+  const total=document.getElementById('total-staked');
+  if(!slip||!rows||!total)return;
+  if(!placedBets.length){slip.style.display='none';return;}
+  slip.style.display='block';
+  rows.innerHTML=placedBets.map((b,i)=>`
+    <div class="bsr">
+      <div><span class="bsr-type">${b.label}</span> <span class="bsr-sel">${b.sels.join(' → ')}</span></div>
+      <div><span class="bsr-st">£${b.totalStake}</span><span class="bsr-del" onclick="removeBet(${i})">✕</span></div>
+    </div>`).join('');
+  const tot=placedBets.reduce((s,b)=>s+b.totalStake,0);
+  total.textContent='£'+tot.toLocaleString();
+}
+function removeBet(i){placedBets.splice(i,1);renderBetSlip();toast('Bet removed.');}
+
+// ═══════════════════════════════════════
+//  COMPUTE BET PAYOUTS
+// ═══════════════════════════════════════
+function computeBetPayouts(sortedFinish){
+  const results=sortedFinish.map(h=>h.name);
+  const placeN=rcField.length>=8?3:rcField.length>=5?2:2;
+  return placedBets.map(b=>{
+    const sels=b.sels;
+    let won=false;
+    const odds=sels.map(nm=>{const r=rcField.find(r=>r.name===nm);return r?fracToDecimal(r.odds):2;});
+    switch(b.type){
+      case 'win': won=results[0]===sels[0];break;
+      case 'place': won=results.slice(0,placeN).includes(sels[0]);break;
+      case 'eachway':
+        const winW=results[0]===sels[0];
+        const placeW=results.slice(0,placeN).includes(sels[0]);
+        if(winW)return{...b,won:true,actual:Math.round((b.stake*odds[0]+b.stake*((odds[0]-1)/4+1))*100)/100};
+        if(placeW)return{...b,won:true,partial:true,actual:Math.round(b.stake*((odds[0]-1)/4+1)*100)/100};
+        return{...b,won:false,actual:0};
+      case 'exacta': won=results[0]===sels[0]&&results[1]===sels[1];break;
+      case 'quinella': won=(results[0]===sels[0]&&results[1]===sels[1])||(results[0]===sels[1]&&results[1]===sels[0]);break;
+      case 'trifecta': won=results[0]===sels[0]&&results[1]===sels[1]&&results[2]===sels[2];break;
+      case 'trifbox': won=sels.includes(results[0])&&sels.includes(results[1])&&sels.includes(results[2]);break;
+    }
+    const actual=won?b.estReturn:0;
+    return{...b,won,actual};
   });
 }
 
-// ─── SUMMARIES ───
-function renderSummaries() {
-  const tabs = document.getElementById('sumTabs');
-  const contents = document.getElementById('sumContents');
-  tabs.innerHTML = summaryData.map((s, i) => `
-    <button class="sum-tab ${i === 0 ? 'active' : ''}" onclick="showSum(${i})">${s.title}</button>`).join('');
-  contents.innerHTML = summaryData.map((s, i) => `
-    <div class="sum-content ${i === 0 ? 'active' : ''}" id="sum-${i}">${s.content}</div>`).join('');
+// ═══════════════════════════════════════
+//  TO START GATES
+// ═══════════════════════════════════════
+function goToStartGates(){
+  // Deduct bets
+  const total=placedBets.reduce((s,b)=>s+b.totalStake,0);
+  if(total>G.money){toast('Not enough funds for all bets!');return;}
+  G.money-=total;save();updateHeader();
+  prepareRace();
 }
 
-function showSum(i) {
-  document.querySelectorAll('.sum-tab').forEach((t, j) => t.classList.toggle('active', j === i));
-  document.querySelectorAll('.sum-content').forEach((c, j) => c.classList.toggle('active', j === i));
+// ═══════════════════════════════════════
+//  CANVAS HORSE DRAWING
+// ═══════════════════════════════════════
+function shadeHex(hex,amt){
+  hex=hex.replace('#','');
+  if(hex.length===3)hex=hex.split('').map(c=>c+c).join('');
+  const r=clamp(parseInt(hex.slice(0,2),16)+amt,0,255);
+  const g=clamp(parseInt(hex.slice(2,4),16)+amt,0,255);
+  const b=clamp(parseInt(hex.slice(4,6),16)+amt,0,255);
+  return`#${r.toString(16).padStart(2,'0')}${g.toString(16).padStart(2,'0')}${b.toString(16).padStart(2,'0')}`;
 }
 
-// ─── TIMELINE ───
-function renderTimeline() {
-  document.getElementById('timelineEl').innerHTML = timelineEvents.map(e => `
-    <div class="tl-item">
-      <div class="tl-year">${e.year}</div>
-      <div class="tl-title">${e.title}</div>
-      <div class="tl-text">${e.text}</div>
-    </div>`).join('');
+function drawHorse(ctx,x,y,phase,coatCol,jColors,scale=1){
+  ctx.save();
+  ctx.translate(x,y);
+  ctx.scale(scale,scale);
+  const t=phase*Math.PI*2;
+  const coat=coatCol||'#8B4513';
+  const dark=shadeHex(coat,-40);
+  const mane=shadeHex(coat,-65);
+  const bob=Math.abs(Math.sin(t*2))*-3;
+  ctx.translate(0,bob);
+
+  // Shadow
+  ctx.beginPath();ctx.ellipse(0,4,38,7,0,0,Math.PI*2);ctx.fillStyle='rgba(0,0,0,0.22)';ctx.fill();
+
+  // ─ FAR LEGS ─
+  drawLeg(ctx,-22,-12,t+Math.PI,coat,dark,false,'front');
+  drawLeg(ctx,20,-10,t+Math.PI*0.85,coat,dark,false,'back');
+
+  // ─ BODY ─
+  // Barrel
+  ctx.beginPath();ctx.ellipse(-2,-30,38,20,-0.04,0,Math.PI*2);ctx.fillStyle=coat;ctx.fill();
+  // Hindquarters
+  ctx.beginPath();ctx.ellipse(24,-33,22,17,0.28,0,Math.PI*2);ctx.fillStyle=coat;ctx.fill();
+  // Shoulder
+  ctx.beginPath();ctx.ellipse(-26,-31,17,19,-0.18,0,Math.PI*2);ctx.fillStyle=coat;ctx.fill();
+  // Belly shading
+  ctx.beginPath();ctx.ellipse(-2,-16,36,9,0,0,Math.PI*2);ctx.fillStyle=shadeHex(coat,-12);ctx.fill();
+
+  // ─ NECK ─
+  ctx.beginPath();
+  ctx.moveTo(-30,-46);ctx.bezierCurveTo(-40,-55,-44,-66,-40,-76);
+  ctx.bezierCurveTo(-38,-82,-32,-80,-30,-74);
+  ctx.bezierCurveTo(-34,-64,-30,-54,-24,-46);
+  ctx.fillStyle=coat;ctx.fill();
+
+  // ─ HEAD ─
+  ctx.beginPath();ctx.ellipse(-43,-79,16,11,-0.38,0,Math.PI*2);ctx.fillStyle=coat;ctx.fill();
+  ctx.beginPath();ctx.ellipse(-54,-77,10,7,0.1,0,Math.PI*2);ctx.fillStyle=shadeHex(coat,-14);ctx.fill();
+  // Eye
+  ctx.beginPath();ctx.arc(-37,-82,3,0,Math.PI*2);ctx.fillStyle='#100800';ctx.fill();
+  ctx.beginPath();ctx.arc(-36,-83,1,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,0.55)';ctx.fill();
+  // Nostril
+  ctx.beginPath();ctx.ellipse(-57,-75,2.5,1.8,0.2,0,Math.PI*2);ctx.fillStyle=dark;ctx.fill();
+  // Ear
+  ctx.save();ctx.translate(-33,-90);ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(4,-9);ctx.lineTo(8,-1);ctx.fillStyle=coat;ctx.fill();ctx.restore();
+
+  // ─ MANE ─
+  for(let i=0;i<7;i++){
+    const mx=-30+i*3.5,my=-87+i*4.5,mw=Math.sin(t+i*0.7)*2;
+    ctx.beginPath();ctx.arc(mx-3+mw,my+2,3.5,0,Math.PI*2);ctx.fillStyle=mane;ctx.fill();
+  }
+
+  // ─ TAIL ─
+  const tw=Math.sin(t)*7;
+  ctx.beginPath();ctx.moveTo(32,-45);ctx.quadraticCurveTo(44,-38+tw,48,-26+tw*1.5);
+  ctx.lineWidth=11;ctx.strokeStyle=mane;ctx.lineCap='round';ctx.stroke();
+  ctx.beginPath();ctx.moveTo(46,-26+tw*1.5);ctx.quadraticCurveTo(52,-14+tw,48,0);
+  ctx.lineWidth=7;ctx.strokeStyle=shadeHex(mane,20);ctx.stroke();
+
+  // ─ NEAR LEGS ─
+  drawLeg(ctx,-24,-12,t,coat,dark,true,'front');
+  drawLeg(ctx,22,-10,t+Math.PI*0.12,coat,dark,true,'back');
+
+  // ─ JOCKEY ─
+  drawJockey(ctx,t,jColors);
+
+  ctx.restore();
 }
 
-// ─── NAVIGATION ───
-function showSection(id) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  const idx = ['topics','flashcards','quiz','glossary','summary','timeline'].indexOf(id);
-  if (idx >= 0) document.querySelectorAll('.nav-tab')[idx].classList.add('active');
-  document.querySelector('.navbar').scrollIntoView({ behavior: 'smooth' });
+function drawLeg(ctx,sx,sy,phase,coat,dark,near,type){
+  const s=Math.sin(phase),c=Math.cos(phase);
+  const sw=near?1:0.72;
+  const uLen=20,lLen=18;
+  let uAngle,lFlex;
+  if(type==='front'){uAngle=s*38;lFlex=Math.max(0,-s)*52;}
+  else{uAngle=s*33;lFlex=Math.max(0,-s)*47;}
+  const lift=Math.max(0,s)*15;
+  const ur=(uAngle)*Math.PI/180;
+  const kx=sx+Math.sin(ur)*uLen,ky=sy+Math.cos(ur)*uLen;
+  const lr=(uAngle-lFlex)*Math.PI/180;
+  const hx=kx+Math.sin(lr)*lLen,hy=ky+Math.cos(lr)*lLen-lift;
+  const legCol=near?coat:dark;
+  const lowerCol=near?shadeHex(coat,-16):shadeHex(dark,-10);
+  // Thigh
+  ctx.beginPath();ctx.moveTo(sx,sy);ctx.lineTo(kx,ky);ctx.lineWidth=near?8*sw:5*sw;ctx.strokeStyle=legCol;ctx.lineCap='round';ctx.stroke();
+  // Shin
+  ctx.beginPath();ctx.moveTo(kx,ky);ctx.lineTo(hx,hy);ctx.lineWidth=near?6*sw:4*sw;ctx.strokeStyle=lowerCol;ctx.stroke();
+  // Fetlock joint
+  ctx.beginPath();ctx.arc(kx,ky,near?3.5*sw:2.5*sw,0,Math.PI*2);ctx.fillStyle=shadeHex(coat,-28);ctx.fill();
+  // Hoof
+  ctx.beginPath();ctx.ellipse(hx,hy+1.5,near?6.5*sw:4.5*sw,near?3.5*sw:2.5*sw,0,0,Math.PI*2);ctx.fillStyle='#160e04';ctx.fill();
 }
 
-// ─── INIT ───
-renderTopics();
-renderCard();
-renderGlossary();
-renderSummaries();
-renderTimeline();
+function drawJockey(ctx,t,jc){
+  if(!jc)return;
+  const bob=Math.abs(Math.sin(t*2))*-2.5;
+  const pri=jc.primary||'#e74c3c',sec=jc.secondary||'#f0f0f0',helm=jc.helmetColor||'#e74c3c',pat=jc.pattern||'plain';
+  ctx.save();ctx.translate(-12,-62+bob);ctx.rotate(-0.52);
+  // Body silks
+  ctx.beginPath();ctx.ellipse(0,0,9,14,0,0,Math.PI*2);ctx.fillStyle=pri;ctx.fill();
+  // Pattern
+  ctx.save();ctx.beginPath();ctx.ellipse(0,0,9,14,0,0,Math.PI*2);ctx.clip();
+  if(pat==='stripes'){for(let s=-14;s<16;s+=4.5){ctx.beginPath();ctx.moveTo(-10,s);ctx.lineTo(10,s);ctx.lineWidth=2.5;ctx.strokeStyle=sec;ctx.stroke();}}
+  else if(pat==='spots'){[[0,-8],[0,0],[0,8]].forEach(([px,py])=>{ctx.beginPath();ctx.arc(px,py,2.8,0,Math.PI*2);ctx.fillStyle=sec;ctx.fill();});}
+  else if(pat==='cross'){ctx.beginPath();ctx.moveTo(-10,0);ctx.lineTo(10,0);ctx.lineWidth=3.5;ctx.strokeStyle=sec;ctx.stroke();ctx.beginPath();ctx.moveTo(0,-14);ctx.lineTo(0,14);ctx.stroke();}
+  else if(pat==='chevron'){ctx.beginPath();ctx.moveTo(-10,-5);ctx.lineTo(0,4);ctx.lineTo(10,-5);ctx.lineWidth=3.5;ctx.strokeStyle=sec;ctx.stroke();ctx.beginPath();ctx.moveTo(-10,4);ctx.lineTo(0,13);ctx.lineTo(10,4);ctx.stroke();}
+  ctx.restore();
+  // Arms
+  const armSw=Math.sin(t)*5;
+  ctx.beginPath();ctx.moveTo(-7,-5);ctx.lineTo(-15,4+armSw);ctx.lineWidth=5;ctx.strokeStyle=pri;ctx.lineCap='round';ctx.stroke();
+  ctx.beginPath();ctx.moveTo(5,-5);ctx.lineTo(12,2-armSw*0.5);ctx.lineWidth=5;ctx.strokeStyle=pri;ctx.stroke();
+  // Helmet
+  ctx.beginPath();ctx.arc(0,-15,8.5,Math.PI,0);ctx.fillStyle=helm;ctx.fill();
+  ctx.beginPath();ctx.rect(-9.5,-16,19,4);ctx.fillStyle=shadeHex(helm,-35);ctx.fill();
+  // Visor/goggles
+  ctx.beginPath();ctx.ellipse(0,-14,7,4,0,0,Math.PI);ctx.fillStyle='rgba(0,150,255,0.35)';ctx.fill();
+  ctx.beginPath();ctx.ellipse(0,-14,7,4,0,0,Math.PI);ctx.strokeStyle='rgba(255,255,255,0.5)';ctx.lineWidth=1;ctx.stroke();
+  // Face
+  ctx.beginPath();ctx.arc(0,-11,5.5,0,Math.PI*2);ctx.fillStyle='#f0c888';ctx.fill();
+  // Whip
+  const wAng=Math.sin(t*2)*22;
+  ctx.save();ctx.translate(8,-6);ctx.rotate((35+wAng)*Math.PI/180);
+  ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(0,24);ctx.lineWidth=1.8;ctx.strokeStyle='#5a3010';ctx.stroke();
+  ctx.restore();
+  ctx.restore();
+}
+
+// ═══════════════════════════════════════
+//  BACKGROUND DRAWING
+// ═══════════════════════════════════════
+function drawBg(ctx,W,H,cx){
+  // Sky
+  const sky=ctx.createLinearGradient(0,0,0,H*0.45);
+  sky.addColorStop(0,'#0a1820');sky.addColorStop(0.6,'#1a3018');sky.addColorStop(1,'#1e4018');
+  ctx.fillStyle=sky;ctx.fillRect(0,0,W,H*0.45);
+
+  // Distant crowd/stands (parallax)
+  const standOff=(cx*0.08)%200;
+  ctx.fillStyle='#0d1a0d';
+  for(let i=-standOff;i<W+200;i+=12){
+    const h=30+Math.sin(i*0.18)*12+Math.cos(i*0.07)*8;
+    ctx.fillRect(i,H*0.45-h,10,h);
+  }
+  // Stand windows
+  ctx.fillStyle='rgba(240,200,80,0.3)';
+  for(let i=0;i<W;i+=12){if(Math.random()>0.7)ctx.fillRect(i+2,H*0.45-28+rand(0,18),5,6);}
+
+  // Back straight (far track, smaller)
+  const grad1=ctx.createLinearGradient(0,H*0.44,0,H*0.54);
+  grad1.addColorStop(0,'#2a5418');grad1.addColorStop(1,'#1e4012');
+  ctx.fillStyle=grad1;ctx.fillRect(0,H*0.44,W,H*0.1);
+  // Track marking
+  ctx.strokeStyle='rgba(255,255,255,0.08)';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(0,H*0.47);ctx.lineTo(W,H*0.47);ctx.stroke();
+
+  // Track band
+  const trackTop=H*0.54;const trackH=H*0.36;
+  const tg=ctx.createLinearGradient(0,trackTop,0,trackTop+trackH);
+  tg.addColorStop(0,'#2e6018');tg.addColorStop(0.3,'#366820');tg.addColorStop(0.7,'#2e6018');tg.addColorStop(1,'#1e4010');
+  ctx.fillStyle=tg;ctx.fillRect(0,trackTop,W,trackH);
+
+  // Track lanes (subtle)
+  for(let i=0;i<8;i++){
+    const ty=trackTop+12+i*(trackH/9);
+    ctx.strokeStyle='rgba(255,255,255,0.04)';ctx.lineWidth=1;
+    ctx.setLineDash([16,22]);
+    ctx.beginPath();ctx.moveTo(0,ty);ctx.lineTo(W,ty);ctx.stroke();
+  }
+  ctx.setLineDash([]);
+
+  // Rails
+  ctx.fillStyle='rgba(255,255,255,0.85)';ctx.fillRect(0,trackTop,W,3);
+  ctx.fillRect(0,trackTop+trackH-3,W,3);
+
+  // Foreground grass
+  const fg=ctx.createLinearGradient(0,trackTop+trackH,0,H);
+  fg.addColorStop(0,'#1a3c10');fg.addColorStop(1,'#0d1e08');
+  ctx.fillStyle=fg;ctx.fillRect(0,trackTop+trackH,W,H-(trackTop+trackH));
+  ctx.fillStyle='rgba(255,255,255,0.7)';ctx.fillRect(0,trackTop+trackH,W,2);
+
+  // Finish line
+  const finX=RACE_LEN-cameraX-60;
+  if(finX>0&&finX<W){
+    const finTop=trackTop;const finH=trackH;
+    for(let k=0;k<12;k++){
+      const kw=finH/12;
+      ctx.fillStyle=k%2===0?'rgba(255,255,255,0.9)':'rgba(0,0,0,0.6)';
+      ctx.fillRect(finX-2,finTop+k*kw,8,kw);
+    }
+    ctx.fillStyle='rgba(255,255,255,0.5)';ctx.font='bold 11px sans-serif';ctx.textAlign='center';
+    ctx.fillText('FINISH',finX+2,finTop-6);
+  }
+}
+
+// ═══════════════════════════════════════
+//  RACE PREPARATION
+// ═══════════════════════════════════════
+function prepareRace(){
+  const horse=G.stable.find(h=>h.id===G.selectedHorse);
+  const jockey=getActiveJockey();
+  const race=RACES.find(r=>r.id===G.selectedRace);
+  if(!horse||!jockey||!race)return;
+  raceContext={race,jockey,horse};
+
+  // Build RF from rcField (already computed in openRaceCard)
+  const applyB=(stat,type,jb)=>{
+    if(!jb)return stat;
+    if(jb.type==='spd'&&type==='spd')return Math.min(99,stat*(1+jb.val/100));
+    if(jb.type==='sta'&&type==='sta')return Math.min(99,stat*(1+jb.val/100));
+    if(jb.type==='spi'&&type==='spi')return Math.min(99,stat*(1+jb.val/100));
+    if(jb.type==='tac'&&type==='spi')return Math.min(99,stat*1.12);
+    return stat;
+  };
+  RF=rcField.map((r,i)=>({
+    ...r,
+    effSpd:applyB(r.spd,'spd',r.jBonus),
+    effSta:applyB(r.sta,'sta',r.jBonus),
+    effSpi:applyB(r.spi,'spi',r.jBonus),
+    _luck:r.isPlayer&&jockey.bonus?.type==='lck'?(Math.random()*2-1)*(jockey.bonus.val/100):r.isPlayer&&jockey.bonus?.type==='con'?(Math.random()*2-1)*0.02:(Math.random()*2-1)*0.11,
+    fat:0,finishStep:null,worldX:0,lane:i,
+  }));
+  RP=RF.map(()=>0);
+  cameraX=0;comIdx=0;raceActive=false;
+
+  // Setup canvas
+  const W=Math.min(860,window.innerWidth-240);
+  const H=380;
+  const canvas=document.getElementById('track-canvas');
+  canvas.width=W;canvas.height=H;
+
+  document.getElementById('rct-title').textContent=race.name;
+  document.getElementById('rct-sub').textContent=`${race.dist}m · £${race.prize.toLocaleString()} · ${race.field} runners · Going: ${race.going}`;
+  document.getElementById('r-badge').textContent='READY';
+  document.getElementById('r-badge').className='rbadge ready';
+  document.getElementById('pbar-fill').style.width='0%';
+  document.getElementById('com-txt').textContent='The runners are loading into the stalls. A hush falls over the crowd...';
+  document.getElementById('go-btn').disabled=false;
+
+  // Draw static initial frame
+  const ctx=canvas.getContext('2d');
+  drawBg(ctx,W,H,0);
+  const trackTop=H*0.54,trackH=H*0.36;
+  RF.forEach((h,i)=>{
+    const ly=trackTop+24+i*((trackH-48)/Math.max(RF.length-1,1));
+    const lscale=0.72+0.28*(i/(Math.max(RF.length-1,1)));
+    drawHorse(ctx,60,ly,0,h.coatCol,h.jColors,lscale);
+    h._baseY=ly;h._baseScale=lscale;
+  });
+
+  go('racetrack');
+}
+
+// ═══════════════════════════════════════
+//  RACE SIMULATION
+// ═══════════════════════════════════════
+function runRace(){
+  if(raceActive)return;
+  raceActive=true;
+  document.getElementById('go-btn').disabled=true;
+  document.getElementById('go-btn').style.display='none';
+  document.getElementById('r-badge').textContent='RACING';
+  document.getElementById('r-badge').className='rbadge racing';
+
+  const canvas=document.getElementById('track-canvas');
+  const W=canvas.width,H=canvas.height;
+  const ctx=canvas.getContext('2d');
+  const {race,jockey}=raceContext;
+  const trackTop=H*0.54,trackH=H*0.36;
+  const comAt=[0,0.28,0.55,0.78,0.92];
+  let step=0;
+  let finished=0;
+  let prevTime=null;
+
+  function frame(ts){
+    if(prevTime===null)prevTime=ts;
+    const dt=Math.min((ts-prevTime)/16.67,3);
+    prevTime=ts;
+    step++;
+
+    // Speed per horse
+    const SPEED=0.048;
+    RF.forEach((h,i)=>{
+      if(h.finishStep!==null)return;
+      const prog=h.worldX/RACE_LEN;
+      h.fat+=((100-h.effSta)/100)*0.00065*dt;
+      const fatPen=Math.max(0,(prog-0.32)*h.fat*0.65);
+      let spd=SPEED*(h.effSpd/78)*(1-fatPen);
+      if(prog>0.78)spd+=SPEED*(h.effSpi/100)*0.22;
+      if(h.isPlayer&&jockey.bonus?.type==='tac'&&prog>0.75)spd*=1.18;
+      spd*=(0.87+Math.random()*0.26+h._luck);
+      h.worldX=Math.min(RACE_LEN,h.worldX+Math.max(0,spd)*RACE_LEN*dt/280);
+      if(h.worldX>=RACE_LEN&&h.finishStep===null){h.finishStep=step;finished++;}
+    });
+
+    // Camera follows leader
+    const leader=Math.max(...RF.map(h=>h.worldX));
+    const targetCam=Math.max(0,leader-W*0.38);
+    cameraX+=(targetCam-cameraX)*0.06*dt;
+
+    // Progress bar
+    document.getElementById('pbar-fill').style.width=Math.min(100,leader/RACE_LEN*100)+'%';
+
+    // Commentary
+    const myH=RF.find(h=>h.isPlayer);
+    const myProg=myH?myH.worldX/RACE_LEN:0;
+    if(comIdx<comAt.length&&myProg>=comAt[comIdx]){doCommentary(comIdx,jockey);comIdx++;}
+
+    // Position board
+    const sorted=[...RF].sort((a,b)=>b.worldX-a.worldX);
+    document.getElementById('pos-board').innerHTML=sorted.map((h,i)=>`<div class="pos-chip ${h.isPlayer?'myh':''}"><span class="pos-n">${i+1}</span><span class="pos-name" style="color:${h.isPlayer?'var(--neon)':'var(--text)'};">${h.name.split(' ')[0]}</span></div>`).join('');
+
+    // Draw
+    ctx.clearRect(0,0,W,H);
+    drawBg(ctx,W,H,cameraX);
+
+    // Sort by worldX descending for draw order (leaders at front = higher z)
+    const drawOrder=[...RF].sort((a,b)=>a.worldX-b.worldX);
+    const gallPhase=ts/500;
+
+    drawOrder.forEach(h=>{
+      const screenX=h.worldX-cameraX;
+      if(screenX<-120||screenX>W+120)return;
+      const laneNorm=h.lane/(Math.max(RF.length-1,1));
+      const ly=trackTop+20+(laneNorm*(trackH-42));
+      const lscale=0.68+0.32*laneNorm;
+      const phase=gallPhase*(0.9+h.effSpd/200)+(h.lane*0.4);
+      if(h.finishStep===null||h.worldX<RACE_LEN-50){
+        drawHorse(ctx,screenX,ly,phase,h.coatCol,h.jColors,lscale);
+      } else {
+        drawHorse(ctx,screenX,ly,0,h.coatCol,h.jColors,lscale);
+      }
+    });
+
+    if(finished>=RF.length||step>8000){
+      raceActive=false;
+      RF.forEach(h=>{if(h.finishStep===null)h.finishStep=step+rand(1,60);});
+      setTimeout(()=>finishRace(),700);
+    } else {
+      rafId=requestAnimationFrame(frame);
+    }
+  }
+  rafId=requestAnimationFrame(frame);
+}
+
+function doCommentary(idx,jockey){
+  const myH=RF.find(h=>h.isPlayer);
+  const sorted=[...RF].sort((a,b)=>b.worldX-a.worldX);
+  const rank=sorted.findIndex(h=>h.isPlayer)+1;
+  const prog=myH?myH.worldX/RACE_LEN:0;
+  let pool;
+  if(idx===0)pool=COMS.start;
+  else if(prog>0.88)pool=COMS.final;
+  else if(rank===1)pool=COMS.lead;
+  else if(rank<=3)pool=COMS.mid;
+  else if(rank>RF.length-2)pool=COMS.behind;
+  else pool=COMS.chasing;
+  const txt=pool[rand(0,pool.length-1)].replace(/{h}/g,myH?.name||'').replace(/{j}/g,jockey?.name||'');
+  document.getElementById('com-txt').textContent=txt;
+}
+
+// ═══════════════════════════════════════
+//  FINISH
+// ═══════════════════════════════════════
+function finishRace(){
+  document.getElementById('r-badge').textContent='FINISHED';
+  document.getElementById('r-badge').className='rbadge fin';
+  const sorted=[...RF].sort((a,b)=>(a.finishStep??99999)-(b.finishStep??99999));
+  const myPos=sorted.findIndex(h=>h.isPlayer)+1;
+  const race=raceContext.race,jockey=raceContext.jockey,horse=raceContext.horse;
+  const prizes=[race.prize,Math.floor(race.prize*0.38),Math.floor(race.prize*0.14),0];
+  const myPrize=prizes[Math.min(myPos-1,3)];
+
+  // Update state
+  const h=G.stable.find(h=>h.id===G.selectedHorse);
+  if(h){h.races++;if(myPos===1)h.wins++;h.form=[myPos,...(h.form||[]).slice(0,3)];}
+  G.totalRaces++;G.money+=myPrize;G.totalEarnings+=myPrize;G.day++;
+  if(myPos===1){G.wins++;G.fameBoard.push({horse:horse.name,race:race.name,jockey:jockey.name,prize:myPrize,day:G.day-1});}
+  G.news.push({text:`${horse.name} finished ${ord(myPos)} in ${race.name}.${myPrize>0?' Earned £'+myPrize.toLocaleString()+'.':''}`,date:`Day ${G.day-1}`});
+
+  // Bet payouts
+  const betResults=computeBetPayouts(sorted);
+  const betWins=betResults.reduce((s,b)=>s+(b.actual||0),0);
+  G.money+=betWins;G.totalEarnings+=betWins;
+
+  save();updateHeader();
+
+  // Results UI
+  const icons=['🏆','🥈','🥉','💨'],lbls=['1ST','2ND','3RD',ord(myPos)],cls=['rp1','rp2','rp3','rpx'];
+  const ci=Math.min(myPos-1,3);
+  document.getElementById('r-crown').textContent=icons[ci];
+  document.getElementById('r-place').textContent=lbls[ci];
+  document.getElementById('r-place').className=cls[ci];
+  document.getElementById('r-plbl').textContent=`FINISHED ${lbls[ci]} OF ${sorted.length}`;
+  document.getElementById('r-horse').textContent=horse.name;
+  document.getElementById('r-jock').textContent=`Ridden by ${jockey.name}`;
+  document.getElementById('r-prize').textContent=myPrize>0?`+£${myPrize.toLocaleString()}`: 'No prize money';
+  const fb=document.getElementById('r-finish-board'),rrows=document.getElementById('r-rows');
+  fb.style.display='block';rrows.innerHTML=sorted.map((hh,i)=>`<div class="rrow" style="${hh.isPlayer?'color:var(--neon);':''}"><div class="rrow-p">${i+1}</div><div class="rrow-n">${hh.name}${hh.isPlayer?' ⭐':''}</div><div class="rrow-pr">${prizes[Math.min(i,3)]>0?'£'+prizes[Math.min(i,3)].toLocaleString():'—'}</div></div>`).join('');
+  const bb=document.getElementById('r-bet-board'),brows=document.getElementById('r-bets');
+  if(betResults.length){
+    bb.style.display='block';
+    const betTotIn=placedBets.reduce((s,b)=>s+b.totalStake,0);
+    brows.innerHTML=betResults.map(b=>`
+      <div class="bet-result-row">
+        <div><span class="bet-res-type">${b.label}</span> <span style="font-size:0.78rem;color:var(--text-d);">${b.sels.join(' → ')}</span></div>
+        <div class="bet-res-out ${b.won?'bet-res-win':'bet-res-lose'}">${b.won?(b.partial?'+£'+b.actual+' (place)':'+£'+b.actual):'−£'+b.totalStake}</div>
+      </div>`).join('')+`<div class="bet-result-row" style="margin-top:0.3rem;padding-top:0.4rem;border-top:1px solid var(--border);"><div style="font-size:0.72rem;color:var(--text-d);">Total wagered: £${betTotIn} · Net from bets:</div><div class="bet-res-out ${betWins>=betTotIn?'bet-res-win':'bet-res-lose'}" style="font-size:1.1rem;">${betWins>=betTotIn?'+':'−'}£${Math.abs(betWins-betTotIn)}</div></div>`;
+  } else {bb.style.display='none';}
+
+  setTimeout(()=>document.getElementById('res-ov').classList.add('show'),500);
+}
+function closeResults(){document.getElementById('res-ov').classList.remove('show');placedBets=[];go('hub');}
+
+// ═══════════════════════════════════════
+//  FAME
+// ═══════════════════════════════════════
+function renderFame(){
+  const el=document.getElementById('fame-list');
+  if(!G.fameBoard.length){el.innerHTML=`<div class="empty"><div class="empty-ic">🏆</div><h3>No Victories Yet</h3><p>Win your first race and join the legend.</p></div>`;return;}
+  el.innerHTML=G.fameBoard.slice().reverse().map((f,i)=>`<div class="fentry"><div class="fpos">${G.fameBoard.length-i}</div><div><div class="fhorse">${f.horse}</div><div class="finfo">🏁 ${f.race} · 🏇 ${f.jockey} · Day ${f.day}</div></div><div class="fprize">£${f.prize.toLocaleString()}</div></div>`).join('');
+}
+
+// ═══════════════════════════════════════
+//  UTILS
+// ═══════════════════════════════════════
+function rand(a,b){return Math.floor(Math.random()*(b-a+1))+a;}
+function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+function ord(n){const s=['th','st','nd','rd'],v=n%100;return n+(s[(v-20)%10]||s[v]||s[0]);}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2800);}
+
+// ═══════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════
+updateHeader();
+renderHub();
 </script>
 </body>
 </html>

@@ -243,91 +243,46 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;b
 .pos-chip.myh{border-color:var(--neon-d);}.pos-chip.myh .pos-name{color:var(--neon);}
 
 /* RESULTS */
-#res-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:500;align-items:center;justify-content:center;}
+@keyframes pop{from{transform:scale(0.82) translateY(24px);opacity:0;}to{transform:scale(1) translateY(0);opacity:1;}}
+#res-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:500;align-items:center;justify-content:center;padding:1rem;overflow-y:auto;}
 #res-ov.show{display:flex;}
-#res-box{background:var(--panel2);border:1px solid var(--neon);border-radius:3px;padding:2.25rem;max-width:520px;width:92%;text-align:center;box-shadow:0 0 50px var(--neon-g),0 0 100px rgba(0,0,0,0.6);animation:pop 0.35s cubic-bezier(0.34,1.56,0.64,1);}
-@keyframes pop{from{transform:scale(0.8);opacity:0;}to{transform:scale(1);opacity:1;}}
-#r-crown{font-size:2.5rem;margin-bottom:0.25rem;}
-#r-plbl{font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-d);margin-bottom:0.2rem;}
-#r-place{font-family:'Bebas Neue',sans-serif;font-size:4rem;line-height:1;margin-bottom:0.65rem;}
-.rp1{color:var(--neon);text-shadow:0 0 18px var(--neon-g);}
-.rp2{color:#c8c8c8;}.rp3{color:#cd7f32;}.rpx{color:var(--text-d);}
-#r-horse{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;color:var(--cream);letter-spacing:0.05em;}
-#r-jock{font-size:0.82rem;color:var(--text-d);font-style:italic;margin-bottom:0.85rem;}
-#r-prize{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--gold);margin-bottom:0.85rem;}
-.res-section{background:var(--bg2);border:1px solid var(--border);border-radius:1px;padding:0.75rem;margin-bottom:0.75rem;text-align:left;}
-.res-section-t{font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-d);margin-bottom:0.5rem;}
-.rrow{display:flex;gap:0.6rem;padding:0.3rem 0;border-bottom:1px solid var(--border);font-size:0.82rem;align-items:baseline;}
-.rrow:last-child{border-bottom:none;}
-.rrow-p{width:26px;font-weight:700;font-family:'Bebas Neue',sans-serif;font-size:0.95rem;}
-.rrow-n{flex:1;}
-.rrow-pr{color:var(--text-d);font-size:0.75rem;}
-.bet-result-row{display:flex;justify-content:space-between;align-items:baseline;padding:0.3rem 0;border-bottom:1px solid var(--border);font-size:0.82rem;}
-.bet-result-row:last-child{border-bottom:none;}
-.bet-res-type{color:var(--gold);font-size:0.68rem;font-weight:700;text-transform:uppercase;}
-.bet-res-out{font-family:'Bebas Neue',sans-serif;font-size:1rem;}
-.bet-res-win{color:var(--neon);}
-.bet-res-lose{color:var(--red);}
-
-/* MODAL */
-#mod-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.78);z-index:400;align-items:center;justify-content:center;}
-#mod-ov.show{display:flex;}
-#mod-box{background:var(--panel2);border:1px solid var(--border2);border-radius:2px;padding:1.6rem;max-width:420px;width:92%;animation:pop 0.22s ease;}
-#mod-box h2{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.07em;color:var(--cream);margin-bottom:0.25rem;}
-#mod-sub{font-size:0.75rem;color:var(--text-d);font-style:italic;margin-bottom:1.1rem;}
-.topt{background:var(--panel);border:1px solid var(--border);border-radius:1px;padding:0.75rem;margin-bottom:0.45rem;cursor:pointer;transition:all 0.12s;display:flex;justify-content:space-between;align-items:center;}
-.topt:hover{border-color:var(--neon-d);}
-.topt-name{font-size:0.9rem;color:var(--cream);font-weight:700;margin-bottom:0.12rem;}
-.topt-desc{font-size:0.72rem;color:var(--text-d);font-style:italic;}
-.tcost{color:var(--gold);font-weight:700;text-align:right;}
-.tgain{font-size:0.68rem;color:var(--neon);margin-top:0.08rem;text-align:right;}
-.input-row{margin-bottom:0.85rem;}
-.input-row label{display:block;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-d);margin-bottom:0.3rem;}
-.input-row input{width:100%;background:var(--bg2);border:1px solid var(--border2);color:var(--cream);font-family:'Bebas Neue',sans-serif;font-size:1.1rem;padding:0.45rem 0.65rem;border-radius:1px;letter-spacing:0.04em;}
-.input-row input:focus{outline:none;border-color:var(--neon);}
-
-/* FAME */
-.fentry{display:flex;align-items:center;gap:1.1rem;padding:0.85rem 1rem;background:var(--panel);border:1px solid var(--border);border-radius:2px;margin-bottom:0.4rem;}
-.fpos{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--neon);width:38px;text-align:center;}
-.fhorse{font-family:'Bebas Neue',sans-serif;font-size:1rem;color:var(--cream);letter-spacing:0.04em;}
-.finfo{font-size:0.7rem;color:var(--text-d);}
-.fprize{margin-left:auto;font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--gold);}
-
-/* EMPTY */
-.empty{text-align:center;padding:3rem 2rem;color:var(--text-d);}
-.empty-ic{font-size:2.5rem;margin-bottom:0.65rem;}
-.empty h3{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--text);letter-spacing:0.06em;margin-bottom:0.35rem;}
-.empty p{font-size:0.82rem;font-style:italic;}
-
-/* TOAST */
-#toast{position:fixed;bottom:1.25rem;left:50%;transform:translateX(-50%) translateY(70px);background:var(--panel2);border:1px solid var(--neon);color:var(--neon);padding:0.55rem 1.3rem;border-radius:1px;font-size:0.85rem;font-style:italic;z-index:600;transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1);pointer-events:none;white-space:nowrap;box-shadow:0 0 18px var(--neon-g);}
-#toast.show{transform:translateX(-50%) translateY(0);}
-
-/* SPLASH + ACCOUNT */
-#splash-ov{position:fixed;inset:0;z-index:2000;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#020704;transition:opacity 0.8s ease;}
-#splash-ov.fade-out{opacity:0;pointer-events:none;}
-#splash-logo{text-align:center;animation:splashIn 1s cubic-bezier(0.34,1.3,0.64,1) both;}
-@keyframes splashIn{from{opacity:0;transform:scale(0.7) translateY(30px);}to{opacity:1;transform:scale(1) translateY(0);}}
-#splash-logo h1{font-family:'Bebas Neue',sans-serif;font-size:5rem;color:var(--neon);letter-spacing:0.12em;text-shadow:0 0 60px var(--neon-g),0 0 120px rgba(57,255,133,0.08);line-height:0.9;}
-#splash-logo .tagline{font-size:0.75rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--text-d);margin-top:0.6rem;}
-#splash-logo .made-by{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--gold);letter-spacing:0.25em;margin-top:1.5rem;text-shadow:0 0 20px var(--gold-g);}
-.splash-bar{width:220px;height:2px;background:var(--border);border-radius:1px;margin:2rem auto 0;overflow:hidden;}
-.splash-bar-fill{height:100%;background:linear-gradient(90deg,var(--neon-d),var(--neon));border-radius:1px;animation:loadBar 2.8s ease forwards;}
-@keyframes loadBar{from{width:0%;}to{width:100%;}}
-
-#acct-ov{position:fixed;inset:0;z-index:1900;display:none;align-items:center;justify-content:center;background:rgba(2,7,4,0.97);backdrop-filter:blur(4px);}
-#acct-ov.show{display:flex;}
-#acct-box{text-align:center;max-width:440px;width:92%;animation:pop 0.4s cubic-bezier(0.34,1.3,0.64,1);}
-#acct-box h2{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--neon);letter-spacing:0.1em;text-shadow:0 0 30px var(--neon-g);margin-bottom:0.3rem;}
-#acct-box p{font-size:0.82rem;color:var(--text-d);font-style:italic;margin-bottom:2rem;}
-.acct-field{margin-bottom:1rem;text-align:left;}
-.acct-field label{display:block;font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-d);margin-bottom:0.4rem;}
-.acct-field input{width:100%;background:var(--bg2);border:1px solid var(--border2);color:var(--cream);font-family:'Bebas Neue',sans-serif;font-size:1.3rem;padding:0.65rem 1rem;border-radius:2px;letter-spacing:0.06em;transition:border-color 0.15s;}
-.acct-field input:focus{outline:none;border-color:var(--neon);box-shadow:0 0 16px var(--neon-g);}
-.acct-field input.err{border-color:var(--red);}
-#acct-err{font-size:0.75rem;color:var(--red);min-height:1.2em;margin-top:-0.5rem;margin-bottom:0.75rem;font-style:italic;}
-#acct-box .betrich-tag{font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-m);margin-top:1.5rem;}
-
+#res-board{background:var(--panel2);border:1px solid var(--border2);border-radius:4px;width:100%;max-width:880px;animation:pop 0.38s cubic-bezier(0.34,1.4,0.64,1);overflow:hidden;box-shadow:0 0 60px rgba(57,255,133,0.08),0 24px 80px rgba(0,0,0,0.7);}
+#res-header{background:linear-gradient(135deg,#050b05,#0d1a0d);border-bottom:1px solid var(--border2);padding:1.1rem 1.5rem;display:flex;align-items:center;gap:1rem;}
+#res-header h2{font-family:'Bebas Neue',sans-serif;font-size:1.9rem;letter-spacing:0.1em;color:var(--cream);margin:0;}
+.res-race-lbl{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-d);}
+.res-body{display:grid;grid-template-columns:1fr 290px;}
+.res-left{overflow:hidden;}
+.res-right{border-left:1px solid var(--border2);padding:1rem;}
+.res-table{width:100%;border-collapse:collapse;}
+.res-table thead tr{background:#080f08;border-bottom:2px solid var(--border2);}
+.res-table th{padding:0.45rem 0.8rem;font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-d);text-align:left;font-weight:700;}
+.res-table th:last-child{text-align:right;}
+.res-tr{border-bottom:1px solid var(--border);}
+.res-tr:last-child{border-bottom:none;}
+.res-tr.my-horse{background:rgba(57,255,133,0.04);}
+.res-tr td{padding:0.55rem 0.8rem;font-size:0.8rem;vertical-align:middle;}
+.res-pos-badge{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:2px solid;}
+.p1{color:#f0b52a;border-color:#f0b52a;background:rgba(240,181,42,0.12);}
+.p2{color:#c8c8d0;border-color:#909098;background:rgba(180,180,192,0.1);}
+.p3{color:#cd8040;border-color:#9a5828;background:rgba(180,100,50,0.1);}
+.px{color:var(--text-d);border-color:var(--border2);background:transparent;}
+.res-horse-name{font-weight:700;color:var(--cream);font-size:0.88rem;}
+.res-horse-name.winner{color:var(--neon);}
+.res-jock-lbl{font-size:0.65rem;color:var(--text-d);margin-top:1px;}
+.res-prize-cell{text-align:right;font-family:'Bebas Neue',sans-serif;font-size:1.05rem;color:var(--gold);}
+.res-prize-cell.zero{color:var(--text-m);font-size:0.75rem;font-family:inherit;}
+.rp1{color:var(--neon);}.rp2{color:#c8c8c8;}.rp3{color:#cd7f32;}.rpx{color:var(--text-d);}
+.res-panel-t{font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-d);margin-bottom:0.55rem;padding-bottom:0.3rem;border-bottom:1px solid var(--border);}
+.bet-res-row{padding:0.45rem 0;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:0.1rem;}
+.bet-res-row:last-of-type{border-bottom:none;}
+.bet-res-type{font-size:0.67rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;}
+.bet-res-sel{font-size:0.68rem;color:var(--text-d);}
+.bet-res-out{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;}
+.bet-res-win{color:var(--neon);}.bet-res-lose{color:var(--red);}
+.res-sum-row{display:flex;justify-content:space-between;align-items:baseline;padding:0.35rem 0;border-top:1px solid var(--border);margin-top:0.3rem;}
+.res-sum-k{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-d);}
+.res-sum-v{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;}
+.res-footer{padding:0.9rem 1.5rem;border-top:1px solid var(--border2);display:flex;gap:0.65rem;justify-content:flex-end;background:#080f08;}
 /* CAMERA BAR */
 #cam-bar{display:flex;gap:0.3rem;flex-wrap:wrap;margin-bottom:0.6rem;padding:0.5rem 0.6rem;background:var(--bg2);border:1px solid var(--border);border-radius:2px;align-items:center;}
 .cam-lbl{font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-d);margin-right:0.25rem;}
@@ -675,16 +630,45 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;b
 
 <!-- RESULTS -->
 <div id="res-ov">
-  <div id="res-box">
-    <div id="r-crown">🏆</div>
-    <div id="r-plbl">FINISHING POSITION</div>
-    <div id="r-place" class="rp1">1ST</div>
-    <div id="r-horse">—</div>
-    <div id="r-jock">—</div>
-    <div id="r-prize">—</div>
-    <div id="r-finish-board" class="res-section" style="display:none;"><div class="res-section-t">Final Result</div><div id="r-rows"></div></div>
-    <div id="r-bet-board" class="res-section" style="display:none;"><div class="res-section-t">Bet Results</div><div id="r-bets"></div></div>
-    <button class="btn btn-n btn-lg" onclick="closeResults()">Continue →</button>
+  <div id="res-board">
+    <div id="res-header">
+      <div>
+        <div class="res-race-lbl" id="res-race-lbl">Race Results</div>
+        <h2 id="res-race-name">—</h2>
+      </div>
+      <div style="margin-left:auto;text-align:right;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:2.8rem;line-height:1;" id="res-place-big">—</div>
+        <div class="res-race-lbl" id="res-place-lbl">YOUR RESULT</div>
+      </div>
+    </div>
+    <div class="res-body">
+      <div class="res-left">
+        <table class="res-table">
+          <thead><tr>
+            <th style="width:50px;">Pos</th>
+            <th>Horse</th>
+            <th>Jockey</th>
+            <th style="text-align:right;">Prize</th>
+          </tr></thead>
+          <tbody id="res-tbody"></tbody>
+        </table>
+      </div>
+      <div class="res-right">
+        <div class="res-panel-t">Your Bets</div>
+        <div id="res-bets-panel">
+          <div style="color:var(--text-d);font-style:italic;font-size:0.78rem;">No bets placed.</div>
+        </div>
+        <div id="res-bet-summary"></div>
+        <div style="margin-top:1.25rem;">
+          <div class="res-panel-t">Race Purse</div>
+          <div id="res-purse-rows"></div>
+        </div>
+      </div>
+    </div>
+    <div class="res-footer">
+      <button class="btn btn-o" onclick="closeResults()">← Back to Hub</button>
+      <button class="btn btn-n btn-lg" onclick="closeResults();go('race')">Enter Next Race →</button>
+    </div>
   </div>
 </div>
 
@@ -1622,174 +1606,487 @@ function shadeHex(hex,amt){
   return`#${r.toString(16).padStart(2,'0')}${g.toString(16).padStart(2,'0')}${b.toString(16).padStart(2,'0')}`;
 }
 
-function drawDetailedLeg(ctx,sx,sy,uPhase,kPhase,coat,dark,hoofCol,w,isFore){
-  const uLen=isFore?22:20,lLen=isFore?20:19;
-  const uAng=uPhase*(isFore?38:33);
-  const lFlex=Math.max(0,-uPhase)*(isFore?55:48);
-  const lift=Math.max(0,uPhase)*14;
-  const ur=uAng*Math.PI/180;
-  const kx=sx+Math.sin(ur)*uLen,ky=sy+Math.cos(ur)*uLen;
-  const lr=(uAng-lFlex)*Math.PI/180;
-  const hx=kx+Math.sin(lr)*lLen,hy=ky+Math.cos(lr)*lLen-lift;
-  ctx.lineWidth=7*w;ctx.strokeStyle=coat;ctx.lineCap='round';
-  ctx.beginPath();ctx.moveTo(sx,sy);ctx.lineTo(kx,ky);ctx.stroke();
-  ctx.lineWidth=5.5*w;ctx.strokeStyle=dark;
-  ctx.beginPath();ctx.moveTo(kx,ky);ctx.lineTo(hx,hy);ctx.stroke();
-  ctx.beginPath();ctx.arc(kx,ky,3.5*w,0,Math.PI*2);ctx.fillStyle=shadeHex(coat,-30);ctx.fill();
-  ctx.beginPath();ctx.arc(hx,hy-2,2.5*w,0,Math.PI*2);ctx.fillStyle=dark;ctx.fill();
-  ctx.beginPath();ctx.ellipse(hx,hy+2,7.5*w,4*w,0,0,Math.PI*2);ctx.fillStyle='#1a0e06';ctx.fill();
-  ctx.beginPath();ctx.ellipse(hx,hy+1,7.5*w,4*w,0,Math.PI,Math.PI*2);ctx.fillStyle='rgba(255,255,255,0.12)';ctx.fill();
+// ── Muybridge 8-phase gallop keyframes ──
+// Based on Eadweard Muybridge's 1878 motion study
+// Each frame: [NearFront_angle, NearFront_flex, NearHind_angle, NearHind_flex,
+//              FarFront_angle,  FarFront_flex,  FarHind_angle,  FarHind_flex]
+// Angles in degrees: 0=vertical, +forward, -backward
+// Flex = knee/hock bend amount (degrees)
+// ═══════════════════════════════════════════════════════════════
+//  HORSE ANIMATION — Foot-Position IK Approach
+//  Based on Muybridge's motion studies. Each leg's hoof traces
+//  an oval path; IK solves hip→knee→hoof angles automatically.
+//  This gives naturally smooth, anatomically correct movement.
+// ═══════════════════════════════════════════════════════════════
+
+// IK solver: given hip position, limb segment lengths, and target
+// foot position, return {knee: [x,y], foot: [x,y]}
+function solveIK(hx, hy, upper, lower, tx, ty) {
+  const dx = tx - hx, dy = ty - hy;
+  let dist = Math.sqrt(dx*dx + dy*dy);
+  const maxLen = upper + lower - 0.5;
+  if (dist > maxLen) { dist = maxLen; }
+  if (dist < 0.1) dist = 0.1;
+  // Law of cosines to find knee angle
+  const cosA = (upper*upper + dist*dist - lower*lower) / (2*upper*dist);
+  const a = Math.acos(Math.max(-1, Math.min(1, cosA)));
+  const baseAng = Math.atan2(dy, dx);
+  // Knee bends backward for forelegs, forward for hindlegs (isFore flag not needed — 
+  // we control direction via offset in the hoof path)
+  const kneeAng = baseAng - a;
+  const kx = hx + Math.cos(kneeAng) * upper;
+  const ky = hy + Math.sin(kneeAng) * upper;
+  return { kx, ky, fx: tx, fy: ty };
 }
 
-function drawJockey(ctx,t,jc,isRunning){
-  if(!jc)return;
-  const bob=isRunning?Math.abs(Math.sin(t*2))*-2.5:0;
-  const ridePhase=isRunning?Math.sin(t)*0.18:0; // body rock with horse
-  const pri=jc.primary||'#e74c3c',sec=jc.secondary||'#f0f0f0',helm=jc.helmetColor||pri,pat=jc.pattern||'plain';
+// Generate hoof world position for a given phase offset
+// Each leg has a phase offset (0-1) so all 4 are staggered
+// Returns {x, y} relative to horse body centre
+function hoofPos(phase, offsetX, groundY, strideAmp, liftAmp, isHind) {
+  // phase 0→1 = one full stride cycle
+  const p = ((phase % 1) + 1) % 1;
+  // Stride: hoof is on ground for ~60% of cycle, airborne ~40%
+  const groundFrac = 0.58;
+  let hx, hy;
+  if (p < groundFrac) {
+    // Stance: hoof sweeps backward linearly (ground contact)
+    const t = p / groundFrac; // 0→1 during stance
+    hx = offsetX + strideAmp * (0.5 - t);
+    hy = groundY;
+  } else {
+    // Swing: hoof lifts in an arc forward
+    const t = (p - groundFrac) / (1 - groundFrac); // 0→1 during swing
+    // Smooth lift arc
+    const arc = Math.sin(t * Math.PI);
+    hx = offsetX + strideAmp * (-0.5 + t);
+    hy = groundY - liftAmp * arc;
+  }
+  return { hx, hy };
+}
+
+// Draw one leg using IK from hip to solved knee to foot
+function drawLeg(ctx, hipX, hipY, upper, lower, footX, footY, coat, dark, w, kneeBend) {
+  // IK solve
+  const dx = footX - hipX, dy = footY - hipY;
+  let dist = Math.sqrt(dx*dx + dy*dy);
+  const maxLen = (upper + lower) * 0.98;
+  if (dist > maxLen) dist = maxLen;
+  if (dist < 2) dist = 2;
   
+  const cosA = Math.max(-1, Math.min(1,
+    (upper*upper + dist*dist - lower*lower) / (2*upper*dist)
+  ));
+  const baseAng = Math.atan2(dy, dx);
+  // kneeBend < 0 = knee bends "left" (forward for foreleg, back for hind)
+  const kneeAng = baseAng + kneeBend * Math.acos(cosA);
+  const kx = hipX + Math.cos(kneeAng) * upper;
+  const ky = hipY + Math.sin(kneeAng) * upper;
+
+  ctx.lineCap = 'round';
+  // Upper limb — thick, muscular
+  ctx.strokeStyle = coat; ctx.lineWidth = 8 * w;
+  ctx.beginPath(); ctx.moveTo(hipX, hipY); ctx.lineTo(kx, ky); ctx.stroke();
+  // Shadow edge on upper
+  ctx.strokeStyle = dark; ctx.lineWidth = 2.5 * w;
+  ctx.beginPath(); ctx.moveTo(hipX+w, hipY+1); ctx.lineTo(kx+0.5, ky+1); ctx.stroke();
+  // Lower limb — cannon bone, thinner
+  ctx.strokeStyle = shadeHex(coat,-28); ctx.lineWidth = 5 * w;
+  ctx.beginPath(); ctx.moveTo(kx, ky); ctx.lineTo(footX, footY); ctx.stroke();
+  // Joint knob
+  ctx.beginPath(); ctx.arc(kx, ky, 4*w, 0, Math.PI*2);
+  ctx.fillStyle = shadeHex(coat,-20); ctx.fill();
+  // Fetlock
+  ctx.beginPath(); ctx.arc(footX, footY, 2.8*w, 0, Math.PI*2);
+  ctx.fillStyle = dark; ctx.fill();
+  // Hoof
+  const ang = Math.atan2(footY-ky, footX-kx);
+  const hfx = footX + Math.cos(ang)*5, hfy = footY + Math.sin(ang)*5 + 1;
+  ctx.beginPath(); ctx.ellipse(hfx, hfy, 6.5*w, 3.8*w, ang, 0, Math.PI*2);
+  ctx.fillStyle = '#160c04'; ctx.fill();
+  ctx.beginPath(); ctx.ellipse(hfx, hfy-0.8, 6.5*w, 3.8*w, ang, Math.PI, Math.PI*2);
+  ctx.fillStyle = 'rgba(255,255,255,0.1)'; ctx.fill();
+}
+
+function drawJockey(ctx, phase, jc, isRunning) {
+  if (!jc) return;
+  const t = phase * Math.PI * 2;
+  const pri = jc.primary||'#c0102a', sec = jc.secondary||'#f0f0f0';
+  const helm = jc.helmetColor||pri, pat = jc.pattern||'plain';
+
+  // Jockey rocks subtly with stride — forward on extension, back on collection
+  const rideRock = isRunning ? Math.sin(t*2) * 0.07 : 0;
+  const armFwd = isRunning ? Math.sin(t*2) * 3.5 : 0;
+
   ctx.save();
-  // Jockey sits behind withers, leaning forward aggressively in race seat
-  ctx.translate(-8,-62+bob);
-  ctx.rotate(-0.75+ridePhase); // lean forward ~43 degrees, rock with stride
-  
-  // Torso / silks - elongated crouching position
-  ctx.beginPath();ctx.ellipse(0,0,8,14,0,0,Math.PI*2);ctx.fillStyle=pri;ctx.fill();
-  
-  // Pattern
-  ctx.save();ctx.beginPath();ctx.ellipse(0,0,8,14,0,0,Math.PI*2);ctx.clip();
-  if(pat==='stripes'){for(let s=-14;s<15;s+=5){ctx.beginPath();ctx.moveTo(-9,s);ctx.lineTo(9,s);ctx.lineWidth=2.5;ctx.strokeStyle=sec;ctx.stroke();}}
-  else if(pat==='spots'){[[0,-8],[0,0],[0,8]].forEach(([px,py])=>{ctx.beginPath();ctx.arc(px,py,2.8,0,Math.PI*2);ctx.fillStyle=sec;ctx.fill();});}
-  else if(pat==='cross'){ctx.beginPath();ctx.moveTo(-9,0);ctx.lineTo(9,0);ctx.lineWidth=4;ctx.strokeStyle=sec;ctx.stroke();ctx.beginPath();ctx.moveTo(0,-14);ctx.lineTo(0,14);ctx.stroke();}
-  else if(pat==='chevron'){[[-8,3,8,3]].forEach(([x1,y1,x2,y2])=>{ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(0,y1-8);ctx.lineTo(x2,y2);ctx.lineWidth=3.5;ctx.strokeStyle=sec;ctx.stroke();});}
-  ctx.restore();
-  
-  // Crouched legs (thighs up, heels down - jockey stance)
-  ctx.lineWidth=6;ctx.strokeStyle=shadeHex(pri,-20);ctx.lineCap='round';
-  ctx.beginPath();ctx.moveTo(-5,8);ctx.lineTo(-12,22);ctx.stroke(); // left thigh
-  ctx.beginPath();ctx.moveTo(5,8);ctx.lineTo(12,22);ctx.stroke();  // right thigh
-  ctx.lineWidth=4;
-  ctx.beginPath();ctx.moveTo(-12,22);ctx.lineTo(-8,36);ctx.stroke(); // boot
-  ctx.beginPath();ctx.moveTo(12,22);ctx.lineTo(8,36);ctx.stroke();
-  // Boot toes
-  ctx.beginPath();ctx.ellipse(-6,38,5,3,0.3,0,Math.PI*2);ctx.fillStyle='#1a0a04';ctx.fill();
-  ctx.beginPath();ctx.ellipse(6,38,5,3,-0.3,0,Math.PI*2);ctx.fillStyle='#1a0a04';ctx.fill();
-  
-  // Arms stretched forward (jockey reaches forward with reins)
-  const armPhase=isRunning?Math.sin(t)*5:0;
-  ctx.lineWidth=5;ctx.strokeStyle=pri;
-  ctx.beginPath();ctx.moveTo(-5,-6);ctx.lineTo(-18,-18+armPhase);ctx.stroke(); // rein arm
-  ctx.beginPath();ctx.moveTo(5,-6);ctx.lineTo(18,-14-armPhase*0.5);ctx.stroke(); // whip arm
-  // Hands / gloves
-  ctx.beginPath();ctx.arc(-18,-18+armPhase,4,0,Math.PI*2);ctx.fillStyle='#e0e0e0';ctx.fill();
-  ctx.beginPath();ctx.arc(18,-14-armPhase*0.5,4,0,Math.PI*2);ctx.fillStyle='#e0e0e0';ctx.fill();
-  
-  // Helmet
-  ctx.beginPath();ctx.arc(0,-16,9,0,Math.PI*2);ctx.fillStyle=helm;ctx.fill();
-  // Helmet peak
-  ctx.beginPath();ctx.moveTo(-9,-16);ctx.lineTo(-14,-14);ctx.lineTo(-9,-12);ctx.closePath();
-  ctx.fillStyle=shadeHex(helm,-30);ctx.fill();
-  // Visor / goggles
-  ctx.beginPath();ctx.ellipse(0,-14,7,3.5,-0.1,0,Math.PI);ctx.fillStyle='rgba(80,200,255,0.5)';ctx.fill();
-  ctx.beginPath();ctx.ellipse(0,-14,7,3.5,-0.1,0,Math.PI);ctx.strokeStyle='rgba(255,255,255,0.7)';ctx.lineWidth=1;ctx.stroke();
-  // Face
-  ctx.beginPath();ctx.arc(0,-11,5,0,Math.PI*2);ctx.fillStyle='#f0c080';ctx.fill();
-  // Determined expression line
-  ctx.beginPath();ctx.moveTo(-3,-10);ctx.lineTo(3,-10);ctx.strokeStyle='rgba(0,0,0,0.3)';ctx.lineWidth=1.2;ctx.stroke();
-  
-  // Whip - active flourish during race
-  const wAng=isRunning?-30+Math.sin(t*3)*40:-20;
-  const wPhase=isRunning?Math.sin(t*3)*0.3:0;
-  ctx.save();ctx.translate(18,-14-armPhase*0.5);ctx.rotate((wAng)*Math.PI/180);
-  // Whip handle
-  ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(0,20);ctx.lineWidth=3;ctx.strokeStyle='#5a2808';ctx.lineCap='round';ctx.stroke();
-  // Whip lash
-  ctx.beginPath();ctx.moveTo(0,20);
-  ctx.quadraticCurveTo(8+wPhase*20,28,6+wPhase*15,36);
-  ctx.lineWidth=1.5;ctx.strokeStyle='rgba(180,80,20,0.8)';ctx.stroke();
-  ctx.restore();
-  
-  ctx.restore();
-}
+  // Perch over withers — very forward, very low
+  ctx.translate(-8, -56);
+  ctx.rotate(-1.05 + rideRock); // ~60° forward lean
 
-function drawHorse(ctx,x,y,phase,coatCol,jColors,scale,horseNum,isRunning){
-  scale=scale||1;
-  ctx.save();ctx.translate(x,y);ctx.scale(-scale,scale); // mirror so horse faces direction of travel
-  const t=phase*Math.PI*2;
-  const coat=coatCol||'#8B4513';
-  const dark=shadeHex(coat,-50);
-  const highlight=shadeHex(coat,30);
-  const mane=shadeHex(coat,-80);
-  const g1=Math.sin(t),g2=Math.sin(t+Math.PI*0.5),g3=Math.sin(t+Math.PI),g4=Math.sin(t+Math.PI*1.5);
-  const bodyBob=isRunning?Math.abs(Math.sin(t*2))*-4:0;
-  const bodyRock=isRunning?Math.sin(t)*2:0;
-  ctx.translate(0,bodyBob);ctx.rotate(bodyRock*0.012);
-  // Shadow
-  ctx.beginPath();ctx.ellipse(0,6,44,6,0,0,Math.PI*2);ctx.fillStyle='rgba(0,0,0,0.25)';ctx.fill();
-  // Far legs
-  if(isRunning){drawDetailedLeg(ctx,22,-14,g3,g3*0.6,coat,dark,'#1a0e06',0.72,false);drawDetailedLeg(ctx,-26,-14,g2,g2*0.5,coat,dark,'#1a0e06',0.72,true);}
-  else{drawDetailedLeg(ctx,22,-14,0,0,coat,dark,'#1a0e06',0.72,false);drawDetailedLeg(ctx,-26,-14,0,0,coat,dark,'#1a0e06',0.72,true);}
-  // Body
-  const bodyGrad=ctx.createLinearGradient(-42,-52,0,-8);
-  bodyGrad.addColorStop(0,highlight);bodyGrad.addColorStop(0.4,coat);bodyGrad.addColorStop(1,dark);
-  ctx.beginPath();ctx.ellipse(0,-28,40,22,-0.05,0,Math.PI*2);ctx.fillStyle=bodyGrad;ctx.fill();
-  ctx.beginPath();ctx.ellipse(26,-30,24,20,0.3,0,Math.PI*2);ctx.fillStyle=coat;ctx.fill();
-  ctx.beginPath();ctx.ellipse(-28,-32,18,22,-0.22,0,Math.PI*2);ctx.fillStyle=coat;ctx.fill();
-  ctx.beginPath();ctx.ellipse(0,-14,38,8,0,0,Math.PI*2);ctx.fillStyle='rgba(0,0,0,0.12)';ctx.fill();
-  ctx.beginPath();ctx.ellipse(-4,-46,34,7,-0.08,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,0.1)';ctx.fill();
-  // Neck
-  ctx.beginPath();
-  ctx.moveTo(-32,-48);ctx.bezierCurveTo(-42,-58,-46,-72,-42,-84);
-  ctx.bezierCurveTo(-39,-90,-31,-88,-29,-80);
-  ctx.bezierCurveTo(-34,-68,-30,-56,-24,-48);ctx.closePath();
-  const ng=ctx.createLinearGradient(-46,-88,-24,-48);
-  ng.addColorStop(0,highlight);ng.addColorStop(0.6,coat);ng.addColorStop(1,dark);
-  ctx.fillStyle=ng;ctx.fill();
-  // Head
-  const headBob=isRunning?Math.sin(t*2)*3:0;
-  ctx.save();ctx.translate(0,headBob*0.4);
-  ctx.beginPath();ctx.ellipse(-44,-86,14,10,-0.3,0,Math.PI*2);ctx.fillStyle=coat;ctx.fill();
-  ctx.beginPath();ctx.ellipse(-54,-83,11,7,0.1,0,Math.PI*2);ctx.fillStyle=shadeHex(coat,-8);ctx.fill();
-  ctx.beginPath();ctx.ellipse(-60,-81,6,5,0.2,0,Math.PI*2);ctx.fillStyle=shadeHex(coat,-18);ctx.fill();
-  ctx.beginPath();ctx.ellipse(-62,-79,2.5,2,0.3,0,Math.PI*2);ctx.fillStyle=dark;ctx.fill();
-  // Eye
-  ctx.beginPath();ctx.ellipse(-38,-90,4.5,3.5,-0.2,0,Math.PI*2);ctx.fillStyle='#0a0600';ctx.fill();
-  ctx.beginPath();ctx.ellipse(-37,-91,1.5,1.2,0,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,0.6)';ctx.fill();
-  // Ears
-  ctx.save();ctx.translate(-36,-96);ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(3,-11);ctx.lineTo(8,-2);ctx.closePath();ctx.fillStyle=coat;ctx.fill();ctx.beginPath();ctx.moveTo(1,-1);ctx.lineTo(3.5,-8);ctx.lineTo(6.5,-2);ctx.closePath();ctx.fillStyle=shadeHex(coat,-30);ctx.fill();ctx.restore();
-  ctx.save();ctx.translate(-30,-97);ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(2,-7);ctx.lineTo(5,-1);ctx.closePath();ctx.fillStyle=dark;ctx.fill();ctx.restore();
-  ctx.restore();
-  // Mane
-  const maneW=isRunning?Math.sin(t+0.5)*3:0;
-  for(let i=0;i<8;i++){const mx=-30+i*3.2,my=-86+i*4.2,mw=Math.sin(t*2+i*0.8)*2+maneW;ctx.beginPath();ctx.arc(mx-2+mw,my+1,4,0,Math.PI*2);ctx.fillStyle=mane;ctx.fill();}
-  ctx.beginPath();ctx.ellipse(-42+maneW*0.5,-97,4,6,0.3,0,Math.PI*2);ctx.fillStyle=mane;ctx.fill();
-  // Tail
-  const tw=isRunning?Math.sin(t*1.5)*9:Math.sin(Date.now()/800)*4;
-  const tw2=isRunning?Math.sin(t*1.5+0.5)*7:0;
-  ctx.beginPath();ctx.moveTo(34,-46);ctx.quadraticCurveTo(46,-36+tw,50,-22+tw*1.4);ctx.lineWidth=12;ctx.strokeStyle=mane;ctx.lineCap='round';ctx.stroke();
-  ctx.beginPath();ctx.moveTo(49,-22+tw*1.4);ctx.quadraticCurveTo(55,-8+tw2,50,5+tw2*0.8);ctx.lineWidth=7;ctx.strokeStyle=shadeHex(mane,22);ctx.stroke();
-  ctx.beginPath();ctx.moveTo(50,5+tw2*0.8);ctx.quadraticCurveTo(54,16,48,22);ctx.lineWidth=4;ctx.strokeStyle=shadeHex(mane,40);ctx.stroke();
-  // Near legs
-  if(isRunning){drawDetailedLeg(ctx,24,-14,g1,g1*0.65,coat,dark,'#1a0e06',1.0,false);drawDetailedLeg(ctx,-24,-14,g4,g4*0.55,coat,dark,'#1a0e06',1.0,true);}
-  else{drawDetailedLeg(ctx,24,-14,0,0,coat,dark,'#1a0e06',1.0,false);drawDetailedLeg(ctx,-24,-14,0,0,coat,dark,'#1a0e06',1.0,true);}
-  // Jockey
-  drawJockey(ctx,t,jColors,isRunning);
-  // Saddle cloth number (un-mirror text so it reads correctly)
-  if(horseNum!=null){
-    ctx.save();ctx.translate(-8,-36);ctx.rotate(-0.55);
-    ctx.fillStyle=jColors?(jColors.primary||'#e74c3c'):'#e74c3c';
-    ctx.beginPath();
-    if(ctx.roundRect)ctx.roundRect(-10,-8,20,16,2);
-    else{ctx.rect(-10,-8,20,16);}
-    ctx.fill();
-    ctx.scale(-1,1); // un-mirror for text
-    ctx.fillStyle='#fff';ctx.font='bold 11px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
-    ctx.fillText(horseNum,0,0);
-    ctx.restore();
+  // ── SEAT & BREECHES ──
+  ctx.beginPath(); ctx.ellipse(2, 10, 6.5, 8, 0.1, 0, Math.PI*2);
+  ctx.fillStyle = '#ede6d0'; ctx.fill();
+
+  // ── BOOTS (black, knee-high) ──
+  const lr = isRunning ? Math.sin(t*2) * 2.2 : 0;
+  ctx.lineCap = 'round';
+  // Near boot
+  ctx.strokeStyle = '#1a1008'; ctx.lineWidth = 6;
+  ctx.beginPath(); ctx.moveTo(-2,15); ctx.lineTo(-7,26+lr); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(-7,26+lr); ctx.lineTo(-5,38+lr); ctx.stroke();
+  // Far boot
+  ctx.beginPath(); ctx.moveTo(2,15); ctx.lineTo(7,26-lr); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(7,26-lr); ctx.lineTo(5,38-lr); ctx.stroke();
+  // Boot shine
+  ctx.strokeStyle = 'rgba(255,255,255,0.13)'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(-6.5,27+lr); ctx.lineTo(-5.5,37+lr); ctx.stroke();
+
+  // ── SILK JERSEY ──
+  ctx.beginPath(); ctx.ellipse(0, 0, 7, 12, 0, 0, Math.PI*2);
+  ctx.fillStyle = pri; ctx.fill();
+  // Clipped pattern
+  ctx.save();
+  ctx.beginPath(); ctx.ellipse(0, 0, 7, 12, 0, 0, Math.PI*2); ctx.clip();
+  ctx.lineWidth = 2.5;
+  if (pat === 'stripes') {
+    for (let s = -12; s < 13; s += 5) {
+      ctx.beginPath(); ctx.moveTo(-8,s); ctx.lineTo(8,s);
+      ctx.strokeStyle = sec; ctx.stroke();
+    }
+  } else if (pat === 'spots') {
+    [[-3,-7],[3,-2],[-2,5],[3,9]].forEach(([px,py])=>{
+      ctx.beginPath(); ctx.arc(px,py,2.4,0,Math.PI*2);
+      ctx.fillStyle=sec; ctx.fill();
+    });
+  } else if (pat === 'cross') {
+    ctx.beginPath(); ctx.moveTo(-7,0); ctx.lineTo(7,0); ctx.strokeStyle=sec; ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0,-12); ctx.lineTo(0,12); ctx.stroke();
+  } else if (pat === 'chevron') {
+    [[-7,2,0,-7,7,2],[-7,9,0,0,7,9]].forEach(([x1,y1,mx,my,x2,y2])=>{
+      ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(mx,my); ctx.lineTo(x2,y2);
+      ctx.strokeStyle=sec; ctx.stroke();
+    });
   }
   ctx.restore();
+
+  // ── ARMS — stretched forward, hands low on neck ──
+  ctx.lineWidth = 4.5; ctx.strokeStyle = pri; ctx.lineCap = 'round';
+  // Near arm
+  ctx.beginPath(); ctx.moveTo(-3,-4); ctx.lineTo(-14,-15+armFwd); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(-14,-15+armFwd); ctx.lineTo(-24,-21+armFwd*0.7); ctx.stroke();
+  // Far arm
+  ctx.beginPath(); ctx.moveTo(3,-4); ctx.lineTo(14,-14-armFwd*0.5); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(14,-14-armFwd*0.5); ctx.lineTo(22,-20-armFwd*0.3); ctx.stroke();
+  // Gloves
+  ctx.beginPath(); ctx.arc(-24,-21+armFwd*0.7, 3.5,0,Math.PI*2); ctx.fillStyle='#d8d0b8'; ctx.fill();
+  ctx.beginPath(); ctx.arc(22,-20-armFwd*0.3, 3.5,0,Math.PI*2); ctx.fillStyle='#d8d0b8'; ctx.fill();
+  // Reins
+  ctx.strokeStyle='rgba(80,42,12,0.6)'; ctx.lineWidth=1.5;
+  ctx.beginPath(); ctx.moveTo(-24,-21+armFwd*0.7); ctx.lineTo(-40,-28); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(22,-20-armFwd*0.3); ctx.lineTo(-40,-28); ctx.stroke();
+
+  // ── HELMET ──
+  ctx.beginPath(); ctx.arc(0,-15,9.5,0,Math.PI*2);
+  ctx.fillStyle = helm; ctx.fill();
+  // Silk cover on helmet
+  if (pat==='stripes') {
+    ctx.save(); ctx.beginPath(); ctx.arc(0,-15,9.5,0,Math.PI*2); ctx.clip();
+    for(let s=-25;s<-5;s+=5){ctx.beginPath();ctx.moveTo(-10,s);ctx.lineTo(10,s);ctx.lineWidth=2.5;ctx.strokeStyle=sec+'88';ctx.stroke();}
+    ctx.restore();
+  }
+  // Visor / peak
+  ctx.beginPath(); ctx.moveTo(-9.5,-12); ctx.lineTo(-17,-9); ctx.lineTo(-10,-9); ctx.closePath();
+  ctx.fillStyle = shadeHex(helm,-28); ctx.fill();
+  // Chinstrap
+  ctx.beginPath(); ctx.moveTo(-9,-9); ctx.quadraticCurveTo(-3,-4,1,-5);
+  ctx.strokeStyle = shadeHex(helm,-32); ctx.lineWidth=1.5; ctx.stroke();
+  // Goggles — tinted riding goggles
+  ctx.beginPath(); ctx.ellipse(0,-12,7.5,4,-0.08,0,Math.PI);
+  ctx.fillStyle='rgba(100,190,255,0.38)'; ctx.fill();
+  ctx.beginPath(); ctx.ellipse(0,-12,7.5,4,-0.08,0,Math.PI);
+  ctx.strokeStyle='rgba(255,255,255,0.6)'; ctx.lineWidth=1.2; ctx.stroke();
+  // Goggle strap
+  ctx.beginPath(); ctx.moveTo(7.5,-12); ctx.lineTo(10,-12);
+  ctx.strokeStyle=shadeHex(helm,-20); ctx.lineWidth=2; ctx.stroke();
+  // Face
+  ctx.beginPath(); ctx.arc(0,-9,5,0,Math.PI*2);
+  ctx.fillStyle='#f2c282'; ctx.fill();
+  ctx.fillStyle='rgba(0,0,0,0.5)';
+  ctx.beginPath(); ctx.ellipse(-2,-9,1.5,1,0,0,Math.PI*2); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(2,-9,1.5,1,0,0,Math.PI*2); ctx.fill();
+
+  // ── WHIP — active flourish, near-hand ──
+  if (isRunning) {
+    const ws = Math.sin(t * 2.8);
+    ctx.save();
+    ctx.translate(-24,-21+armFwd*0.7);
+    ctx.scale(-1,1); // un-flip for whip direction
+    ctx.rotate((-20 + ws*45) * Math.PI/180);
+    ctx.strokeStyle='#3a1806'; ctx.lineWidth=2.5; ctx.lineCap='round';
+    ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(0,18); ctx.stroke();
+    const lash = ws * 9;
+    ctx.strokeStyle='rgba(130,45,12,0.75)'; ctx.lineWidth=1.3;
+    ctx.beginPath(); ctx.moveTo(0,18); ctx.quadraticCurveTo(5+lash,26,3+lash*0.6,34); ctx.stroke();
+    ctx.restore();
+  }
+
+  ctx.restore(); // jockey
+}
+
+function drawHorse(ctx, x, y, phase, coatCol, jColors, scale, horseNum, isRunning) {
+  scale = scale || 1;
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.scale(-scale, scale); // mirror so horse faces direction of travel
+
+  const coat = coatCol || '#8B4513';
+  const dark = shadeHex(coat, -50);
+  const light = shadeHex(coat, 34);
+  const mane = shadeHex(coat, -82);
+
+  // ── Body motion dynamics ──
+  // Suspension bounce: body rises ~3px at peak suspension (between stride pairs)
+  const p = ((phase % 1) + 1) % 1;
+  const suspensionBounce = isRunning ? Math.abs(Math.sin(p * Math.PI * 2)) * -3.5 : 0;
+  // Back arch: lumbar flexes/extends through stride
+  const backArch = isRunning ? Math.sin(p * Math.PI * 4) * 3 : 0;
+  // Body rock: slight pitch forward on landing, back on push-off
+  const bodyPitch = isRunning ? Math.sin(p * Math.PI * 2) * 0.04 : 0;
+  // Neck nod: head bobs in counter-rhythm to body
+  const headNod = isRunning ? Math.sin(p * Math.PI * 2 + 0.5) * 5 : 0;
+
+  ctx.translate(0, suspensionBounce);
+
+  // Ground shadow
+  const shadowScale = 1 + suspensionBounce * 0.02;
+  ctx.beginPath(); ctx.ellipse(0, 12, 44*shadowScale, 5.5*shadowScale, 0, 0, Math.PI*2);
+  ctx.fillStyle = `rgba(0,0,0,${0.18 + suspensionBounce*-0.01})`; ctx.fill();
+
+  // ── LEG PHASE OFFSETS ──
+  // Gallop gait timing (right-lead canter/gallop):
+  //   Left hind  → phase + 0.00  (first to land)
+  //   Left fore  → phase + 0.25
+  //   Right hind → phase + 0.50
+  //   Right fore → phase + 0.75  (last to land — leading leg)
+  // "Far" legs (left side, dimmer) are LH and LF
+  // "Near" legs (right side, brighter) are RH and RF
+
+  const groundY = 12;     // ground level relative to body centre
+  const fStride = 34;     // foreleg stride amplitude (px)
+  const hStride = 30;     // hindleg stride amplitude
+  const fLift = 22;       // foreleg lift height
+  const hLift = 18;       // hindleg lift height
+
+  // Hip attachment points (where leg meets body)
+  // Foreleg hip: forward on barrel, hindleg hip: rearward
+  const fHipX = -24, fHipY = 2;   // foreleg hip
+  const hHipX =  24, hHipY = 2;   // hindleg hip
+
+  // Far side legs (left — slightly behind body, muted colour)
+  const farCoat = shadeHex(coat, -18);
+  const farDark = shadeHex(coat, -58);
+
+  if (isRunning) {
+    // Far hind (left hind) — phase offset 0.5
+    const lh = hoofPos(p + 0.5, hHipX, groundY, hStride, hLift, true);
+    drawLeg(ctx, hHipX, hHipY, 22, 20, lh.hx, lh.hy, farCoat, farDark, 0.78, +1);
+    // Far fore (left fore) — phase offset 0.75
+    const lf = hoofPos(p + 0.75, fHipX, groundY, fStride, fLift, false);
+    drawLeg(ctx, fHipX, fHipY, 24, 22, lf.hx, lf.hy, farCoat, farDark, 0.78, -1);
+  } else {
+    // Standing — legs slightly apart, angled naturally
+    drawLeg(ctx, hHipX, hHipY, 22, 20, hHipX+6,  groundY, farCoat, farDark, 0.78, +1);
+    drawLeg(ctx, fHipX, fHipY, 24, 22, fHipX-4,  groundY, farCoat, farDark, 0.78, -1);
+  }
+
+  // ── BODY ──
+  ctx.save(); ctx.rotate(bodyPitch);
+
+  // Main barrel
+  const bg = ctx.createLinearGradient(-42,-52, 10, 6);
+  bg.addColorStop(0, light); bg.addColorStop(0.45, coat); bg.addColorStop(1, dark);
+  ctx.beginPath(); ctx.ellipse(0, -18, 42, 21, 0, 0, Math.PI*2);
+  ctx.fillStyle = bg; ctx.fill();
+
+  // Hindquarters — large rounded muscular mass
+  ctx.beginPath(); ctx.ellipse(28, -18, 25, 21, 0.18, 0, Math.PI*2);
+  ctx.fillStyle = coat; ctx.fill();
+  ctx.beginPath(); ctx.ellipse(22, -28, 14, 10, -0.25, 0, Math.PI*2);
+  ctx.fillStyle = light+'60'; ctx.fill(); // hip highlight
+
+  // Shoulder
+  ctx.beginPath(); ctx.ellipse(-28, -21, 19, 22, -0.15, 0, Math.PI*2);
+  ctx.fillStyle = coat; ctx.fill();
+  ctx.beginPath(); ctx.ellipse(-33, -29, 11, 9, -0.1, 0, Math.PI*2);
+  ctx.fillStyle = light+'55'; ctx.fill(); // shoulder highlight
+
+  // Belly underline shadow
+  ctx.beginPath(); ctx.ellipse(0, -5, 36, 9, 0, 0, Math.PI*2);
+  ctx.fillStyle = dark+'80'; ctx.fill();
+
+  // Topline — wither rises, back arches subtly through stride
+  ctx.beginPath();
+  ctx.moveTo(-34, -35);
+  ctx.bezierCurveTo(-18, -44+backArch, 8, -40+backArch, 24, -40+backArch*0.5);
+  ctx.bezierCurveTo(34, -40, 44, -34, 46, -24);
+  ctx.lineWidth = 3; ctx.strokeStyle = dark; ctx.lineCap = 'round'; ctx.stroke();
+
+  // ── NECK — extends forward and LOW at racing speed ──
+  const nFwd = isRunning ? -8 : 0;
+  const nLow = isRunning ?  8 : 0;
+  ctx.beginPath();
+  ctx.moveTo(-22, -30);
+  ctx.bezierCurveTo(-32+nFwd, -44, -42+nFwd*1.3, -58+nLow, -46+nFwd, -72+nLow);
+  ctx.bezierCurveTo(-44+nFwd, -80+nLow, -36+nFwd, -79+nLow, -30+nFwd, -73+nLow);
+  ctx.bezierCurveTo(-28+nFwd, -60+nLow, -22, -45, -18, -32);
+  ctx.closePath();
+  const ng = ctx.createLinearGradient(-50+nFwd,-80+nLow, -18,-32);
+  ng.addColorStop(0, light); ng.addColorStop(0.5, coat); ng.addColorStop(1, dark);
+  ctx.fillStyle = ng; ctx.fill();
+  // Jugular groove
+  ctx.beginPath();
+  ctx.moveTo(-28+nFwd, -40); ctx.bezierCurveTo(-36+nFwd,-52,-42+nFwd,-64,-40+nFwd,-72+nLow);
+  ctx.strokeStyle = dark+'70'; ctx.lineWidth = 1.8; ctx.stroke();
+
+  // ── HEAD ──
+  const hn = headNod;
+  ctx.save(); ctx.translate(nFwd*0.6, nLow*0.5 + hn*0.4);
+
+  // Poll
+  ctx.beginPath(); ctx.ellipse(-48,-74,13,9,-0.08,0,Math.PI*2);
+  ctx.fillStyle = coat; ctx.fill();
+  // Face / nasal bone — long, narrow racehorse profile
+  ctx.beginPath();
+  ctx.moveTo(-44,-80);
+  ctx.bezierCurveTo(-53,-84,-66,-79,-72,-72);
+  ctx.bezierCurveTo(-76,-66,-74,-60,-69,-58);
+  ctx.bezierCurveTo(-62,-56,-50,-58,-46,-65);
+  ctx.bezierCurveTo(-41,-71,-42,-77,-44,-80);
+  ctx.closePath();
+  ctx.fillStyle = shadeHex(coat,-5); ctx.fill();
+  // Face highlight on nose bridge
+  ctx.beginPath(); ctx.ellipse(-56,-70,4,11,0.18,0,Math.PI*2);
+  ctx.fillStyle = light+'30'; ctx.fill();
+  // Muzzle
+  ctx.beginPath(); ctx.ellipse(-70,-63,5.5,5,0.2,0,Math.PI*2);
+  ctx.fillStyle = shadeHex(coat,-14); ctx.fill();
+  // Nostril — flared when galloping
+  const nFlare = isRunning ? 1.3 : 1;
+  ctx.beginPath(); ctx.ellipse(-67,-61, 3.2*nFlare, 2.2, 0.35, 0, Math.PI*2);
+  ctx.fillStyle = '#220704'; ctx.fill();
+  ctx.beginPath(); ctx.arc(-65,-60,0.9,0,Math.PI*2);
+  ctx.fillStyle = 'rgba(255,70,50,0.28)'; ctx.fill();
+  // Large dark eye
+  ctx.beginPath(); ctx.ellipse(-43,-78,4.8,3.8,-0.15,0,Math.PI*2);
+  ctx.fillStyle = '#0c0602'; ctx.fill();
+  ctx.beginPath(); ctx.ellipse(-42,-79,1.7,1.3,0,0,Math.PI*2);
+  ctx.fillStyle = 'rgba(255,255,255,0.5)'; ctx.fill();
+  // Eyelashes
+  ctx.strokeStyle='#0c0602'; ctx.lineWidth=1.5;
+  ctx.beginPath(); ctx.moveTo(-46,-81); ctx.lineTo(-45,-84); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(-43,-81); ctx.lineTo(-42,-84); ctx.stroke();
+  // Ears — pricked sharply forward when racing
+  const earFwd = isRunning ? -0.4 : 0.05;
+  ctx.save(); ctx.translate(-38,-84); ctx.rotate(earFwd);
+  ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(-4,-13); ctx.lineTo(5,-7); ctx.closePath();
+  ctx.fillStyle=coat; ctx.fill();
+  ctx.beginPath(); ctx.moveTo(-0.5,-1); ctx.lineTo(-2.5,-9); ctx.lineTo(3.5,-5); ctx.closePath();
+  ctx.fillStyle=shadeHex(coat,-25); ctx.fill();
+  ctx.restore();
+  // Far ear (dimmer)
+  ctx.save(); ctx.translate(-34,-84); ctx.rotate(earFwd-0.22);
+  ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(-2.5,-9); ctx.lineTo(3.5,-5); ctx.closePath();
+  ctx.fillStyle=dark; ctx.fill();
+  ctx.restore();
+  ctx.restore(); // head translate
+
+  // ── MANE (racing clip — short, lies flat, slight flutter) ──
+  const mw = isRunning ? Math.sin(phase*Math.PI*4+0.4)*1.8 : 0;
+  ctx.lineWidth=2.5; ctx.strokeStyle=mane; ctx.lineCap='round';
+  for(let m=0;m<8;m++){
+    const mx=-28+nFwd*0.4+m*2.2, my=-70+nLow*0.4+hn*0.3+m*3;
+    const moff = mw * Math.sin(m*0.85 + phase*6);
+    ctx.beginPath(); ctx.moveTo(mx,my); ctx.lineTo(mx-1+moff, my+7); ctx.stroke();
+  }
+  // Forelock
+  ctx.beginPath();
+  ctx.moveTo(-42+nFwd*0.5,-84+nLow*0.4+hn*0.3);
+  ctx.quadraticCurveTo(-46+nFwd*0.5+mw,-92+nLow*0.3, -44+nFwd*0.5+mw*0.7,-98+nLow*0.3);
+  ctx.lineWidth=3.5; ctx.strokeStyle=mane; ctx.stroke();
+
+  // ── TAIL ──
+  const tw = isRunning ? Math.sin(phase*Math.PI*3.4)*12 : Math.sin(Date.now()/950)*4;
+  const tw2 = isRunning ? Math.sin(phase*Math.PI*3.4+0.5)*9 : 0;
+  ctx.beginPath(); ctx.moveTo(36,-26);
+  ctx.quadraticCurveTo(50,-14+tw, 54,0+tw*1.2);
+  ctx.lineWidth=12; ctx.strokeStyle=mane; ctx.lineCap='round'; ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(54,0+tw*1.2);
+  ctx.quadraticCurveTo(58,16+tw2, 52,30+tw2*0.9);
+  ctx.lineWidth=7.5; ctx.strokeStyle=shadeHex(mane,20); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(52,30+tw2*0.9);
+  ctx.quadraticCurveTo(56,42,48,50);
+  ctx.lineWidth=4.5; ctx.strokeStyle=shadeHex(mane,38); ctx.stroke();
+
+  ctx.restore(); // body pitch
+
+  // ── NEAR SIDE LEGS (brighter — right side, in front) ──
+  if (isRunning) {
+    // Near hind (right hind) — phase offset 0.0
+    const rh = hoofPos(p + 0.0, hHipX, groundY, hStride, hLift, true);
+    drawLeg(ctx, hHipX, hHipY, 22, 20, rh.hx, rh.hy, coat, dark, 1.0, +1);
+    // Near fore (right fore, leading leg) — phase offset 0.25
+    const rf = hoofPos(p + 0.25, fHipX, groundY, fStride, fLift, false);
+    drawLeg(ctx, fHipX, fHipY, 24, 22, rf.hx, rf.hy, coat, dark, 1.0, -1);
+  } else {
+    drawLeg(ctx, hHipX, hHipY, 22, 20, hHipX-4,  groundY, coat, dark, 1.0, +1);
+    drawLeg(ctx, fHipX, fHipY, 24, 22, fHipX+6,  groundY, coat, dark, 1.0, -1);
+  }
+
+  // ── JOCKEY ──
+  drawJockey(ctx, phase, jColors, isRunning);
+
+  // ── RACE NUMBER SADDLECLOTH ──
+  if (horseNum != null) {
+    ctx.save();
+    ctx.translate(4, -33); ctx.rotate(-0.05);
+    ctx.fillStyle = jColors ? (jColors.primary||'#cc1020') : '#cc1020';
+    ctx.beginPath();
+    if(ctx.roundRect) ctx.roundRect(-13,-9,26,17,2); else ctx.rect(-13,-9,26,17);
+    ctx.fill();
+    ctx.strokeStyle='rgba(255,255,255,0.5)'; ctx.lineWidth=1.2;
+    ctx.beginPath();
+    if(ctx.roundRect) ctx.roundRect(-13,-9,26,17,2); else ctx.rect(-13,-9,26,17);
+    ctx.stroke();
+    ctx.scale(-1,1); // un-mirror for number text
+    ctx.fillStyle='#fff'; ctx.font='bold 12px sans-serif';
+    ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText(horseNum, 0, 0);
+    ctx.restore();
+  }
+
+  ctx.restore(); // main
+}
+
+// Helper: parametric hoof path (used above)
+function hoofPos(phase, offsetX, groundY, strideAmp, liftAmp) {
+  const p = ((phase % 1) + 1) % 1;
+  const groundFrac = 0.58;
+  let hx, hy;
+  if (p < groundFrac) {
+    const t = p / groundFrac;
+    hx = offsetX + strideAmp * (0.5 - t);
+    hy = groundY;
+  } else {
+    const t = (p - groundFrac) / (1 - groundFrac);
+    const arc = Math.sin(t * Math.PI);
+    hx = offsetX + strideAmp * (-0.5 + t);
+    hy = groundY - liftAmp * arc;
+  }
+  return { hx, hy };
 }
 
 let raceStarted=false;
+
+
 
 function drawBg(ctx,W,H,camX,raceLen){
   const trackTop=H*0.44, trackH=H*0.44;
@@ -1830,46 +2127,87 @@ function drawBg(ctx,W,H,camX,raceLen){
     ctx.fillStyle='#5a3010';ctx.fillRect(tx-2,ty+h2,4,8); // trunk
   }
 
-  // ── GRANDSTANDS ──
+  // ── GRANDSTANDS (York / Ascot style — ref image 3) ──
   const stOff=parallax*18;
-  // Main grandstand (left-centre of view, always visible)
-  const stX=W*0.06+stOff, stY=trackTop-H*0.28, stW=W*0.52, stH=H*0.28;
-  // Stand base
-  ctx.fillStyle='#c8c0b0';ctx.fillRect(stX,stY+stH*0.7,stW,stH*0.3);
-  // Tiered seating rows
-  const rows=8;
-  for(let r=0;r<rows;r++){
-    const ry=stY+r*(stH*0.68/rows);
-    const rx=stX+r*(stW*0.03);
-    const rw=stW-r*(stW*0.06);
-    ctx.fillStyle=r%2===0?'#1a3a6a':'#0e2850';
-    ctx.fillRect(rx,ry,rw,stH*0.68/rows-1);
-    // People silhouettes
-    ctx.fillStyle=r%2===0?'rgba(255,255,255,0.18)':'rgba(255,255,255,0.12)';
-    for(let p=0;p<Math.floor(rw/14);p++){
-      ctx.beginPath();ctx.ellipse(rx+8+p*14,ry+5,4,5,0,0,Math.PI*2);ctx.fill();
+  const stX=W*0.04+stOff, stY=trackTop-H*0.30, stW=W*0.56, stH=H*0.30;
+
+  // ── Main stand: modern glass + white steel frame ──
+  // Upper glass facade (dark reflective windows)
+  ctx.fillStyle='#c8d4d8';
+  ctx.beginPath();ctx.rect(stX,stY,stW,stH*0.5);ctx.fill();
+  // Window grid
+  for(let wr=0;wr<3;wr++){for(let wc=0;wc<12;wc++){
+    const wx=stX+8+wc*(stW-16)/12, wy=stY+6+wr*(stH*0.44/3);
+    const ww=(stW-16)/12-3, wh=stH*0.44/3-4;
+    ctx.fillStyle=wc%3===0?'rgba(40,80,120,0.7)':'rgba(60,100,150,0.5)';
+    ctx.fillRect(wx,wy,ww,wh);
+    // Window reflection
+    ctx.fillStyle='rgba(255,255,255,0.12)';
+    ctx.fillRect(wx+1,wy+1,ww*0.4,wh*0.35);
+  }}
+  // White steel frame horizontals
+  ctx.fillStyle='#f0f0ee';
+  for(let fr=0;fr<=3;fr++){ctx.fillRect(stX-2,stY+fr*(stH*0.5/3),stW+4,4);}
+  // Verticals
+  for(let fc=0;fc<=6;fc++){ctx.fillRect(stX+fc*(stW/6),stY,3,stH*0.5);}
+
+  // Lower stand: tiered seating (ref image 3 — packed crowd)
+  const seatRows=7, seatStartY=stY+stH*0.5;
+  for(let r=0;r<seatRows;r++){
+    const ry=seatStartY+r*(stH*0.42/seatRows);
+    const rx=stX+r*4, rw=stW-r*8;
+    // Row base
+    ctx.fillStyle=r%2===0?'#2040a0':'#1a3080';
+    ctx.fillRect(rx,ry,rw,stH*0.42/seatRows-1);
+    // Crowd: colourful spectators (ref image 3 shows dense crowd)
+    const colors=['#e84030','#f0a020','#20a040','#4080e0','#e060b0','#f0f0f0','#804020'];
+    for(let p=0;p<Math.floor(rw/9);p++){
+      ctx.fillStyle=colors[(p+r)%colors.length]+(r>3?'bb':'ff');
+      ctx.beginPath();ctx.ellipse(rx+5+p*9,ry+5,3.5,4.5,0,0,Math.PI*2);ctx.fill();
+      // Head
+      ctx.beginPath();ctx.arc(rx+5+p*9,ry+1,2.8,0,Math.PI*2);
+      ctx.fillStyle='#f0c080';ctx.fill();
     }
   }
-  // Stand roof
-  ctx.fillStyle='#e0d8c8';
-  ctx.beginPath();ctx.moveTo(stX-8,stY);ctx.lineTo(stX+stW+8,stY);ctx.lineTo(stX+stW,stY+stH*0.14);ctx.lineTo(stX,stY+stH*0.14);ctx.closePath();ctx.fill();
-  ctx.fillStyle='#b0a890';ctx.fillRect(stX,stY+stH*0.14,stW,4);
-  // Stand columns
-  ctx.fillStyle='#a09880';
-  for(let c=0;c<=4;c++){ctx.fillRect(stX+c*(stW/4)-2,stY+stH*0.14,4,stH*0.86);}
-  // Sponsor boards
-  ctx.fillStyle='rgba(255,255,255,0.9)';ctx.font='bold 9px sans-serif';ctx.textAlign='center';
-  ctx.fillText('THE FINAL STRAIGHT',stX+stW*0.5,stY+stH*0.08);
-  ctx.fillStyle='rgba(240,181,42,0.8)';
-  ctx.fillRect(stX+stW*0.1,stY+stH*0.08+4,stW*0.8,2);
 
-  // Smaller stand right
-  const st2X=stX+stW+10,st2W=stW*0.28,st2Y=stY+stH*0.2;
-  ctx.fillStyle='#b8b0a0';ctx.fillRect(st2X,st2Y,st2W,stH*0.8);
-  for(let r=0;r<5;r++){
-    ctx.fillStyle=r%2===0?'#1a4070':'#0e2a5a';
-    ctx.fillRect(st2X+r*3,st2Y+r*(stH*0.6/5),st2W-r*6,stH*0.6/5-1);
+  // ── Flat roof with canopy ──
+  ctx.fillStyle='#e8e4dc';
+  ctx.beginPath();ctx.moveTo(stX-10,stY);ctx.lineTo(stX+stW+10,stY);
+  ctx.lineTo(stX+stW+15,stY-10);ctx.lineTo(stX-15,stY-10);ctx.closePath();ctx.fill();
+  // Canopy underside (slightly darker)
+  ctx.fillStyle='#c8c4bc';
+  ctx.beginPath();ctx.moveTo(stX-10,stY);ctx.lineTo(stX+stW+10,stY);
+  ctx.lineTo(stX+stW+8,stY+6);ctx.lineTo(stX-8,stY+6);ctx.closePath();ctx.fill();
+  // Canopy supports
+  ctx.fillStyle='#a0a8b0';
+  for(let c=0;c<=5;c++){
+    const cx=stX+c*(stW/5);
+    ctx.fillRect(cx-2,stY,4,stH*0.92);
   }
+  // Flags on roof (British racing colours)
+  const flagColors=['#c8102e','#fff','#00247d','#c8102e','#fff'];
+  for(let fl=0;fl<5;fl++){
+    const flx=stX+fl*(stW/4)+30;
+    ctx.fillStyle='#a0a8b0';ctx.fillRect(flx,stY-22,2,22);
+    ctx.fillStyle=flagColors[fl];ctx.fillRect(flx+2,stY-22,12,9);
+  }
+  // Sponsor fascia board
+  ctx.fillStyle='#1a1a2a';ctx.fillRect(stX,seatStartY-8,stW,10);
+  ctx.fillStyle='#f0d050';ctx.font='bold 8px sans-serif';ctx.textAlign='center';
+  ctx.fillText('THE FINAL STRAIGHT · BETRICH RACING',stX+stW*0.5,seatStartY-1);
+
+  // ── Smaller secondary stand (right) ──
+  const st2X=stX+stW+4, st2W=stW*0.24, st2Y=stY+stH*0.18;
+  ctx.fillStyle='#d0ccb8';ctx.fillRect(st2X,st2Y,st2W,stH*0.82);
+  for(let r=0;r<5;r++){
+    ctx.fillStyle=r%2===0?'#1a3878':'#122860';
+    ctx.fillRect(st2X,st2Y+stH*0.34+r*(stH*0.44/5),st2W,stH*0.44/5-1);
+    for(let p=0;p<Math.floor(st2W/9);p++){
+      ctx.fillStyle='rgba(200,200,220,0.6)';
+      ctx.beginPath();ctx.ellipse(st2X+5+p*9,st2Y+stH*0.34+r*(stH*0.44/5)+5,3,4.5,0,0,Math.PI*2);ctx.fill();
+    }
+  }
+  ctx.fillStyle='#e8e4dc';ctx.fillRect(st2X-4,st2Y,st2W+8,8);
 
   // ── INSIDE PADDOCK RAIL (far side of track) ──
   const paddockY=trackTop+2;
@@ -1882,25 +2220,37 @@ function drawBg(ctx,W,H,camX,raceLen){
   // Inside white rail (post & rail fence)
   drawRailFence(ctx,0,paddockY,W,camX,2.5,'rgba(255,255,255,0.95)');
 
-  // ── TRACK SURFACE ──
-  // Main turf: rich green with mowing pattern
+  // ── TRACK SURFACE — lush British racing turf (ref image 3: York) ──
   const tg=ctx.createLinearGradient(0,trackTop,0,trackTop+trackH);
-  tg.addColorStop(0,'#3a8028'); tg.addColorStop(0.3,'#4a9030'); tg.addColorStop(0.6,'#408028'); tg.addColorStop(1,'#305020');
+  tg.addColorStop(0,'#48a030');   // bright at top (sunlit)
+  tg.addColorStop(0.25,'#52b038');
+  tg.addColorStop(0.55,'#44a030');
+  tg.addColorStop(0.8,'#388228');
+  tg.addColorStop(1,'#2a6018');   // darker in foreground shadow
   ctx.fillStyle=tg;ctx.fillRect(0,trackTop,W,trackH);
 
-  // Mowing stripes (alternating light/dark bands - classic racecourse look)
-  const stripeW=W/10;
-  for(let i=0;i<11;i++){
-    ctx.fillStyle=i%2===0?'rgba(255,255,255,0.055)':'rgba(0,0,0,0.04)';
+  // Mowing stripes — alternating slightly lighter/darker bands (ref image 3)
+  const stripeCount=14;
+  const stripeW=W/stripeCount;
+  for(let i=0;i<stripeCount+1;i++){
+    ctx.fillStyle=i%2===0?'rgba(255,255,255,0.06)':'rgba(0,0,0,0.05)';
     ctx.fillRect(i*stripeW,trackTop,stripeW,trackH);
   }
 
-  // Track shadow (depth under feet of horses)
+  // Worn running rail path — slight discolouration where horses run
+  const runningPath=ctx.createLinearGradient(0,trackTop+trackH*0.25,0,trackTop+trackH*0.65);
+  runningPath.addColorStop(0,'rgba(0,0,0,0)');
+  runningPath.addColorStop(0.3,'rgba(180,140,80,0.06)');
+  runningPath.addColorStop(0.7,'rgba(180,140,80,0.06)');
+  runningPath.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle=runningPath;ctx.fillRect(0,trackTop,W,trackH);
+
+  // Depth / perspective shadow
   const shadowGrad=ctx.createLinearGradient(0,trackTop,0,trackTop+trackH);
-  shadowGrad.addColorStop(0,'rgba(0,0,0,0.22)');
-  shadowGrad.addColorStop(0.12,'rgba(0,0,0,0)');
-  shadowGrad.addColorStop(0.85,'rgba(0,0,0,0)');
-  shadowGrad.addColorStop(1,'rgba(0,0,0,0.15)');
+  shadowGrad.addColorStop(0,'rgba(0,0,0,0.18)');
+  shadowGrad.addColorStop(0.1,'rgba(0,0,0,0)');
+  shadowGrad.addColorStop(0.9,'rgba(0,0,0,0)');
+  shadowGrad.addColorStop(1,'rgba(0,0,0,0.12)');
   ctx.fillStyle=shadowGrad;ctx.fillRect(0,trackTop,W,trackH);
 
   // ── RUNNING RAIL (inside) ──
@@ -2019,6 +2369,7 @@ function prepareRace(){
     effSpi:applyB(r.spi,'spi',r.jBonus),
     _luck:r.isPlayer&&jockey.bonus?.type==='lck'?(Math.random()*2-1)*(jockey.bonus.val/100):r.isPlayer&&jockey.bonus?.type==='con'?(Math.random()*2-1)*0.02:(Math.random()*2-1)*0.11,
     fat:0,finishStep:null,worldX:0,lane:i,
+    jockeyName:r.isPlayer?jockey.name:(r.jockeyName||'AI Jockey'),
   }));
   RP=RF.map(()=>0);
   cameraX=0;cameraMode='leader';comIdx=0;raceActive=false;
@@ -2146,6 +2497,135 @@ function doCommentary(idx,jockey){
   else pool=COMS.chasing;
   const txt=pool[rand(0,pool.length-1)].replace(/{h}/g,myH?.name||'').replace(/{j}/g,jockey?.name||'');
   document.getElementById('com-txt').textContent=txt;
+}
+
+// ═══════════════════════════════════════
+//  FINISH RACE + RESULTS SCREEN
+// ═══════════════════════════════════════
+function finishRace(){
+  if(!raceContext)return;
+  const {race,jockey,horse}=raceContext;
+
+  // Sort by finish time (finishStep), then by worldX for those that didn't finish
+  const sorted=[...RF].sort((a,b)=>{
+    if(a.finishStep!==null&&b.finishStep!==null)return a.finishStep-b.finishStep;
+    if(a.finishStep!==null)return -1;
+    if(b.finishStep!==null)return 1;
+    return b.worldX-a.worldX;
+  });
+
+  // Prize distribution (60% / 20% / 10% of purse)
+  const purse=race.prize||0;
+  const prizes=[Math.round(purse*0.6),Math.round(purse*0.2),Math.round(purse*0.1)];
+
+  // Find player position
+  const playerIdx=sorted.findIndex(h=>h.isPlayer);
+  const playerPos=playerIdx+1;
+  const playerPrize=prizes[playerIdx]||0;
+
+  // Update player horse stats
+  horse.races=(horse.races||0)+1;
+  if(playerPos===1){horse.wins=(horse.wins||0)+1;}
+  G.money+=playerPrize;
+  G.totalRaces=(G.totalRaces||0)+1;
+  G.totalEarnings=(G.totalEarnings||0)+playerPrize;
+  if(playerPos===1){
+    G.wins=(G.wins||0)+1;
+    G.fameBoard.push({horse:horse.name,race:race.name,jockey:jockey.name,day:G.day,prize:playerPrize});
+  }
+  G.day++;
+
+  // Bet payouts
+  const betResults=computeBetPayouts(sorted);
+  let betWon=0,betLost=0;
+  betResults.forEach(b=>{
+    if(b.won){betWon+=b.actual-b.totalStake;}
+    else{betLost+=b.totalStake;}
+    if(b.won)G.money+=b.actual;
+  });
+  save();updateHeader();
+
+  // News
+  const posLabel=['1st','2nd','3rd','4th','5th','6th','7th','8th'][playerIdx]||`${playerIdx+1}th`;
+  G.news.unshift({text:`${horse.name} finished ${posLabel} in ${race.name}. ${playerPrize>0?`Prize: £${playerPrize.toLocaleString()}.`:''}`,date:`Day ${G.day-1}`});
+  if(G.news.length>12)G.news.length=12;
+  save();
+
+  // ── Build results board ──
+  // Header
+  document.getElementById('res-race-lbl').textContent=`Day ${G.day-1} · ${race.dist}m`;
+  document.getElementById('res-race-name').textContent=race.name.toUpperCase();
+
+  // Player position highlight
+  const posColors=['var(--neon)','#c8c8d0','#cd8040','var(--text-d)'];
+  const posClass=['rp1','rp2','rp3','rpx'];
+  const posLabels=['1ST','2ND','3RD','4TH','5TH','6TH','7TH','8TH'];
+  const pbi=Math.min(playerIdx,3);
+  const pbl=document.getElementById('res-place-big');
+  pbl.textContent=posLabels[playerIdx]||`${playerIdx+1}TH`;
+  pbl.className=posClass[pbi];
+  document.getElementById('res-place-lbl').textContent='YOUR RESULT';
+
+  // Finishers table
+  const posClass2=['p1','p2','p3','px'];
+  const tbody=document.getElementById('res-tbody');
+  tbody.innerHTML=sorted.map((h,i)=>{
+    const pos=i+1;
+    const prize=prizes[i]||0;
+    const pc=posClass2[Math.min(i,3)];
+    const isP=h.isPlayer;
+    const jName=h.jockeyName||'Unknown';
+    return `<tr class="res-tr${isP?' my-horse':''}">
+      <td><span class="res-pos-badge ${pc}">${pos}</span></td>
+      <td>
+        <div class="res-horse-name${isP?' winner':''}">${isP?'⭐ ':''}${h.name}</div>
+        <div class="res-jock-lbl">#${h.draw} · ${BREEDS[h.breed]?.name||''}</div>
+      </td>
+      <td style="color:var(--text-d);font-size:0.75rem;">${jName}</td>
+      <td class="res-prize-cell${prize===0?' zero':''}">${prize>0?'£'+prize.toLocaleString():'—'}</td>
+    </tr>`;
+  }).join('');
+
+  // Purse breakdown (right panel)
+  document.getElementById('res-purse-rows').innerHTML=
+    prizes.map((p,i)=>`<div style="display:flex;justify-content:space-between;padding:0.3rem 0;border-bottom:1px solid var(--border);font-size:0.78rem;"><span style="color:var(--text-d);">${['🥇','🥈','🥉'][i]} ${['1st','2nd','3rd'][i]} place</span><span style="font-family:'Bebas Neue',sans-serif;color:var(--gold);">£${p.toLocaleString()}</span></div>`).join('')+
+    `<div style="display:flex;justify-content:space-between;padding:0.3rem 0;font-size:0.7rem;color:var(--text-m);"><span>Total purse</span><span>£${purse.toLocaleString()}</span></div>`;
+
+  // Bets panel (right)
+  const betsPanel=document.getElementById('res-bets-panel');
+  if(!betResults.length){
+    betsPanel.innerHTML='<div style="color:var(--text-d);font-style:italic;font-size:0.78rem;">No bets placed.</div>';
+  } else {
+    betsPanel.innerHTML=betResults.map(b=>{
+      const typeLabel={win:'Win',place:'Place',eachway:'Each-Way',exacta:'Exacta',quinella:'Quinella',trifecta:'Trifecta',trifbox:'Trifecta Box'}[b.type]||b.type;
+      const outcomeHtml=b.won
+        ?`<span class="bet-res-out bet-res-win">+£${(b.actual-(b.totalStake||b.stake||0)).toLocaleString()}</span>`
+        :`<span class="bet-res-out bet-res-lose">-£${(b.totalStake||b.stake||0).toLocaleString()}</span>`;
+      return `<div class="bet-res-row">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <span class="bet-res-type">${typeLabel}</span>${outcomeHtml}
+        </div>
+        <div class="bet-res-sel">${b.sels?.join(' / ')||''} · Stake £${(b.totalStake||b.stake||0).toLocaleString()}</div>
+      </div>`;
+    }).join('');
+  }
+
+  // Bet summary
+  const totalStaked=betResults.reduce((s,b)=>s+(b.totalStake||b.stake||0),0);
+  const totalReturned=betResults.filter(b=>b.won).reduce((s,b)=>s+b.actual,0);
+  const netBet=totalReturned-totalStaked;
+  document.getElementById('res-bet-summary').innerHTML=totalStaked>0?`
+    <div class="res-sum-row"><span class="res-sum-k">Total Staked</span><span class="res-sum-v" style="color:var(--text);">£${totalStaked.toLocaleString()}</span></div>
+    <div class="res-sum-row"><span class="res-sum-k">Returned</span><span class="res-sum-v" style="color:var(--gold);">£${totalReturned.toLocaleString()}</span></div>
+    <div class="res-sum-row" style="border-top:2px solid var(--border2);margin-top:0.15rem;"><span class="res-sum-k">Net ${netBet>=0?'Profit':'Loss'}</span><span class="res-sum-v" style="color:${netBet>=0?'var(--neon)':'var(--red)'};">${netBet>=0?'+':''}£${Math.abs(netBet).toLocaleString()}</span></div>`:'';
+
+  // Show overlay
+  document.getElementById('res-ov').classList.add('show');
+}
+
+function closeResults(){
+  document.getElementById('res-ov').classList.remove('show');
+  go('hub');
 }
 
 // ═══════════════════════════════════════

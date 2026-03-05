@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Environmental Science 3/4 — Study Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1a3a2a;
+    --moss: #2d5a3d;
+    --fern: #4a8c5c;
+    --sage: #7ab68a;
+    --mist: #c8dfc8;
+    --earth: #8b5e3c;
+    --amber: #d4823a;
+    --sand: #f2e8d5;
+    --cream: #faf6ee;
+    --dark: #0f2118;
+    --text: #1e3529;
+    --text-light: #4a6355;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--forest);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 2rem;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 60% at 20% 80%, rgba(74,140,92,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 50% at 80% 20%, rgba(212,130,58,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 50% 50%, rgba(45,90,61,0.4) 0%, transparent 100%);
+  }
+
+  .leaf-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cellipse cx='30' cy='30' rx='8' ry='20' fill='%23ffffff' transform='rotate(30 30 30)'/%3E%3C/svg%3E");
+    background-size: 60px 60px;
+  }
+
+  .hero-content { position: relative; z-index: 1; max-width: 700px; }
+
+  .hero-tag {
+    display: inline-block;
+    background: rgba(212,130,58,0.2);
+    border: 1px solid rgba(212,130,58,0.5);
+    color: var(--amber);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.05;
+    margin-bottom: 1rem;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .hero h1 span { color: var(--sage); }
+
+  .hero p {
+    color: rgba(200,223,200,0.8);
+    font-size: 1.1rem;
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .hero-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .hero-btn.primary {
+    background: var(--amber);
+    color: #fff;
+  }
+
+  .hero-btn.secondary {
+    background: rgba(255,255,255,0.1);
+    color: var(--mist);
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .hero-btn:hover { transform: translateY(-2px); opacity: 0.9; }
+
+  /* ── NAV BAR ── */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--forest);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .navbar::-webkit-scrollbar { display: none; }
+
+  .nav-tab {
+    padding: 1rem 1.4rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--sage);
+    cursor: pointer;
+    border: none;
+    background: none;
+    white-space: nowrap;
+    transition: all 0.2s;
+    border-bottom: 2px solid transparent;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .nav-tab:hover { color: #fff; }
+  .nav-tab.active { color: var(--amber); border-bottom-color: var(--amber); }
+
+  /* ── SECTIONS ── */
+  .section { display: none; padding: 3rem 1.5rem; max-width: 1100px; margin: 0 auto; }
+  .section.active { display: block; }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-sub {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
+
+  /* ── TOPIC NOTES ── */
+  .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .topic-card {
+    background: #fff;
+    border: 1px solid rgba(74,140,92,0.15);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+    cursor: pointer;
+  }
+
+  .topic-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(26,58,42,0.12); }
+
+  .topic-card-header {
+    background: var(--moss);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .topic-icon {
+    width: 36px; height: 36px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+  }
+
+  .topic-card-header h3 { color: #fff; font-size: 0.95rem; font-weight: 600; }
+  .topic-card-header span { color: var(--mist); font-size: 0.75rem; opacity: 0.8; }
+
+  .topic-card-body { padding: 1.25rem 1.5rem; }
+
+  .topic-card-body ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .topic-card-body li {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .topic-card-body li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--fern);
+    font-size: 0.75rem;
+    top: 0.1rem;
+  }
+
+  .topic-expand {
+    display: none;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid rgba(74,140,92,0.1);
+    background: var(--cream);
+    font-size: 0.85rem;
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  .topic-expand.open { display: block; }
+
+  .topic-expand h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--forest);
+    margin-bottom: 0.5rem;
+  }
+
+  .topic-expand p { margin-bottom: 0.75rem; }
+
+  /* ── FLASHCARDS ── */
+  .flashcard-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .topic-filter {
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(74,140,92,0.3);
+    border-radius: 8px;
+    background: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    color: var(--text);
+    cursor: pointer;
+  }
+
+  .fc-wrap {
+    perspective: 1000px;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+  }
+
+  .fc {
+    width: 100%;
+    height: 280px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+    cursor: pointer;
+  }
+
+  .fc.flipped { transform: rotateY(180deg); }
+
+  .fc-face {
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .fc-front {
+    background: var(--forest);
+    border: 1px solid rgba(74,140,92,0.3);
+  }
+
+  .fc-back {
+    background: #fff;
+    border: 1px solid rgba(74,140,92,0.2);
+    transform: rotateY(180deg);
+  }
+
+  .fc-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    opacity: 0.6;
+  }
+
+  .fc-front .fc-label { color: var(--sage); }
+  .fc-back .fc-label { color: var(--fern); }
+
+  .fc-front .fc-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: #fff;
+    line-height: 1.4;
+  }
+
+  .fc-back .fc-text {
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .fc-hint { font-size: 0.75rem; color: rgba(200,223,200,0.5); margin-top: 1rem; }
+
+  .fc-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .fc-btn {
+    background: var(--moss);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1.4rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .fc-btn:hover { background: var(--fern); }
+  .fc-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  .fc-counter {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--text-light);
+  }
+
+  .progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(74,140,92,0.15);
+    border-radius: 100px;
+    overflow: hidden;
+    margin-top: 1.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--fern);
+    border-radius: 100px;
+    transition: width 0.3s ease;
+  }
+
+  /* ── QUIZ ── */
+  .quiz-start {
+    text-align: center;
+    padding: 3rem 0;
+  }
+
+  .quiz-start h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--forest); margin-bottom: 1rem; }
+  .quiz-start p { color: var(--text-light); margin-bottom: 2rem; }
+
+  .start-btn {
+    background: var(--forest);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 1rem 2.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .start-btn:hover { background: var(--moss); transform: scale(1.02); }
+
+  .quiz-question { display: none; }
+  .quiz-question.active { display: block; }
+
+  .q-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .q-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--text-light);
+  }
+
+  .q-score {
+    background: var(--moss);
+    color: #fff;
+    border-radius: 100px;
+    padding: 0.25rem 0.8rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .q-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    color: var(--forest);
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
+
+  .q-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .q-opt {
+    padding: 1rem 1.25rem;
+    border: 1.5px solid rgba(74,140,92,0.2);
+    border-radius: 10px;
+    background: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .q-opt:hover:not(:disabled) { border-color: var(--fern); background: rgba(74,140,92,0.05); }
+  .q-opt.correct { border-color: var(--fern); background: rgba(74,140,92,0.12); color: var(--moss); font-weight: 600; }
+  .q-opt.wrong { border-color: #e05050; background: rgba(224,80,80,0.08); color: #c03030; }
+  .q-opt:disabled { cursor: not-allowed; }
+
+  .opt-letter {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: rgba(74,140,92,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--fern);
+    flex-shrink: 0;
+  }
+
+  .q-feedback {
+    display: none;
+    padding: 1rem 1.25rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .q-feedback.show { display: block; }
+  .q-feedback.correct-fb { background: rgba(74,140,92,0.1); color: var(--moss); border: 1px solid rgba(74,140,92,0.2); }
+  .q-feedback.wrong-fb { background: rgba(224,80,80,0.08); color: #b02020; border: 1px solid rgba(224,80,80,0.2); }
+
+  .next-btn {
+    background: var(--amber);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.7rem 2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: none;
+    transition: opacity 0.2s;
+  }
+
+  .next-btn.show { display: inline-block; }
+  .next-btn:hover { opacity: 0.85; }
+
+  .quiz-results {
+    display: none;
+    text-align: center;
+    padding: 3rem 1rem;
+  }
+
+  .quiz-results.show { display: block; }
+
+  .result-score {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 900;
+    color: var(--forest);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .result-label { color: var(--text-light); margin-bottom: 0.5rem; }
+  .result-msg {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--moss);
+    margin-bottom: 2rem;
+  }
+
+  /* ── GLOSSARY ── */
+  .glossary-search {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+
+  .glossary-search input {
+    width: 100%;
+    padding: 0.9rem 1.25rem 0.9rem 3rem;
+    border: 1.5px solid rgba(74,140,92,0.25);
+    border-radius: 10px;
+    background: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .glossary-search input:focus { border-color: var(--fern); }
+
+  .glossary-search::before {
+    content: '🔍';
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.85rem;
+    pointer-events: none;
+  }
+
+  .glossary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+
+  .gloss-card {
+    background: #fff;
+    border: 1px solid rgba(74,140,92,0.15);
+    border-radius: 10px;
+    padding: 1.25rem;
+    transition: box-shadow 0.2s;
+  }
+
+  .gloss-card:hover { box-shadow: 0 4px 16px rgba(26,58,42,0.08); }
+
+  .gloss-term {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--forest);
+    margin-bottom: 0.4rem;
+  }
+
+  .gloss-category {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.5rem;
+    border-radius: 100px;
+    background: rgba(74,140,92,0.1);
+    color: var(--fern);
+    margin-bottom: 0.6rem;
+  }
+
+  .gloss-def {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  .gloss-card.hidden { display: none; }
+
+  /* ── TIMELINES ── */
+  .timeline {
+    position: relative;
+    padding-left: 2.5rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.75rem;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--fern), transparent);
+  }
+
+  .tl-item {
+    position: relative;
+    margin-bottom: 2rem;
+    background: #fff;
+    border: 1px solid rgba(74,140,92,0.15);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 1.25rem;
+    width: 10px; height: 10px;
+    background: var(--fern);
+    border-radius: 50%;
+    border: 2px solid var(--cream);
+    box-shadow: 0 0 0 2px var(--fern);
+  }
+
+  .tl-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--amber);
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+
+  .tl-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--forest);
+    margin-bottom: 0.5rem;
+  }
+
+  .tl-text {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  /* ── SUMMARY CARDS ── */
+  .summary-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .sum-tab {
+    padding: 0.45rem 1rem;
+    border-radius: 100px;
+    border: 1.5px solid rgba(74,140,92,0.2);
+    background: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .sum-tab.active { background: var(--forest); color: #fff; border-color: var(--forest); }
+
+  .sum-content { display: none; }
+  .sum-content.active { display: block; }
+
+  .sum-block {
+    background: #fff;
+    border: 1px solid rgba(74,140,92,0.15);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .sum-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--forest);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .sum-block p, .sum-block li {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  .sum-block ul { padding-left: 1.25rem; }
+  .sum-block li { margin-bottom: 0.3rem; }
+
+  .key-eq {
+    background: var(--forest);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--sage);
+    margin: 0.5rem 0;
+    display: block;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 2.5rem; }
+    .topics-grid, .glossary-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="hero">
+  <div class="leaf-bg"></div>
+  <div class="hero-content">
+    <span class="hero-tag">VCE · Units 3 & 4</span>
+    <h1>Environmental<br><span>Science</span> Hub</h1>
+    <p>Everything you need to ace your exam — flashcards, quizzes,<br>key terms, topic summaries and more.</p>
+    <div class="hero-nav">
+      <button class="hero-btn primary" onclick="showSection('topics')">📚 Start Studying</button>
+      <button class="hero-btn secondary" onclick="showSection('quiz')">⚡ Quick Quiz</button>
+    </div>
+  </div>
+</section>
+
+<!-- ─── NAVBAR ─── -->
+<nav class="navbar">
+  <button class="nav-tab" onclick="showSection('topics')">📗 Topic Notes</button>
+  <button class="nav-tab" onclick="showSection('flashcards')">🃏 Flashcards</button>
+  <button class="nav-tab" onclick="showSection('quiz')">⚡ Quiz</button>
+  <button class="nav-tab" onclick="showSection('glossary')">📖 Glossary</button>
+  <button class="nav-tab" onclick="showSection('summary')">🗂 Summaries</button>
+  <button class="nav-tab" onclick="showSection('timeline')">⏳ Key Events</button>
+</nav>
+
+<!-- ─── TOPIC NOTES ─── -->
+<section class="section" id="topics">
+  <h2 class="section-title">Topic Notes</h2>
+  <p class="section-sub">Click any card to expand detailed notes.</p>
+  <div class="topics-grid" id="topicsGrid"></div>
+</section>
+
+<!-- ─── FLASHCARDS ─── -->
+<section class="section" id="flashcards">
+  <h2 class="section-title">Flashcards</h2>
+  <p class="section-sub">Click the card to reveal the answer. Use the arrows to navigate.</p>
+  <div class="flashcard-controls">
+    <select class="topic-filter" id="fcFilter" onchange="filterFlashcards()">
+      <option value="all">All Topics</option>
+      <option value="ecosystems">Ecosystems</option>
+      <option value="climate">Climate Change</option>
+      <option value="biodiversity">Biodiversity</option>
+      <option value="pollution">Pollution</option>
+      <option value="conservation">Conservation</option>
+    </select>
+    <button class="fc-btn" onclick="shuffleCards()" style="background:var(--earth)">🔀 Shuffle</button>
+  </div>
+  <div class="fc-wrap">
+    <div class="fc" id="flashcard" onclick="flipCard()">
+      <div class="fc-face fc-front">
+        <div class="fc-label">Term / Concept</div>
+        <div class="fc-text" id="fc-front-text">Loading...</div>
+        <div class="fc-hint">click to flip</div>
+      </div>
+      <div class="fc-face fc-back">
+        <div class="fc-label">Definition / Explanation</div>
+        <div class="fc-text" id="fc-back-text"></div>
+      </div>
+    </div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="fcProgress"></div></div>
+  <div class="fc-nav">
+    <button class="fc-btn" id="fcPrev" onclick="prevCard()">← Prev</button>
+    <span class="fc-counter" id="fcCounter">1 / 1</span>
+    <button class="fc-btn" id="fcNext" onclick="nextCard()">Next →</button>
+  </div>
+</section>
+
+<!-- ─── QUIZ ─── -->
+<section class="section" id="quiz">
+  <h2 class="section-title">Multiple Choice Quiz</h2>
+  <p class="section-sub">Test your knowledge with instant feedback.</p>
+
+  <div class="quiz-start" id="quizStart">
+    <h2>Ready to test yourself?</h2>
+    <p>10 questions covering all key topics from Units 3 & 4.</p>
+    <button class="start-btn" onclick="startQuiz()">Start Quiz →</button>
+  </div>
+
+  <div id="quizBody"></div>
+  <div class="quiz-results" id="quizResults">
+    <div class="result-score" id="resultScore"></div>
+    <div class="result-label">out of 10</div>
+    <div class="result-msg" id="resultMsg"></div>
+    <button class="start-btn" onclick="restartQuiz()">Try Again</button>
+  </div>
+</section>
+
+<!-- ─── GLOSSARY ─── -->
+<section class="section" id="glossary">
+  <h2 class="section-title">Key Terms Glossary</h2>
+  <p class="section-sub">Search for any term below.</p>
+  <div class="glossary-search">
+    <input type="text" id="glossSearch" placeholder="Search terms…" oninput="filterGlossary()">
+  </div>
+  <div class="glossary-grid" id="glossGrid"></div>
+</section>
+
+<!-- ─── SUMMARIES ─── -->
+<section class="section" id="summary">
+  <h2 class="section-title">Topic Summaries</h2>
+  <p class="section-sub">Concise notes organised by study area.</p>
+  <div class="summary-tabs" id="sumTabs"></div>
+  <div id="sumContents"></div>
+</section>
+
+<!-- ─── TIMELINE ─── -->
+<section class="section" id="timeline">
+  <h2 class="section-title">Key Environmental Events</h2>
+  <p class="section-sub">A timeline of significant moments in environmental history.</p>
+  <div class="timeline" id="timelineEl"></div>
+</section>
+
+<script>
+// ─────────────────────────── DATA ───────────────────────────
+
+const topicsData = [
+  {
+    title: "Ecosystems & Energy Flow",
+    icon: "🌿",
+    sub: "Unit 3 · Area of Study 1",
+    points: ["Biotic and abiotic factors", "Food webs and trophic levels", "Energy pyramids & 10% rule", "Nutrient cycling (N, C, P, water)"],
+    detail: `<h4>Ecosystems</h4><p>An ecosystem consists of all living organisms (<strong>biotic</strong> factors) and their physical environment (<strong>abiotic</strong> factors). Energy flows <em>one-way</em> from producers → primary consumers → secondary consumers → tertiary consumers.</p><p>Only about <strong>10%</strong> of energy is transferred between trophic levels; the rest is lost as heat. This is why food pyramids narrow towards the apex.</p><h4>Nutrient Cycling</h4><p>Unlike energy, nutrients are <strong>recycled</strong> within ecosystems. The carbon, nitrogen, phosphorus and water cycles all play critical roles in ecosystem health.</p>`
+  },
+  {
+    title: "Biodiversity",
+    icon: "🦋",
+    sub: "Unit 3 · Area of Study 2",
+    points: ["Species, genetic, ecosystem diversity", "Measurement: Simpson's Index", "Threats to biodiversity", "Keystone and indicator species"],
+    detail: `<h4>Types of Biodiversity</h4><p><strong>Species diversity</strong>: variety of species. <strong>Genetic diversity</strong>: variety of alleles within a species. <strong>Ecosystem diversity</strong>: variety of habitats and communities.</p><h4>Measuring Biodiversity</h4><p>Simpson's Diversity Index (D) = 1 − Σ(n/N)². A value closer to 1 = higher diversity. Sampling methods include quadrats, transects, mark-recapture and pitfall traps.</p><h4>Threats</h4><p>Habitat destruction, introduced species, overexploitation, pollution, and climate change are the main threats. Use the mnemonic <strong>HIPPCO</strong>.</p>`
+  },
+  {
+    title: "Climate Change",
+    icon: "🌡️",
+    sub: "Unit 3 · Area of Study 3",
+    points: ["Greenhouse effect & enhanced GHE", "CO₂, CH₄, N₂O, H₂O", "Evidence: ice cores, sea level rise", "IPCC projections"],
+    detail: `<h4>The Greenhouse Effect</h4><p>Solar radiation passes through the atmosphere and heats Earth's surface. The surface emits infrared radiation, which is absorbed by greenhouse gases (GHGs) and re-emitted, warming the lower atmosphere.</p><p>The <strong>enhanced</strong> greenhouse effect is caused by increased GHG concentrations due to human activities (burning fossil fuels, deforestation, agriculture).</p><h4>Key Gases</h4><p>CO₂ (most abundant), CH₄ (most potent, 25× CO₂ over 100 yrs), N₂O (agriculture), and water vapour (feedback). Global Warming Potential (GWP) compares impact relative to CO₂.</p>`
+  },
+  {
+    title: "Water & Catchment Management",
+    icon: "💧",
+    sub: "Unit 3 · Area of Study 4",
+    points: ["Hydrological cycle", "Catchment hydrology", "Water quality indicators", "Eutrophication & algal blooms"],
+    detail: `<h4>The Water Cycle</h4><p>Evaporation → condensation → precipitation → surface runoff / infiltration → groundwater → transpiration (collectively: evapotranspiration). Vegetation is crucial in regulating this cycle.</p><h4>Catchment Hydrology</h4><p>A <em>catchment</em> is an area of land draining to a single outlet. Land use change (logging, urbanisation) increases runoff, reduces infiltration and can cause flooding and erosion.</p><h4>Eutrophication</h4><p>Excess nutrients (N, P) → algal bloom → algae die → bacteria decompose → oxygen depleted → aquatic organisms die. Indicator species like macroinvertebrates show water quality.</p>`
+  },
+  {
+    title: "Environmental Change",
+    icon: "🔄",
+    sub: "Unit 4 · Area of Study 1",
+    points: ["Natural vs anthropogenic change", "Succession: primary & secondary", "Ecological disturbance", "Resilience and recovery"],
+    detail: `<h4>Types of Change</h4><p><strong>Natural change</strong>: fire, flood, volcanic eruption, drought. <strong>Anthropogenic change</strong>: land clearing, pollution, introduced species, climate change.</p><h4>Ecological Succession</h4><p><strong>Primary succession</strong>: bare rock → pioneer species → climax community (e.g. volcanic island). <strong>Secondary succession</strong>: disturbed area with soil still intact (e.g. post-fire regrowth). Key concept: <em>seral stages</em>.</p><h4>Resilience</h4><p>Resilience = ability to return to original state after disturbance. Related concepts: resistance (withstand) and redundancy (multiple species fulfilling same role).</p>`
+  },
+  {
+    title: "Conservation & Management",
+    icon: "🛡️",
+    sub: "Unit 4 · Area of Study 2",
+    points: ["In-situ vs ex-situ conservation", "National parks, biosphere reserves", "Recovery plans & threatened species", "Sustainable development goals"],
+    detail: `<h4>In-situ Conservation</h4><p>Protecting species <em>within</em> their natural habitat. Examples: national parks, marine protected areas (MPAs), wildlife corridors. Most preferred approach.</p><h4>Ex-situ Conservation</h4><p>Protecting species <em>outside</em> their natural habitat. Examples: zoos, seed banks, captive breeding programs. Used when in-situ fails.</p><h4>EPBC Act (Australia)</h4><p>Environmental Protection and Biodiversity Conservation Act 1999 — Australia's main environmental law. Lists threatened species under categories: extinct, critically endangered, endangered, vulnerable.</p>`
+  },
+  {
+    title: "Pollution & Waste",
+    icon: "♻️",
+    sub: "Unit 4 · Area of Study 3",
+    points: ["Point vs non-point sources", "Air, water and soil pollution", "Bioaccumulation & biomagnification", "Waste hierarchy: reduce, reuse, recycle"],
+    detail: `<h4>Pollution Sources</h4><p><strong>Point source</strong>: identifiable location (factory pipe). <strong>Non-point source</strong>: diffuse (agricultural runoff).</p><h4>Bioaccumulation vs Biomagnification</h4><p><strong>Bioaccumulation</strong>: toxins accumulate in a single organism over time. <strong>Biomagnification</strong>: toxin concentration <em>increases</em> up the food chain. Classic example: DDT in raptors.</p><h4>Waste Hierarchy</h4><p>In order of preference: <strong>Refuse → Reduce → Reuse → Recycle → Recover → Dispose</strong>. The goal is to minimise waste at the top of the hierarchy.</p>`
+  },
+  {
+    title: "Environmental Impact Assessment",
+    icon: "📋",
+    sub: "Unit 4 · Area of Study 4",
+    points: ["EIA process steps", "Stakeholders & community input", "Mitigation strategies", "Cost-benefit analysis"],
+    detail: `<h4>EIA Process</h4><p>1. Screening → 2. Scoping → 3. Impact prediction → 4. Mitigation → 5. Reporting → 6. Review → 7. Monitoring. EIAs ensure environmental consequences are considered before development.</p><h4>Stakeholders</h4><p>Include government agencies, developers, community groups, scientists and Indigenous communities. All have different values and interests.</p><h4>Mitigation Strategies</h4><p>Avoid, minimise, restore, offset. The <em>mitigation hierarchy</em> prioritises avoiding impact over creating offsets.</p>`
+  }
+];
+
+const flashcardsData = [
+  { q: "What is the 10% rule in ecology?", a: "Only approximately 10% of energy is transferred from one trophic level to the next; the remaining 90% is lost as heat through metabolic processes.", topic: "ecosystems" },
+  { q: "Define 'ecosystem services'", a: "Benefits that ecosystems provide to humans, including provisioning (food, water), regulating (climate, floods), cultural (recreation) and supporting services (nutrient cycling).", topic: "ecosystems" },
+  { q: "What is the difference between a food chain and a food web?", a: "A food chain shows a single linear sequence of feeding relationships. A food web shows all interconnected feeding relationships in an ecosystem — it is more realistic.", topic: "ecosystems" },
+  { q: "What does Simpson's Diversity Index measure?", a: "It measures both species richness (number of species) and species evenness (relative abundance). D = 1 − Σ(n/N)². Higher values indicate greater biodiversity.", topic: "biodiversity" },
+  { q: "What is a keystone species?", a: "A species that has a disproportionately large effect on its ecosystem relative to its abundance. Removing it causes major ecosystem change (e.g. sea otters, wolves).", topic: "biodiversity" },
+  { q: "Define HIPPCO", a: "A mnemonic for the main threats to biodiversity: Habitat destruction, Invasive species, Population growth (human), Pollution, Climate change, Overexploitation.", topic: "biodiversity" },
+  { q: "What is the enhanced greenhouse effect?", a: "The increase in the natural greenhouse effect due to human activities adding more GHGs (CO₂, CH₄, N₂O) to the atmosphere, causing additional warming beyond natural levels.", topic: "climate" },
+  { q: "What is Global Warming Potential (GWP)?", a: "A measure of how much heat a greenhouse gas traps in the atmosphere over 100 years, compared to CO₂ (which has GWP = 1). Methane ≈ 25, N₂O ≈ 298.", topic: "climate" },
+  { q: "Name three lines of evidence for climate change", a: "Rising atmospheric CO₂ (Keeling Curve), increasing global average temperatures, melting polar ice and glaciers, sea level rise, shifting species ranges, ocean acidification.", topic: "climate" },
+  { q: "What is eutrophication?", a: "The process where excess nutrients (N, P) enter a water body → algal bloom → algae die → decomposition consumes O₂ → hypoxia → aquatic life dies.", topic: "pollution" },
+  { q: "Difference between bioaccumulation and biomagnification?", a: "Bioaccumulation = buildup of toxins in ONE organism over time. Biomagnification = increasing concentration of toxins at HIGHER trophic levels in a food chain.", topic: "pollution" },
+  { q: "What is primary succession?", a: "Ecological succession that begins on bare, lifeless substrate (e.g. lava flow, exposed rock) with no pre-existing soil. Pioneer species (e.g. lichens) begin the process.", topic: "ecosystems" },
+  { q: "What is in-situ conservation?", a: "Protecting species within their natural habitat. Examples: national parks, marine protected areas, wildlife corridors. Preferred over ex-situ methods.", topic: "conservation" },
+  { q: "What is ex-situ conservation?", a: "Protecting species outside their natural habitat. Examples: zoos, seed banks, captive breeding programs. Used as a last resort when populations are critically low.", topic: "conservation" },
+  { q: "What does the EPBC Act 1999 do?", a: "Australia's main environmental law. It lists threatened species under categories (extinct, critically endangered, endangered, vulnerable) and requires approval for actions impacting them.", topic: "conservation" },
+  { q: "What is a carbon sink vs carbon source?", a: "A carbon SINK absorbs more CO₂ than it releases (e.g. forests, oceans). A carbon SOURCE releases more CO₂ than it absorbs (e.g. burning fossil fuels, deforestation).", topic: "climate" },
+  { q: "What is ecological resilience?", a: "The ability of an ecosystem to absorb disturbance and reorganise while undergoing change, so as to retain essentially the same function, structure, and identity.", topic: "ecosystems" },
+  { q: "Define 'indicator species'", a: "A species used to assess the health of an environment because of its sensitivity to environmental changes. E.g. macroinvertebrates indicate water quality.", topic: "biodiversity" },
+  { q: "What is the waste hierarchy?", a: "Order of preference for waste management: Refuse → Reduce → Reuse → Recycle → Recover energy → Dispose. Disposal in landfill is the least preferred option.", topic: "pollution" },
+  { q: "What is an Environmental Impact Assessment (EIA)?", a: "A process to predict and evaluate the environmental consequences of a proposed development before it proceeds, involving screening, scoping, impact prediction, mitigation and monitoring.", topic: "conservation" }
+];
+
+const quizData = [
+  {
+    q: "Which process explains why top predators have the highest concentrations of persistent pollutants?",
+    opts: ["Bioaccumulation", "Biomagnification", "Eutrophication", "Bioremediation"],
+    ans: 1,
+    exp: "Biomagnification is the increase in concentration of a toxin at successively higher trophic levels in a food chain. Bioaccumulation refers to build-up in a single organism."
+  },
+  {
+    q: "An ecosystem has 5 species with the following counts: 10, 10, 10, 10, 10. Which Simpson's Index value is correct?",
+    opts: ["D = 0.2", "D = 0.8", "D = 1.0", "D = 0.5"],
+    ans: 1,
+    exp: "With perfectly even distribution across 5 species, D = 1 − 5×(10/50)² = 1 − 5×0.04 = 1 − 0.2 = 0.8. Higher D = higher diversity."
+  },
+  {
+    q: "Which greenhouse gas has the highest Global Warming Potential over 100 years?",
+    opts: ["Carbon dioxide (CO₂)", "Methane (CH₄)", "Nitrous oxide (N₂O)", "Water vapour (H₂O)"],
+    ans: 2,
+    exp: "Nitrous oxide (N₂O) has a GWP of approximately 298 over 100 years, higher than methane (~25) and CO₂ (1)."
+  },
+  {
+    q: "What is the FIRST stage in ecological primary succession?",
+    opts: ["Climax community", "Shrub establishment", "Pioneer species colonisation", "Secondary succession"],
+    ans: 2,
+    exp: "Pioneer species such as lichens and mosses are the first to colonise bare substrate. They begin weathering rock and adding organic matter to create soil."
+  },
+  {
+    q: "Which conservation strategy is considered MOST preferred?",
+    opts: ["Captive breeding in zoos", "Seed banks", "In-situ habitat protection", "Translocation programs"],
+    ans: 2,
+    exp: "In-situ conservation (protecting species in their natural habitat) is always preferred because it preserves ecological processes, not just individual species."
+  },
+  {
+    q: "The process by which excess nutrients cause algal blooms leading to oxygen depletion is called:",
+    opts: ["Acidification", "Eutrophication", "Salinisation", "Turbidity increase"],
+    ans: 1,
+    exp: "Eutrophication: nutrients → algal bloom → algae die → bacterial decomposition → oxygen depletion → hypoxic conditions → aquatic death."
+  },
+  {
+    q: "Which mnemonic describes the main threats to biodiversity?",
+    opts: ["SOHCAHTOA", "HIPPCO", "SMARTER", "DRABC"],
+    ans: 1,
+    exp: "HIPPCO: Habitat destruction, Invasive species, Population growth, Pollution, Climate change, Overexploitation."
+  },
+  {
+    q: "Energy transfer efficiency between trophic levels is approximately:",
+    opts: ["50%", "25%", "10%", "1%"],
+    ans: 2,
+    exp: "The 10% rule: approximately 10% of energy at one trophic level is available to the next. The remaining ~90% is lost as heat through respiration."
+  },
+  {
+    q: "What does the EPBC Act 1999 primarily govern in Australia?",
+    opts: ["Carbon emissions trading", "Protection of threatened species & significant environments", "Water usage rights", "Mining royalties"],
+    ans: 1,
+    exp: "The Environmental Protection and Biodiversity Conservation Act 1999 is Australia's main federal environmental law — it lists threatened species and requires approval for significant impacts."
+  },
+  {
+    q: "Which type of pollution source is a factory discharging waste from a single outflow pipe?",
+    opts: ["Non-point source", "Diffuse source", "Point source", "Area source"],
+    ans: 2,
+    exp: "A point source pollution is one that can be traced to a single, identifiable location (e.g. a pipe, smokestack). Non-point sources are diffuse (e.g. agricultural runoff)."
+  }
+];
+
+const glossaryData = [
+  { term: "Abiotic factor", def: "A non-living physical or chemical component of an ecosystem (e.g. temperature, pH, light, water).", cat: "Ecosystems" },
+  { term: "Biotic factor", def: "A living component of an ecosystem including all organisms and their interactions.", cat: "Ecosystems" },
+  { term: "Trophic level", def: "A position in a food chain or web, defined by the organism's main energy source.", cat: "Ecosystems" },
+  { term: "Biomass", def: "The total mass of living organisms in a given area or trophic level, usually measured as dry mass.", cat: "Ecosystems" },
+  { term: "Carrying capacity (K)", def: "The maximum population size of a species an environment can sustain indefinitely given available resources.", cat: "Ecosystems" },
+  { term: "Species richness", def: "The total number of different species present in a given area.", cat: "Biodiversity" },
+  { term: "Species evenness", def: "The relative abundance of each species in a community; higher evenness = more balanced community.", cat: "Biodiversity" },
+  { term: "Genetic diversity", def: "The variety of alleles and genotypes within a species; crucial for resilience and adaptation.", cat: "Biodiversity" },
+  { term: "Keystone species", def: "A species whose impact on its ecosystem is disproportionately large relative to its biomass.", cat: "Biodiversity" },
+  { term: "Greenhouse gas (GHG)", def: "A gas that absorbs and re-emits infrared radiation, contributing to the greenhouse effect (e.g. CO₂, CH₄, N₂O, H₂O).", cat: "Climate" },
+  { term: "Carbon sequestration", def: "The process of capturing and storing atmospheric CO₂, naturally (forests, oceans) or artificially (CCS technology).", cat: "Climate" },
+  { term: "Albedo", def: "The reflectivity of a surface. Ice/snow has high albedo; oceans/forests have low albedo. Affects how much solar energy is absorbed.", cat: "Climate" },
+  { term: "Positive feedback", def: "A feedback loop that amplifies an initial change (e.g. ice melts → lower albedo → more warming → more ice melt).", cat: "Climate" },
+  { term: "Eutrophication", def: "The process where excess nutrients cause algal blooms, oxygen depletion and aquatic ecosystem disruption.", cat: "Pollution" },
+  { term: "Bioaccumulation", def: "The build-up of a toxic substance in the tissues of a single organism over its lifetime.", cat: "Pollution" },
+  { term: "Biomagnification", def: "The increasing concentration of toxins at successively higher trophic levels in a food chain.", cat: "Pollution" },
+  { term: "Point source pollution", def: "Pollution from a single, identifiable source location (e.g. industrial discharge pipe).", cat: "Pollution" },
+  { term: "In-situ conservation", def: "Protection of species within their natural habitat (e.g. national parks, marine reserves).", cat: "Conservation" },
+  { term: "Ex-situ conservation", def: "Protection of species outside their natural habitat (e.g. zoos, seed banks, botanic gardens).", cat: "Conservation" },
+  { term: "Ecological succession", def: "The gradual process by which ecosystems change and develop over time, culminating in a climax community.", cat: "Ecosystems" },
+  { term: "EPBC Act", def: "Environment Protection and Biodiversity Conservation Act 1999 — Australia's main environmental legislation for protecting threatened species and significant environments.", cat: "Conservation" },
+  { term: "Resilience", def: "The capacity of an ecosystem to absorb disturbance and reorganise while retaining essentially the same function and structure.", cat: "Ecosystems" },
+  { term: "Indicator species", def: "Species sensitive to environmental change, used to monitor ecosystem health (e.g. macroinvertebrates for water quality).", cat: "Biodiversity" },
+  { term: "Mitigation hierarchy", def: "A framework for managing environmental impact: Avoid → Minimise → Restore → Offset, in order of preference.", cat: "Conservation" },
+  { term: "Simpson's Diversity Index", def: "A diversity measure: D = 1 − Σ(n/N)², where n = number of organisms of a species, N = total organisms. Range 0–1.", cat: "Biodiversity" }
+];
+
+const summaryData = [
+  {
+    title: "Ecosystems",
+    content: `
+      <div class="sum-block">
+        <h3>🌿 Energy Flow</h3>
+        <p>Energy flows <strong>one-way</strong> through ecosystems from producers to consumers. The 10% rule means energy pyramids always narrow upwards. Pyramids can show numbers, biomass or energy.</p>
+        <code class="key-eq">Energy efficiency = (energy at trophic level n+1 / energy at trophic level n) × 100</code>
+      </div>
+      <div class="sum-block">
+        <h3>🔄 Nutrient Cycling</h3>
+        <p>Unlike energy, nutrients are <strong>recycled</strong>. Key cycles:</p>
+        <ul>
+          <li><strong>Carbon cycle</strong>: photosynthesis (fix), respiration (release), combustion, decomposition</li>
+          <li><strong>Nitrogen cycle</strong>: fixation (Rhizobium) → nitrification → assimilation → denitrification</li>
+          <li><strong>Water cycle</strong>: evaporation, condensation, precipitation, runoff, infiltration, transpiration</li>
+        </ul>
+      </div>
+      <div class="sum-block">
+        <h3>🌱 Succession</h3>
+        <p><strong>Primary</strong>: bare rock → lichens → mosses → grasses → shrubs → climax community. Soil builds slowly.<br>
+        <strong>Secondary</strong>: disturbed area retaining soil (post-fire) — much faster recovery.</p>
+      </div>`
+  },
+  {
+    title: "Biodiversity",
+    content: `
+      <div class="sum-block">
+        <h3>🦋 Three Levels of Biodiversity</h3>
+        <ul>
+          <li><strong>Genetic</strong>: allele variety within a species — allows adaptation</li>
+          <li><strong>Species</strong>: variety of species in an area</li>
+          <li><strong>Ecosystem</strong>: variety of habitats and communities</li>
+        </ul>
+      </div>
+      <div class="sum-block">
+        <h3>📐 Simpson's Index</h3>
+        <code class="key-eq">D = 1 − Σ(n/N)²</code>
+        <p>Where n = number of individuals of species i, N = total individuals. D ranges from 0 (no diversity) to 1 (maximum diversity). Always calculate step-by-step in exams.</p>
+      </div>
+      <div class="sum-block">
+        <h3>⚠️ HIPPCO Threats</h3>
+        <ul>
+          <li><strong>H</strong>abitat destruction</li>
+          <li><strong>I</strong>nvasive/introduced species</li>
+          <li><strong>P</strong>opulation growth (human)</li>
+          <li><strong>P</strong>ollution</li>
+          <li><strong>C</strong>limate change</li>
+          <li><strong>O</strong>verexploitation</li>
+        </ul>
+      </div>`
+  },
+  {
+    title: "Climate Change",
+    content: `
+      <div class="sum-block">
+        <h3>🌡️ The Greenhouse Effect</h3>
+        <p>Solar radiation → absorbed by Earth → re-emitted as infrared → absorbed by GHGs → atmosphere warms. Human activities have <strong>enhanced</strong> this natural process by increasing GHG concentrations.</p>
+      </div>
+      <div class="sum-block">
+        <h3>📊 Key GHGs & GWP (100 yr)</h3>
+        <ul>
+          <li>CO₂ — GWP = 1 (reference)</li>
+          <li>CH₄ — GWP ≈ 25</li>
+          <li>N₂O — GWP ≈ 298</li>
+          <li>HFCs — GWP = 100s–1000s</li>
+        </ul>
+      </div>
+      <div class="sum-block">
+        <h3>🧊 Evidence for Climate Change</h3>
+        <ul>
+          <li>Keeling Curve — rising atmospheric CO₂ since 1958</li>
+          <li>Ice cores — CO₂ and temperature correlation over 800,000 years</li>
+          <li>Rising average global temperatures (+1.1°C since pre-industrial)</li>
+          <li>Declining Arctic sea ice extent</li>
+          <li>Sea level rise (~3.3mm/year)</li>
+          <li>Poleward species range shifts</li>
+        </ul>
+      </div>`
+  },
+  {
+    title: "Pollution",
+    content: `
+      <div class="sum-block">
+        <h3>🏭 Pollution Types</h3>
+        <ul>
+          <li><strong>Point source</strong>: single identifiable source (pipe, chimney)</li>
+          <li><strong>Non-point source</strong>: diffuse (agricultural runoff, urban stormwater)</li>
+          <li>Air, water, soil and noise pollution all assessed in EIAs</li>
+        </ul>
+      </div>
+      <div class="sum-block">
+        <h3>☣️ Bioaccumulation vs Biomagnification</h3>
+        <p><strong>Bioaccumulation</strong> = toxins build up in ONE organism over time (organism cannot break down/excrete the substance).<br>
+        <strong>Biomagnification</strong> = toxin concentration INCREASES at higher trophic levels. Classic example: DDT accumulation in birds of prey.</p>
+      </div>
+      <div class="sum-block">
+        <h3>♻️ Waste Hierarchy</h3>
+        <code class="key-eq">Refuse → Reduce → Reuse → Recycle → Recover → Dispose</code>
+        <p>Higher up the hierarchy = better environmental outcome. Landfill disposal is always the last resort.</p>
+      </div>`
+  },
+  {
+    title: "Conservation",
+    content: `
+      <div class="sum-block">
+        <h3>🛡️ In-situ vs Ex-situ</h3>
+        <p><strong>In-situ</strong> (preferred): National parks, MPAs, wildlife corridors, Indigenous Protected Areas, biosphere reserves.<br>
+        <strong>Ex-situ</strong> (last resort): Zoos, seed banks, captive breeding, tissue culture.</p>
+      </div>
+      <div class="sum-block">
+        <h3>⚖️ EPBC Act 1999 — Threat Categories</h3>
+        <ul>
+          <li>Extinct (EX)</li>
+          <li>Extinct in the Wild (EW)</li>
+          <li>Critically Endangered (CR)</li>
+          <li>Endangered (EN)</li>
+          <li>Vulnerable (VU)</li>
+          <li>Conservation Dependent</li>
+        </ul>
+      </div>
+      <div class="sum-block">
+        <h3>📋 EIA Process</h3>
+        <p>1. Screening → 2. Scoping → 3. Impact prediction → 4. Mitigation alternatives → 5. Environmental Impact Statement → 6. Public review → 7. Decision → 8. Monitoring & audit</p>
+      </div>`
+  }
+];
+
+const timelineEvents = [
+  { year: "1962", title: "Silent Spring Published", text: "Rachel Carson's book documented the harmful effects of pesticides (DDT) on wildlife, sparking the modern environmental movement." },
+  { year: "1972", title: "UN Conference on the Human Environment", text: "First major international conference on environmental issues held in Stockholm. Led to the creation of UNEP (UN Environment Programme)." },
+  { year: "1987", title: "Brundtland Report & Sustainable Development", text: "Our Common Future defined sustainable development as 'meeting the needs of the present without compromising future generations'." },
+  { year: "1987", title: "Montreal Protocol", text: "International treaty phasing out ozone-depleting substances (CFCs). Considered the most successful environmental treaty; ozone layer is recovering." },
+  { year: "1992", title: "Earth Summit — Rio de Janeiro", text: "The Convention on Biological Diversity (CBD) and the UNFCCC were opened for signature. Established Agenda 21 for sustainable development." },
+  { year: "1997", title: "Kyoto Protocol", text: "First legally binding international agreement to reduce greenhouse gas emissions. Set targets for developed countries." },
+  { year: "1999", title: "EPBC Act (Australia)", text: "Australia's Environment Protection and Biodiversity Conservation Act 1999 became the main federal law for protecting threatened species and significant environments." },
+  { year: "2015", title: "Paris Agreement", text: "196 countries agreed to limit global warming to well below 2°C (ideally 1.5°C) above pre-industrial levels through nationally determined contributions (NDCs)." },
+  { year: "2022", title: "Kunming-Montreal GBF", text: "The Global Biodiversity Framework set the '30×30' target: protect 30% of land and oceans by 2030 to halt biodiversity loss." }
+];
+
+// ─────────────────────────── RENDER FUNCTIONS ───────────────────────────
+
+function renderTopics() {
+  const grid = document.getElementById('topicsGrid');
+  grid.innerHTML = topicsData.map((t, i) => `
+    <div class="topic-card" onclick="toggleTopic(${i})">
+      <div class="topic-card-header">
+        <div class="topic-icon">${t.icon}</div>
+        <div>
+          <h3>${t.title}</h3>
+          <span>${t.sub}</span>
+        </div>
+      </div>
+      <div class="topic-card-body">
+        <ul>${t.points.map(p => `<li>${p}</li>`).join('')}</ul>
+      </div>
+      <div class="topic-expand" id="expand-${i}">${t.detail}</div>
+    </div>
+  `).join('');
+}
+
+function toggleTopic(i) {
+  const el = document.getElementById(`expand-${i}`);
+  el.classList.toggle('open');
+}
+
+// ─── FLASHCARDS ───
+let filteredCards = [...flashcardsData];
+let fcIndex = 0;
+
+function filterFlashcards() {
+  const val = document.getElementById('fcFilter').value;
+  filteredCards = val === 'all' ? [...flashcardsData] : flashcardsData.filter(c => c.topic === val);
+  fcIndex = 0;
+  document.getElementById('flashcard').classList.remove('flipped');
+  renderCard();
+}
+
+function shuffleCards() {
+  for (let i = filteredCards.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [filteredCards[i], filteredCards[j]] = [filteredCards[j], filteredCards[i]];
+  }
+  fcIndex = 0;
+  document.getElementById('flashcard').classList.remove('flipped');
+  renderCard();
+}
+
+function renderCard() {
+  const card = filteredCards[fcIndex];
+  document.getElementById('fc-front-text').textContent = card.q;
+  document.getElementById('fc-back-text').textContent = card.a;
+  document.getElementById('fcCounter').textContent = `${fcIndex + 1} / ${filteredCards.length}`;
+  document.getElementById('fcProgress').style.width = `${((fcIndex + 1) / filteredCards.length) * 100}%`;
+  document.getElementById('fcPrev').disabled = fcIndex === 0;
+  document.getElementById('fcNext').disabled = fcIndex === filteredCards.length - 1;
+}
+
+function flipCard() { document.getElementById('flashcard').classList.toggle('flipped'); }
+function prevCard() { if (fcIndex > 0) { fcIndex--; document.getElementById('flashcard').classList.remove('flipped'); renderCard(); } }
+function nextCard() { if (fcIndex < filteredCards.length - 1) { fcIndex++; document.getElementById('flashcard').classList.remove('flipped'); renderCard(); } }
+
+// ─── QUIZ ───
+let quizQ = 0;
+let score = 0;
+let shuffled = [];
+
+function startQuiz() {
+  shuffled = [...quizData].sort(() => Math.random() - 0.5).slice(0, 10);
+  quizQ = 0; score = 0;
+  document.getElementById('quizStart').style.display = 'none';
+  document.getElementById('quizResults').classList.remove('show');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const body = document.getElementById('quizBody');
+  const q = shuffled[quizQ];
+  body.innerHTML = `
+    <div class="quiz-question active">
+      <div class="q-meta">
+        <span class="q-num">Question ${quizQ + 1} of ${shuffled.length}</span>
+        <span class="q-score">Score: ${score}</span>
+      </div>
+      <div class="q-text">${q.q}</div>
+      <div class="q-options">
+        ${q.opts.map((o, i) => `
+          <button class="q-opt" onclick="answerQ(${i})" id="opt-${i}">
+            <span class="opt-letter">${'ABCD'[i]}</span>${o}
+          </button>`).join('')}
+      </div>
+      <div class="q-feedback" id="qFeedback"></div>
+      <button class="next-btn" id="nextBtn" onclick="nextQuestion()">${quizQ === shuffled.length - 1 ? 'See Results' : 'Next Question →'}</button>
+    </div>`;
+}
+
+function answerQ(i) {
+  const q = shuffled[quizQ];
+  const opts = document.querySelectorAll('.q-opt');
+  opts.forEach(o => o.disabled = true);
+  const fb = document.getElementById('qFeedback');
+  if (i === q.ans) {
+    score++;
+    opts[i].classList.add('correct');
+    fb.className = 'q-feedback show correct-fb';
+    fb.innerHTML = `✅ <strong>Correct!</strong> ${q.exp}`;
+  } else {
+    opts[i].classList.add('wrong');
+    opts[q.ans].classList.add('correct');
+    fb.className = 'q-feedback show wrong-fb';
+    fb.innerHTML = `❌ <strong>Incorrect.</strong> ${q.exp}`;
+  }
+  document.getElementById('nextBtn').classList.add('show');
+}
+
+function nextQuestion() {
+  quizQ++;
+  if (quizQ >= shuffled.length) {
+    showResults();
+  } else {
+    renderQuestion();
+  }
+}
+
+function showResults() {
+  document.getElementById('quizBody').innerHTML = '';
+  const pct = (score / shuffled.length) * 100;
+  const msgs = { 90: "Outstanding! 🌟 Exam ready.", 70: "Great work! 💪 Almost there.", 50: "Good effort. 📚 Keep reviewing.", 0: "Keep studying! You've got this. 🌱" };
+  let msg = msgs[0];
+  for (const [k, v] of Object.entries(msgs)) { if (pct >= k) msg = v; }
+  document.getElementById('resultScore').textContent = score;
+  document.getElementById('resultMsg').textContent = msg;
+  document.getElementById('quizResults').classList.add('show');
+}
+
+function restartQuiz() {
+  document.getElementById('quizResults').classList.remove('show');
+  document.getElementById('quizStart').style.display = 'block';
+}
+
+// ─── GLOSSARY ───
+function renderGlossary() {
+  const grid = document.getElementById('glossGrid');
+  grid.innerHTML = glossaryData.map(g => `
+    <div class="gloss-card" data-term="${g.term.toLowerCase()} ${g.def.toLowerCase()}">
+      <div class="gloss-term">${g.term}</div>
+      <span class="gloss-category">${g.cat}</span>
+      <div class="gloss-def">${g.def}</div>
+    </div>`).join('');
+}
+
+function filterGlossary() {
+  const val = document.getElementById('glossSearch').value.toLowerCase();
+  document.querySelectorAll('.gloss-card').forEach(c => {
+    c.classList.toggle('hidden', !c.dataset.term.includes(val));
+  });
+}
+
+// ─── SUMMARIES ───
+function renderSummaries() {
+  const tabs = document.getElementById('sumTabs');
+  const contents = document.getElementById('sumContents');
+  tabs.innerHTML = summaryData.map((s, i) => `
+    <button class="sum-tab ${i === 0 ? 'active' : ''}" onclick="showSum(${i})">${s.title}</button>`).join('');
+  contents.innerHTML = summaryData.map((s, i) => `
+    <div class="sum-content ${i === 0 ? 'active' : ''}" id="sum-${i}">${s.content}</div>`).join('');
+}
+
+function showSum(i) {
+  document.querySelectorAll('.sum-tab').forEach((t, j) => t.classList.toggle('active', j === i));
+  document.querySelectorAll('.sum-content').forEach((c, j) => c.classList.toggle('active', j === i));
+}
+
+// ─── TIMELINE ───
+function renderTimeline() {
+  document.getElementById('timelineEl').innerHTML = timelineEvents.map(e => `
+    <div class="tl-item">
+      <div class="tl-year">${e.year}</div>
+      <div class="tl-title">${e.title}</div>
+      <div class="tl-text">${e.text}</div>
+    </div>`).join('');
+}
+
+// ─── NAVIGATION ───
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const idx = ['topics','flashcards','quiz','glossary','summary','timeline'].indexOf(id);
+  if (idx >= 0) document.querySelectorAll('.nav-tab')[idx].classList.add('active');
+  document.querySelector('.navbar').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ─── INIT ───
+renderTopics();
+renderCard();
+renderGlossary();
+renderSummaries();
+renderTimeline();
+</script>
+</body>
+</html>
